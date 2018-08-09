@@ -1,2 +1,5 @@
 # AP-Computer-Science
-Comp Sci class for 2018-2019 school year
+CompSci class for 2018-2019 school year
+
+
+EXV Here! Yeah, so I'm just getting prepped for my upcoming Ap CompSci Class. This is where I will store all of my projects for revision control and stuff.
