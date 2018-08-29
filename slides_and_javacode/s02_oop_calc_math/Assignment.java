@@ -7,6 +7,8 @@ package s02_oop_calc_math;
 
 //check to see if git is working
 
+//git test
+
 import static java.lang.System.*;
 
 public class Assignment
