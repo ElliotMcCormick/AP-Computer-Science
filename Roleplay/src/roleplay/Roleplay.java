@@ -33,6 +33,9 @@ public class Roleplay {
         System.out.println(davidHill.add(10, 4));
         System.out.println(davidHill.subtract(10, 4));
         System.out.println(davidHill.add(2, 4, 5, 10));
+        
+        DivisionCalculator testCalc = new DivisionCalculator();
+        System.out.println(testCalc.divide(4, 2));
     }
     
 }
