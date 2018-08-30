@@ -5,6 +5,13 @@ package s02_oop_calc_math;
 
 // Assignment operations
 
+<<<<<<< HEAD
+=======
+//check to see if git is working
+
+//git test
+
+>>>>>>> a145f4803317f80414585f59a97002f98f96f146
 import static java.lang.System.*;
 
 public class Assignment
