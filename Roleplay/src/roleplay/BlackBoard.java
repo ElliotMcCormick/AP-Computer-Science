@@ -15,17 +15,19 @@ import javafx.scene.paint.Color;
 public class BlackBoard {
 
     public void paint(Canvas canvas) {
-        smileyFace(canvas);
+        draw(canvas);
     }
 
-    public void smileyFace(Canvas canvas) {
+    public void draw(Canvas canvas) {
         GraphicsContext graphics = canvas.getGraphicsContext2D();
         graphics.setStroke(Color.BLUE);
-        graphics.strokeText("SMILEY FACE LAB ", 35, 35);
+        graphics.strokeText("Hi Class! ", 35, 35);
 
         graphics.setFill(Color.YELLOW);
-        graphics.fillOval(210, 100, 400, 400);
+        graphics.strokeOval(210, 100, 400, 400);
 
+        graphics.setFill(Color.BLUEVIOLET);
+        graphics.strokeRect(100, 50, 30, 30);
         //add more code here
 
 
