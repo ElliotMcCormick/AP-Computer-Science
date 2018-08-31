@@ -36,6 +36,12 @@ public class Roleplay {
         
         DivisionCalculator testCalc = new DivisionCalculator();
         System.out.println(testCalc.divide(4, 2));
+        
+        TwelveSidedDice dice = new TwelveSidedDice();
+        System.out.println(dice.roll());
+        
+        QuadraticCalculator quadCalc = new QuadraticCalculator();
+        System.out.println(quadCalc.calculate(-16, 40, 1.5));
     }
     
 }
