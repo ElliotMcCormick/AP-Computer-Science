@@ -23,10 +23,10 @@ public class BlackBoard {
         graphics.setStroke(Color.BLUE);
         graphics.strokeText("Hi Class! ", 35, 35);
 
-        graphics.setFill(Color.YELLOW);
+        graphics.setStroke(Color.YELLOW);
         graphics.strokeOval(210, 100, 400, 400);
 
-        graphics.setFill(Color.BLUEVIOLET);
+        graphics.setStroke(Color.BLUEVIOLET);
         graphics.strokeRect(100, 50, 30, 30);
         //add more code here
 
