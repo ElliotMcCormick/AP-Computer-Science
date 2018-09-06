@@ -1,6 +1,9 @@
 package s0a_syntax_output;
 
 // A+ Computer Science
+
+import java.io.PrintStream;
+
 // www.apluscompsci.com
 
 //print/println example
@@ -22,8 +25,6 @@ public class One
 		System.out.println("compsci");
 		System.out.println("compsci");
 		System.out.println();
-                
-                
-                
+                                
 	}
 }

@@ -8,7 +8,7 @@ public class IntegersLOP{
 
 	public static void main(String args[])
 	{
-		int one = 120.0;
+		int one = (int)120.0;
 		System.out.println(one);
 	}
 }

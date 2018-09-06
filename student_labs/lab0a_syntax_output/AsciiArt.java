@@ -13,13 +13,13 @@ public class AsciiArt {
         
         System.out.println("\n\n\n\n");
 
-
-        System.out.println("    __                   ");
-        System.out.println("   (_\'\\                ");
-        System.out.println("     \\  \\^^.            ");
-        System.out.println("      \\      \\__        ");
-        System.out.println("      |_|-|_|.__>  RAWR   ");
-        System.out.println("                          ");
+        System.out.println("     __                           ");
+        System.out.println("   /    \\   __                   ");
+        System.out.println("  ( RAWR > (_\'\\                 ");
+        System.out.println("   \\ __ /    \\ \\^^.            ");
+        System.out.println("              \\      \\__        ");
+        System.out.println("               |_|-|_|.__>        ");
+        System.out.println("                                  ");
         //add other output
 
        
