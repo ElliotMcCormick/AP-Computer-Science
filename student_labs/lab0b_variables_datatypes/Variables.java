@@ -1,6 +1,9 @@
 package lab0b_variables_datatypes;
 
 // A+ Computer Science  -  www.apluscompsci.com
+
+import java.util.Scanner;
+
 //Name -
 //Date -
 //Class -
@@ -14,11 +17,12 @@ public class Variables {
         //byte		short		int 		long
         //float		double
         //char      boolean		String
-
+        Scanner keyboard = new Scanner(System.in);
         //integer variables
         byte byteOne = 127;
         short shortOne = 32767;
-        int intOne = 999999999;
+       
+        int intOne = 5555;
         long longOne = 1010101293;
        
         //decimal variables
@@ -39,14 +43,28 @@ public class Variables {
         System.out.println("*        integer types          *");
         System.out.println("*                               *");
         System.out.println("*8 bit - byteOne = " + byteOne + "\t\t*");
-        System.out.println("*16 bit - shortOne =" + shortOne + "\t\t*");
-        System.out.println("*32 bit - intOne =" + intOne + "\t\t*");
-        System.out.println("*64 bit - longOne =" + longOne + "\t\t*");
+        System.out.println("*16 bit - shortOne = " + shortOne + "\t*");
+        System.out.println("*32 bit - intOne = " + intOne + "\t\t*");
+        System.out.println("*64 bit - longOne = " + longOne + "\t*");
         System.out.println("*                               *");
         System.out.println("*          real types           *");
         System.out.println("*                               *");
-        System.out.println("*32 bit - floatOne =" + floatOne + "\t\t*");
-        System.out.println(charOne);
+        System.out.println("*32 bit - floatOne = " + floatOne + "\t*");
+        System.out.println("*64 bit - doubleOne = " + doubleOne + "*");
+        System.out.println("*                               *");
+        System.out.println("*      other integer types      *");
+        System.out.println("*                               *");
+        System.out.println("*16 bit - charOne = " + charOne + "\t\t*");
+        System.out.println("*                               *");
+        System.out.println("*      other integer types      *");
+        System.out.println("*                               *");
+        System.out.println("*booleanOne = " + booleanOne + "\t\t*");
+        System.out.println("*stringOne = " + stringOne + "\t\t*");
+        System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
+
+
+        
+        
 
 
 
