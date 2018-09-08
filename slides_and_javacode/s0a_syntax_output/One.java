@@ -23,7 +23,20 @@ public class One
 		System.out.println("compsci");
 		System.out.println();
                 
+               int a = (int)56.67;
+               System.out.println(a);
                 
-                
+               long u = (int)56.67;
+               System.out.println(u);
+               
+               char p = 'A' + 100;
+               System.out.println((int)p);
+               
+               double g = 56.67d;
+               System.out.println(g);
+               
+               float v = (int)56.67;
+               System.out.println(v);
+                    
 	}
 }
