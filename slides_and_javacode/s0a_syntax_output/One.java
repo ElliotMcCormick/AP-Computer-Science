@@ -1,6 +1,9 @@
 package s0a_syntax_output;
 
 // A+ Computer Science
+
+import java.io.PrintStream;
+
 // www.apluscompsci.com
 
 //print/println example
@@ -22,6 +25,7 @@ public class One
 		System.out.println("compsci");
 		System.out.println("compsci");
 		System.out.println();
+<<<<<<< HEAD
                 
                int a = (int)56.67;
                System.out.println(a);
@@ -38,5 +42,8 @@ public class One
                float v = (int)56.67;
                System.out.println(v);
                     
+=======
+                                
+>>>>>>> b2e3c02a1dfc5be5f0319335bc639e1ec7a359ca
 	}
 }

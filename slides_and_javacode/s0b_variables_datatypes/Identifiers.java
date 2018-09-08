@@ -4,15 +4,15 @@ package s0b_variables_datatypes;
 
 //indentifier example
 
-public class ?Indentifiers
+public class Identifiers
 {
 	public static void main(String args[])
 	{
-		int big Num=99;
+		int bigNum = 99;
 
-		double 1decimal = 8.25;
+		double decimal = 8.25;
 
-		double void = 657;
+		double number = 657;
 
 		char littleA = 'a';
 
