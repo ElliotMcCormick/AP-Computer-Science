@@ -23,11 +23,17 @@ public class SmileyFace {
         graphics.setStroke(Color.BLUE);
         graphics.strokeText("SMILEY FACE LAB ", 35, 35);
 
+        //face
         graphics.setFill(Color.YELLOW);
         graphics.fillOval(210, 100, 400, 400);
 
+        //nose
+        graphics.setFill(Color.BLACK);
+        graphics.fillOval(390, 290, 40, 40);
+        
+        //eyes
+        graphics.setFill(Color.LIGHTGREEN);
+        graphics.fillOval(250, 200, 60, 40);
         //add more code here
-
-
     }
 }

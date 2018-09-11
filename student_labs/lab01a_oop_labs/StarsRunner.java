@@ -13,5 +13,12 @@ public class StarsRunner {
     public static void main(String args[]) {
         //instantiate a StarsAndStripes object
         //call the methods needed to make the patterns on the word document
+        StarsAndStripes star1 = new StarsAndStripes();
+        
+        star1.printASmallBox();
+        star1.printTwoBlankLines();
+        star1.printABigBox();
+        star1.printTwoBlankLines();
+        star1.myOwnPattern();
     }
 }
