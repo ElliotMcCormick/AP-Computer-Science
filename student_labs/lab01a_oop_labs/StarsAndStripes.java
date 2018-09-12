@@ -10,6 +10,7 @@ import static java.lang.System.*;
 
 public class StarsAndStripes {
 
+    //basically like an init, it runs when you instantiate something
     public StarsAndStripes() {
         out.println("StarsAndStripes");
         printTwoBlankLines();

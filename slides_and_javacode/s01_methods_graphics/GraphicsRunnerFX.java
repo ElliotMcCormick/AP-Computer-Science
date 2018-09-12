@@ -32,7 +32,7 @@ public class GraphicsRunnerFX extends Application
          //new CirclesFX().draw(canvas);
          //new RectanglesFX().draw(canvas);
          //new LinesFX().draw(canvas);
-         //new ArcsFX().draw(canvas);
+        new ArcsFX().draw(canvas);
          //new ColorsFX().draw(canvas);
         stage.setScene(primaryScene);
         stage.show();

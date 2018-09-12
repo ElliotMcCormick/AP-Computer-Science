@@ -33,9 +33,15 @@ public class GraphicsRunner extends Application{
         root.getChildren().add(canvas);
         
         Scene primaryScene = new Scene(root, WIDTH, HEIGHT);
-        SmileyFace face = new SmileyFace();
-		face.paint(canvas);
-        //comment out the above two lines and add in additional lines here for your other graphics labs        
+       
+        //SmileyFace Lab
+        //SmileyFace face = new SmileyFace();
+		//face.paint(canvas);
+          
+        //Big House Lab
+        BigHouse house = new BigHouse();
+        house.draw(canvas);
+        
         stage.setScene(primaryScene);
         stage.setTitle("Lab 1");
         stage.show();

@@ -19,6 +19,7 @@ public class StarsRunner {
         star1.printTwoBlankLines();
         star1.printABigBox();
         star1.printTwoBlankLines();
+        star1.printTwoBlankLines();
         star1.myOwnPattern();
     }
 }
