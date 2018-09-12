@@ -30,4 +30,12 @@ public class BigHouse {
         graphics.fillRect(200, 200, 400, 400);
 
     }
+    
+    private void drawTriangle(GraphicsContext graphics, int topX, int topY, int width, int height){
+        double xpoints[] = {topX, topX - width, topX + width};
+        double ypoints[] = {topY, topY - height, topY + height};
+        int numPoints = 3;
+        
+        graphics.fillPolygon(xpoints, ypoints, numPoints);
+    }
 }
