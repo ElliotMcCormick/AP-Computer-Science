@@ -17,6 +17,9 @@ import javafx.scene.shape.ArcType;
 public class SmileyFace {
 
     public void paint(Canvas canvas) {
+        GraphicsContext graphics = canvas.getGraphicsContext2D();
+        graphics.setStroke(Color.BLUE);
+        graphics.strokeText("SMILEY FACE LAB ", 35, 35);
         smileyFace(canvas);
     }
 
@@ -25,8 +28,7 @@ public class SmileyFace {
         Color eyeColor = Color.rgb(68, 234, 53);
         
         GraphicsContext graphics = canvas.getGraphicsContext2D();
-        graphics.setStroke(Color.BLUE);
-        graphics.strokeText("SMILEY FACE LAB ", 35, 35);
+        
 
         //face
         graphics.setFill(Color.YELLOW);

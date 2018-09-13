@@ -21,24 +21,27 @@ class Robot {
         graphics.strokeText("Robot LAB ", 35, 35);
 
         //call head method
-
+        head(canvas);
         //call other methods
 
     }
 
     private void head(Canvas canvas) {
         GraphicsContext graphics = canvas.getGraphicsContext2D();
-        graphics.setFill(Color.YELLOW);
-
-        graphics.fillOval(300, 100, 200, 100);
-
-
+        //head background
+        graphics.fillRect(350, 50, 100, 100);
+        //eyes
+        graphics.setFill(Color.RED);
+        graphics.fillRect(370, 70, 20, 20);
+        graphics.fillRect(410, 70, 20, 20);
         //add more code here
 
     }
 
     private void upperBody(Canvas canvas) {
+        GraphicsContext graphics = canvas.getGraphicsContext2D();
         //add more code here
+        graphics.fillOval(300, 150, 150, 150);
     }
 
     private void lowerBody(Canvas canvas) {

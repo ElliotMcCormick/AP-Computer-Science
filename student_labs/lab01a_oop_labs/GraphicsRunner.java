@@ -39,9 +39,12 @@ public class GraphicsRunner extends Application{
 		//face.paint(canvas);
           
         //Big House Lab
-        BigHouse house = new BigHouse();
-        house.draw(canvas);
+        //BigHouse house = new BigHouse();
+        //house.draw(canvas);
         
+        //Robot Lab
+        Robot robot = new Robot();
+        robot.draw(canvas);
         stage.setScene(primaryScene);
         stage.setTitle("Lab 1");
         stage.show();
