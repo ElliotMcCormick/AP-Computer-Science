@@ -22,18 +22,22 @@ public class Shape {
 
     public Shape(int x, int y, int wid, int ht, Color col) {
         xPos = x;
+        yPos = y;
+        width = wid;
+        height = ht;
+        color = col;
         //finish this constructor
     }
 
     public void draw(Canvas canvas) {
         GraphicsContext graphics = canvas.getGraphicsContext2D();
-        graphics.setFill(color);
+        
+        graphics.setFill(Color.BLACK);
         graphics.fillRect(xPos, yPos, width, height);
+        graphics.setFill(color);
+        graphics.fillOval(xPos, yPos, width, height);
 
-        //draw whatever you want
-        //    ^
-        //  [ :: ]
-        //    ()
+       
 
     }
 

@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 //Name -
@@ -43,8 +44,13 @@ public class GraphicsRunner extends Application{
         //house.draw(canvas);
         
         //Robot Lab
-        Robot robot = new Robot();
-        robot.draw(canvas);
+        //Robot robot = new Robot();
+        //robot.draw(canvas);
+        
+        //Shape Lab
+        Shape shape = new Shape(1, 1, 150, 100, Color.RED);
+        shape.draw(canvas);
+        
         stage.setScene(primaryScene);
         stage.setTitle("Lab 1");
         stage.show();

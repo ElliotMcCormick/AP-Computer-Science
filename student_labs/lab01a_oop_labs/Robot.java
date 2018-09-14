@@ -5,6 +5,7 @@ package lab01a_oop_labs;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.ArcType;
 
 //Name -
 //Date -
@@ -23,6 +24,7 @@ class Robot {
         //call head method
         head(canvas);
         upperBody(canvas);
+        lowerBody(canvas);
         //call other methods
 
     }
@@ -49,6 +51,12 @@ class Robot {
     private void lowerBody(Canvas canvas) {
         //add more code here
         GraphicsContext graphics = canvas.getGraphicsContext2D();
-        graphics.strokeArc();
+        graphics.setStroke(Color.BLACK);
+        //left leg
+        graphics.strokeArc(250, 150, 200, 200, 30, 150, ArcType.OPEN);
+        graphics.fillOval(225, 250, 50, 50);
+        //right leg
+        graphics.strokeArc(350, 150, 200, 200, 90, -90, ArcType.OPEN);
+        graphics.fillOval(525, 250, 50, 50);
     }
 }
