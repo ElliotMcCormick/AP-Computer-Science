@@ -22,6 +22,7 @@ class Robot {
 
         //call head method
         head(canvas);
+        upperBody(canvas);
         //call other methods
 
     }
@@ -41,7 +42,8 @@ class Robot {
     private void upperBody(Canvas canvas) {
         GraphicsContext graphics = canvas.getGraphicsContext2D();
         //add more code here
-        graphics.fillOval(300, 150, 150, 150);
+        graphics.setFill(Color.BLACK);
+        graphics.fillOval(325, 100, 150, 150);
     }
 
     private void lowerBody(Canvas canvas) {
