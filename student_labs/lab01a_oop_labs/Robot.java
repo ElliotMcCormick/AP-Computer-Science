@@ -48,5 +48,7 @@ class Robot {
 
     private void lowerBody(Canvas canvas) {
         //add more code here
+        GraphicsContext graphics = canvas.getGraphicsContext2D();
+        graphics.strokeArc();
     }
 }
