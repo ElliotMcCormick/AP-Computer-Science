@@ -49,7 +49,7 @@ public class BigHouse {
         
     }
     
-    private void drawTriangle(GraphicsContext graphics, int topX, int topY, int width, int height){
+    public void drawTriangle(GraphicsContext graphics, int topX, int topY, int width, int height){
         double[] xPoints = {topX, topX + width, topX - width};
         double[] yPoints = {topY, topY + height, topY + height};
         

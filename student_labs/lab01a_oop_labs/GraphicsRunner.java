@@ -48,8 +48,19 @@ public class GraphicsRunner extends Application{
         //robot.draw(canvas);
         
         //Shape Lab
-        Shape shape = new Shape(1, 1, 150, 100, Color.RED);
-        shape.draw(canvas);
+        Shape shape1 = new Shape(100, 100, 150, 100, Color.RED);
+        shape1.draw(canvas);
+        Shape shape2 = new Shape(200, 400, 34, 56, Color.GREEN);
+        shape2.draw(canvas);
+        Shape shape3 = new Shape (505, 10, 55, 200, Color.BLUE);
+        shape3.draw(canvas);
+        
+        System.out.println(shape3.toString());
+        shape3.setXPos(400);
+        shape3.setColor(Color.BLUEVIOLET);
+        shape3.draw(canvas);
+        System.out.println(shape3.toString());
+
         
         stage.setScene(primaryScene);
         stage.setTitle("Lab 1");
