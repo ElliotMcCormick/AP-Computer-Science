@@ -15,9 +15,9 @@ class Triangle
 
    public Triangle()
    {
-      sideA=0;
-      sideB=0;
-      sideC=0;
+//      sideA=0;
+//      sideB=0;
+//      sideC=0;
    }
 
    public void print()

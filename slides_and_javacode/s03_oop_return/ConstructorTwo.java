@@ -50,5 +50,8 @@ public class ConstructorTwo
 
     test = new Triangle(15,17,14);
     test.print();
+    
+    test = new Triangle();
+    test.print();
   }
 }
