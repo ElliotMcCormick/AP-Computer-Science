@@ -38,6 +38,6 @@ public class MilesPerHour {
     }
 
     public void print() {
-        System.out.println("\n" + distance + " miles in " + hours + " hours and " + minutes + " minutes = " + Math.round(mph) + " MPH");
+        System.out.println("\n" + distance + " miles in " + hours + " hours and " + minutes + " minutes = " + Math.round(mph) + " MPH" + "\n\n\n");
     }
 }
