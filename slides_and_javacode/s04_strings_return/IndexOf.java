@@ -15,7 +15,7 @@ public class IndexOf
 	 */
 	public static String getFirstChunk( String line )
 	{
-		return "";
+            return line.substring(0, (line.indexOf("@")));
 	}
 
    public static void main( String args[] )
