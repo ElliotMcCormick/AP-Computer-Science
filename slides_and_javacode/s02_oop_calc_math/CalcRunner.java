@@ -26,6 +26,22 @@ public class CalcRunner
       test.add();
       test.print();
       
+       System.out.println(Math.sqrt(12));
+       System.out.println( 9.3 % 3 );				// LINE 5
+
+        System.out.println( 'c' + 5 );				// LINE 6
+
+        System.out.println( Math.pow(3,3) );    		// LINE 7
+
+        System.out.println( Math.ceil(3.4) );    		// LINE 8
+
+        System.out.println( Math.floor(4.6) );   		// LINE 9
+
+        System.out.println( Math.sqrt(12) );  
+
+        System.out.print( Math.ceil(Math.sqrt(17)));	// LINE 19        // LINE 10
+
+      
       //call setNums again
       
    }

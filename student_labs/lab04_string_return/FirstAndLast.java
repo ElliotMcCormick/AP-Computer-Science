@@ -21,6 +21,7 @@ public class FirstAndLast {
     }
 
     public void setString(String s) {
+        
     }
 
     public void findFirstLastLetters() {

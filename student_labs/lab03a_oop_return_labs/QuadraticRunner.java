@@ -27,6 +27,32 @@ public class QuadraticRunner {
         Quadratic test = new Quadratic(a, b, c);
         test.calcRoots();
         test.print();
+        
+        out.print("Enter a :: ");
+        a = keyboard.nextInt();
+
+        out.print("Enter b :: ");
+        b = keyboard.nextInt();
+
+        out.print("Enter c :: ");
+        c = keyboard.nextInt();
+        
+        test.setEquation(a, b, c);
+        test.calcRoots();
+        test.print();
+        
+        out.print("Enter a :: ");
+        a = keyboard.nextInt();
+
+        out.print("Enter b :: ");
+        b = keyboard.nextInt();
+
+        out.print("Enter c :: ");
+        c = keyboard.nextInt();
+        
+        test.setEquation(a, b, c);
+        test.calcRoots();
+        test.print();
         //add test cases
     }
 }
