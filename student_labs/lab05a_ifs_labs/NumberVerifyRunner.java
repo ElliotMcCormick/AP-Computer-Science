@@ -13,9 +13,14 @@ public class NumberVerifyRunner {
 
     public static void main(String[] args) {
         //add in input
-        System.out.println("5 is odd :: " + NumberVerify.isOdd(5));
-        System.out.println("5 is even :: " + NumberVerify.isEven(5));
-
+        Scanner keyboard = new Scanner(in);
+        
+        for (int i = 0; i < 5; i++){
+            System.out.print("Enter a whole number :: ");
+            int number = keyboard.nextInt();
+            System.out.println(number + " is odd :: " + NumberVerify.isOdd(number));
+            System.out.println(number + " is even :: " + NumberVerify.isEven(number));
+        }
         //add in more test cases
     }
 }

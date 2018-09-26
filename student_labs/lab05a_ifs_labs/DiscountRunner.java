@@ -14,9 +14,13 @@ public class DiscountRunner {
     public static void main(String args[]) {
         Scanner keyboard = new Scanner(System.in);
 
-        out.print("Enter the original bill amount :: ");
-        double amt = keyboard.nextDouble();
-
+        for (int i = 0; i < 5; i++){
+            out.print("Enter the original bill amount :: ");
+            double amt = keyboard.nextDouble();
+        
+            Discount test = new Discount();
+            out.println("Bill after discount :: " + String.format("%.2f", test.getDiscountedBill(amt)) + "\n");
+        }
 
     }
 }
