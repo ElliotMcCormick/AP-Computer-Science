@@ -19,7 +19,7 @@ public class NumberVerifyRunner {
             System.out.print("Enter a whole number :: ");
             int number = keyboard.nextInt();
             System.out.println(number + " is odd :: " + NumberVerify.isOdd(number));
-            System.out.println(number + " is even :: " + NumberVerify.isEven(number));
+            System.out.println(number + " is even :: " + NumberVerify.isEven(number) + "\n\n");
         }
         //add in more test cases
     }
