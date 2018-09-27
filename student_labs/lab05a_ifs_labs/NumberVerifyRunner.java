@@ -15,6 +15,7 @@ public class NumberVerifyRunner {
         //add in input
         Scanner keyboard = new Scanner(in);
         
+      
         for (int i = 0; i < 5; i++){
             System.out.print("Enter a whole number :: ");
             int number = keyboard.nextInt();
