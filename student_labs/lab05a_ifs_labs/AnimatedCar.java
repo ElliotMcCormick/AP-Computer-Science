@@ -19,7 +19,7 @@ class AnimatedCar extends Canvas {
     private int x;
     private int y;
     private Timer timer;
-    private final static int SLEEP = 50;  //bigger # = slower animation	
+    private final static int SLEEP = 200;  //bigger # = slower animation	
 
     public AnimatedCar(int width, int heigth) {
         setSize(width, heigth);
@@ -54,16 +54,24 @@ class AnimatedCar extends Canvas {
 
 
         //draw a wheel
-
-
+        window.setColor(Color.BLUE);
+        window.fillOval(x, y + 45, 30, 30);
+        
         //draw another wheel
+        window.fillOval(x + 50, y + 45, 30, 30);
+
+        
 
 
         //increment x by 50
 
+        x += 50;
 
         //if x has reached the far right side of the screen
         //set it back to zero
+        if (x >= 800){
+            x = 0;
+        }
 
 
     }
