@@ -14,6 +14,8 @@ public class DiscountRunner {
     public static void main(String args[]) {
         Scanner keyboard = new Scanner(System.in);
         
+        out.println("hallo there".compareTo("abc"));
+        
         for (int i = 0; i < 5; i++){
             out.print("Enter the original bill amount :: ");
             double amt = keyboard.nextDouble();
