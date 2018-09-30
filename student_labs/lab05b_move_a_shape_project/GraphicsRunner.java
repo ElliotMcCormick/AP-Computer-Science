@@ -24,7 +24,11 @@ public class GraphicsRunner extends Application {
     public void start(Stage primaryStage) {
         RedrawTimer timer = new RedrawTimer();
 
-//        shape = new Shape();
+        shape = new Shape();
+        shape.setWidth(20);
+        shape.setHeight(20);
+        shape.setXSpeed(2);
+        shape.setYSpeed(3);
         
         StackPane root = new StackPane();
 
