@@ -18,6 +18,7 @@ public class GraphicsRunner extends Application {
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
     private static Shape shape;
+    private static Shape test;
     private static Canvas canvas;
 
     @Override
@@ -29,6 +30,8 @@ public class GraphicsRunner extends Application {
         shape.setHeight(20);
         shape.setXSpeed(2);
         shape.setYSpeed(3);
+        
+        test = new Shape(2, 3, 30, 25, Color.GREEN, 3, 5);
         
         StackPane root = new StackPane();
 
@@ -61,6 +64,8 @@ public class GraphicsRunner extends Application {
             shape.clear(canvas);
             shape.draw(canvas);
             shape.move();
+            test.draw(canvas);
+            test.move();
         }
 
     }
