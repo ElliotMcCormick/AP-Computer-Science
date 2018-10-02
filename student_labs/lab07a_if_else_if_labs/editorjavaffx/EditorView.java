@@ -1,4 +1,4 @@
-package editorjavaffx;
+package lab07a_if_else_if_labs.editorjavaffx;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -43,6 +43,12 @@ public class EditorView extends Application {
                 else if (event.getCode() == KeyCode.RIGHT) {
                     
                     editor = editor.rightArrow();
+                }
+                else if (event.getCode() == KeyCode.BACK_SPACE) {
+                    editor = editor.backspace();
+                }
+                else if (event.getCode() == KeyCode.DELETE) {
+                    editor = editor.delete();
                 }
                 else {
                     editor = editor.insertString((event.getCode().toString().toLowerCase().charAt(0)));

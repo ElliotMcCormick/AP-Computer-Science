@@ -1,4 +1,4 @@
-package editorjavaffx;
+package lab07a_if_else_if_labs.editorjavaffx;
 
 /**
  * The purpose of this is to teach students to write to an interface, practice strings, and practice with a simple class. 
