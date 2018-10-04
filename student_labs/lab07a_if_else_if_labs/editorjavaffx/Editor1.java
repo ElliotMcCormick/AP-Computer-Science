@@ -38,24 +38,36 @@ public class Editor1 implements Ed {
     }
 
     public Ed delete() {
-        return new Editor1(pre, post.substring(1));
+        if (post.length() < 1) {
+            return new Editor1(pre, post);
+        } else {
+            return new Editor1(pre, post.substring(1));
+        }
     }
 
     public Ed backspace() {
-        return new Editor1(pre.substring(0, pre.length() - 1), post);
+        if (pre.length() < 1) {
+            return new Editor1(pre, post);
+        } else {
+            return new Editor1(pre.substring(0, pre.length() - 1), post);
+        }
     }
 
     public Ed insertString(char c) // Originally insert(char c), which is fine if you teach the char type
     {
-        return new Editor1("string", "test");
+        return new Editor1(pre + c, post);
     }
 
     public Ed homeKey() {
-        return new Editor1("not", "finished");
+        return new Editor1("", pre + post);
     }
 
     public Ed endKey() {
-        return new Editor1("not", "finished");
+        return new Editor1(pre + post, "");
+    }
+    
+    public Ed space() {
+        return new Editor1(pre + " ", post);
     }
 
     public static void main(String[] args) {

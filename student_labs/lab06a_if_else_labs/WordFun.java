@@ -13,24 +13,26 @@ public class WordFun {
     private String word;
 
     public WordFun() {
+        setWord("");
     }
 
     public WordFun(String w) {
+        setWord(w);
     }
 
     public void setWord(String w) {
+        word = w; 
     }
 
     public void makeUpper() {
+        word = word.toUpperCase();
     }
 
     public void addHyphen() {
-        int loc;
-
-
+        word = word.replaceAll(" ", "-");
     }
 
     public String toString() {
-        return "";
+        return word;
     }
 }

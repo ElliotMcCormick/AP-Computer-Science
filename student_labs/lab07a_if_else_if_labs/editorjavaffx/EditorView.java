@@ -50,9 +50,49 @@ public class EditorView extends Application {
                 else if (event.getCode() == KeyCode.DELETE) {
                     editor = editor.delete();
                 }
-                else {
-                    editor = editor.insertString((event.getCode().toString().toLowerCase().charAt(0)));
+                else if (event.getCode() == KeyCode.HOME){
+                    editor = editor.homeKey();
                 }
+                else if (event.getCode() == KeyCode.END){
+                    editor = editor.endKey();
+                }
+                else if (event.getCode() == KeyCode.SPACE){
+                    editor = editor.space();
+                }
+                else if (event.getCode() == KeyCode.DIGIT0 || event.getCode() == KeyCode.NUMPAD0){
+                        editor = editor.insertString('0');
+                    } 
+                else if (event.getCode() == KeyCode.DIGIT1 || event.getCode() == KeyCode.NUMPAD1){
+                    editor = editor.insertString('1');
+                } 
+                else if (event.getCode() == KeyCode.DIGIT2 || event.getCode() == KeyCode.NUMPAD2){
+                    editor = editor.insertString('2');
+                } 
+                else if (event.getCode() == KeyCode.DIGIT3 || event.getCode() == KeyCode.NUMPAD3){
+                    editor = editor.insertString('3');
+                } 
+                else if (event.getCode() == KeyCode.DIGIT4 || event.getCode() == KeyCode.NUMPAD4){
+                    editor = editor.insertString('4');
+                } 
+                else if (event.getCode() == KeyCode.DIGIT5 || event.getCode() == KeyCode.NUMPAD5){
+                    editor = editor.insertString('5');
+                } 
+                else if (event.getCode() == KeyCode.DIGIT6 || event.getCode() == KeyCode.NUMPAD6){
+                    editor = editor.insertString('6');
+                } 
+                else if (event.getCode() == KeyCode.DIGIT7 || event.getCode() == KeyCode.NUMPAD7){
+                    editor = editor.insertString('7');
+                } 
+                else if (event.getCode() == KeyCode.DIGIT8 || event.getCode() == KeyCode.NUMPAD8){
+                    editor = editor.insertString('8');
+                } 
+                else if (event.getCode() == KeyCode.DIGIT9 || event.getCode() == KeyCode.NUMPAD9){
+                    editor = editor.insertString('9');
+                } 
+                else{   
+                editor = editor.insertString((event.getCode().toString().toLowerCase().charAt(0)));                   
+                }
+                
                 GraphicsContext gc = canvas.getGraphicsContext2D();
                 gc.clearRect(0, 0, EditorView.WIDTH, EditorView.HEIGHT);
                 gc.setFont(new Font("Arial", 24));

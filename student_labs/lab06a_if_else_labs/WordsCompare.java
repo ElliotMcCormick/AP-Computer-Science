@@ -14,19 +14,24 @@ public class WordsCompare {
     private int compare;
 
     public WordsCompare() {
+        setWords("", "");
     }
 
     public WordsCompare(String one, String two) {
+        setWords(one, two);
     }
 
     public void setWords(String one, String two) {
+        wordOne = one;
+        wordTwo = two;
     }
 
-    public void compare() {
+    public int compare() {
+        return wordTwo.compareTo(wordOne);
     }
 
     public String toString() {
-        if (compare < 0) {
+        if (compare() > 0) {
             return wordOne + " should be placed before " + wordTwo + "\n";
         } else {
             return wordOne + " should be placed after " + wordTwo + "\n";
