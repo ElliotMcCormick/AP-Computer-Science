@@ -17,6 +17,8 @@ public class WordFunRunner {
         out.println(test);
         test.addHyphen();
         out.println(test);
+        
+        
 
         //add more test cases
 
