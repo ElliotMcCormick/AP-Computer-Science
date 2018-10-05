@@ -1,4 +1,5 @@
-
+package lab07a_if_else_if_labs;
+        
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -34,7 +35,8 @@ public class MouseButtonTesterRunner extends Application {
                     test.paintLeft(event.getX(), event.getY());
                 }
                 if (event.isSecondaryButtonDown()) { //right mouse button
-                    //call the method to draw something if the right mouse button is pressed
+                    test.paintRight(event.getX(), event.getY());
+//call the method to draw something if the right mouse button is pressed
                 }
             }
         });

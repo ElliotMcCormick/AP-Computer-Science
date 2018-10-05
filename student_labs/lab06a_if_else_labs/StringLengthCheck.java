@@ -13,19 +13,31 @@ public class StringLengthCheck {
     String wordOne, wordTwo;
 
     public StringLengthCheck() {
+        setWords("", "");
     }
 
     public StringLengthCheck(String one, String two) {
+        setWords(one, two);
     }
 
     public void setWords(String one, String two) {
+        wordOne = one;
+        wordTwo = two;
     }
 
     public boolean checkLength() {
-        return false;
+        if (wordOne.length() == wordTwo.length()){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String toString() {
-        return wordOne + " does not have the same # of letters as " + wordTwo + "\n";
+        if (checkLength()){
+            return wordOne + " has the same # of letters as " + wordTwo + "\n";
+        } else {
+            return wordOne + " does not have the same # of letters as " + wordTwo + "\n";
+        }
     }
 }
