@@ -13,12 +13,15 @@ public class MorseCode {
     private char letter;
 
     public MorseCode() {
+        setChar(' ');
     }
 
     public MorseCode(char let) {
+        setChar(let);
     }
 
     public void setChar(char let) {
+        letter = let;
     }
 
     public String getMorseCode() {
