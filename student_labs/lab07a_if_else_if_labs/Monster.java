@@ -14,33 +14,51 @@ public class Monster {
     private int howBig;
 
     public Monster() {
+        setAttributes(" ", 0);
     }
 
     public Monster(String n, int size) {
+        setAttributes (n, size);
+    }
+    
+    public void setAttributes(String n, int size) {
+        name = n;
+        howBig = size;
     }
 
     public String getName() {
-        return "";
+        return name;
     }
 
     public int getHowBig() {
-        return 0;
+        return howBig;
     }
 
     public boolean isBigger(Monster other) {
-        return false;
+        if (getHowBig() > other.getHowBig()){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean isSmaller(Monster other) {
-        //call isBigger() use !
-        return false;
+        if (!isBigger(other)){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean namesTheSame(Monster other) {
-        return false;
+        if (getName().equals(other.getName())){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String toString() {
-        return "";
+        return name + " " + howBig;
     }
 }

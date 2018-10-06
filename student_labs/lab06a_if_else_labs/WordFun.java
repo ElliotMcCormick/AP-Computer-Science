@@ -33,6 +33,6 @@ public class WordFun {
     }
 
     public String toString() {
-        return word;
+        return word + "\n";
     }
 }
