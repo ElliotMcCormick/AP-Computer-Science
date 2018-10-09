@@ -4,7 +4,7 @@
  *   Input:  752
  *   Output: 257
  */
-package your_package;
+package lab07h_recursion;
 
 /**
  *
@@ -19,8 +19,14 @@ public class ReverseInt {
     }
 
     public void revDigs(int number) {
+        int reverseNum = 0;
+            if (number != 0){
+            reverseNum = (reverseNum * 10) + (number % 10);
+            number = number / 10;
+            revDigs(number);
+        }
+        System.out.print(reverseNum);
 
-
-       }
+    }
 }
    
