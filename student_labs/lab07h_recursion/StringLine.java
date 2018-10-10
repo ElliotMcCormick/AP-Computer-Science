@@ -4,7 +4,7 @@
  *   Input:  It works!
  *   Output: !skrow tI
  */
-package your_package;
+package lab07h_recursion;
 
 /**
  *
@@ -12,6 +12,8 @@ package your_package;
  */
 public class StringLine {
 
+    private int count; 
+    
     public static void main(String[] args) {
         String str = "It works!";
         StringLine stringObj = new StringLine();
@@ -20,9 +22,15 @@ public class StringLine {
     }
 
     public void printString(String word) {
-		//set up your base case
-		//do your recursion.  Print your letters here.  This is not a return method.
+        
+	//set up your base case
+	//do your recursion.  Print your letters here.  This is not a return method.
+        if (count < word.length()){
+            System.out.print(word.charAt(word.length() - 1 - count));
+            count ++;
+            printString(word);
+        } 
 
-       }
+    }
 }
    

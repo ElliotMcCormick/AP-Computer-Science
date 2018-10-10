@@ -11,6 +11,8 @@ package lab07h_recursion;
  * @author wkranz
  */
 public class ReverseInt {
+    
+    private int reverseNum = 0;
 
     public static void main(String[] args) {
         int number = 752;
@@ -19,14 +21,14 @@ public class ReverseInt {
     }
 
     public void revDigs(int number) {
-        int reverseNum = 0;
-            if (number != 0){
+                
+        if (number != 0){
             reverseNum = (reverseNum * 10) + (number % 10);
             number = number / 10;
             revDigs(number);
+        } else {
+            System.out.print(reverseNum);
         }
-        System.out.print(reverseNum);
-
-    }
+    }    
 }
    

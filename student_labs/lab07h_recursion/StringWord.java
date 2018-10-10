@@ -9,7 +9,7 @@
  *			 This
  */
 
-package your_package;
+package lab07h_recursion;
 
 /**
  *
@@ -17,14 +17,35 @@ package your_package;
  */
 public class StringWord {
     
+    private int count;
+    
     public static void main(String[] args) {
 	//Instantiate your object
 	//Call the recursive method printStringWords to print the words
     }
        
  
-       public void printStringWords(String word) {
+    public void printStringWords(String word) {
+        int spaceCount = 0;
+        for (int i = 0; i < word.length(); i++){
+            if (word.charAt(i) == ' '){
+                spaceCount++;              
+            }          
+        }
+        if (spaceCount > 1){  
+            for (int i = 0; i < word.length(); i++){
+                if (word.charAt(i) == ' '){
+                    word.replace(' ', '*');
+                    spaceCount--;
+                }          
+            }              
+        }
+        
+        
+        if (count < word.length()){
+               
+        }
 
-       }
+    }
 }
    
