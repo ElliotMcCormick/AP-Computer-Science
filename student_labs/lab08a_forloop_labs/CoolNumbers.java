@@ -16,7 +16,15 @@ public class CoolNumbers {
      */
 
     public static boolean isCoolNumber(int num) {
-        return false;
+        boolean bool = false;
+        for (int i = 3; i <= 6; i++){
+            if (num % i == 1){
+                bool = true;
+            } else {
+                return false;
+            }
+        }
+        return bool;
     }
 
     /*
@@ -24,6 +32,12 @@ public class CoolNumbers {
      *of the coolNumbers between 6 and stop
      */
     public static int countCoolNumbers(int stop) {
-        return 0;
+        int count = 0;
+        for (int i = 6; i < stop; i++){
+            if (isCoolNumber(i)){
+                count++;
+            }
+        }
+        return count;
     }
 }

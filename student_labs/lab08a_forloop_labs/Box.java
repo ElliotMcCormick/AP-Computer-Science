@@ -13,9 +13,11 @@ public class Box {
     private String word;
 
     public Box() {
+        setWord("");
     }
 
     public Box(String s) {
+        setWord(s);
     }
 
     public void setWord(String s) {
@@ -23,5 +25,8 @@ public class Box {
     }
 
     public void print() {
+        for (int i = 0; i < word.length(); i++){
+            System.out.println(word);
+        }
     }
 }

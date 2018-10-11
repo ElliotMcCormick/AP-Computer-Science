@@ -17,33 +17,25 @@ package lab07h_recursion;
  */
 public class StringWord {
     
-    private int count;
+    
     
     public static void main(String[] args) {
+        StringWord test = new StringWord();
+        test.printStringWords("This is a sentence");
 	//Instantiate your object
 	//Call the recursive method printStringWords to print the words
     }
        
  
     public void printStringWords(String word) {
-        int spaceCount = 0;
-        for (int i = 0; i < word.length(); i++){
-            if (word.charAt(i) == ' '){
-                spaceCount++;              
-            }          
-        }
-        if (spaceCount > 1){  
-            for (int i = 0; i < word.length(); i++){
-                if (word.charAt(i) == ' '){
-                    word.replace(' ', '*');
-                    spaceCount--;
-                }          
-            }              
-        }
-        
-        
-        if (count < word.length()){
-               
+        if (word.length() > 0){
+            if (word.contains(" ")){
+                System.out.println(word.substring(word.lastIndexOf(" ")));
+                printStringWords(word.substring(0, word.lastIndexOf(" ")));
+            } else {
+                System.out.println(word);
+            }
+                  
         }
 
     }
