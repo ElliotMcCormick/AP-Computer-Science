@@ -9,8 +9,23 @@ package lab08a_forloop_labs;
 import static java.lang.System.*;
 
 public class VowelCounter {
+    
+    
 
     public static String getNumberString(String s) {
-        return "";
+        for (int i = 0; i < s.length(); i++){
+            char t = s.toLowerCase().charAt(i);
+            char num = 48;
+            System.out.println(t);
+            if (t == 'a' || t == 'e' || t == 'i' || t == 'o' || t == 'u'){
+                s.replace(s.charAt(i), 'h');
+                num++;
+                System.out.println(num);
+                if (num > 57){
+                    num = 48;
+                }
+            }
+        }
+        return null;
     }
 }
