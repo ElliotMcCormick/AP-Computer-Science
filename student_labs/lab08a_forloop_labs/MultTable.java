@@ -18,11 +18,21 @@ public class MultTable {
     }
 
     public MultTable(int num, int end) {
+        setTable(num, end);
     }
 
-    public void setTable(int num, int end) {
+    public void setTable(int num, int end) {     
+       number = num;
+       stop = end;
     }
 
     public void printTable() {
+        System.out.println("mulitplication table for " + number);
+        for (int i = 1; i <= stop; i++){
+            System.out.println(i + "\t" + number * i);
+  
+        }
+        System.out.println("\n");
+        
     }
 }

@@ -25,8 +25,10 @@ public class TriangleOne {
     }
 
     public String toString() {
+        String output = "";
         for(int i = 0; i < word.length(); i++){
-            
+            output += word.substring(0, word.length() - i) + "\n";
         }
+        return output;
     }
 }
