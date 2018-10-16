@@ -11,7 +11,12 @@ import static java.lang.System.*;
 public class DigitCounter {
 
     public static int countDigits(int number) {
-        int sum = 0;
-        return sum;
+        int count = 0;
+        while (number > 0){
+            count++;
+            number /= 10;
+        }
+        return count;
     }
+ 
 }
