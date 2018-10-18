@@ -12,10 +12,41 @@ public class Perfect {
 
     private int number;
 
-    //add constructors
-    //add a set method
-    public boolean isPerfect() {
-        return false;
+    public Perfect(){
+        setNumber(0);
     }
-    //add a toString	
+    
+    public Perfect(int num){
+        setNumber(num);
+    }
+    
+    public void setNumber(int num){
+        number = num;
+    }
+    
+    public boolean isPerfect() {
+        int sumOfDivisors = 0;
+        int count = 1;
+        while (count < number){
+            if (number % count == 0){
+                sumOfDivisors += count;
+            }
+            count++;
+        }
+        
+        if (sumOfDivisors == number){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public String toString(){
+        if (isPerfect()){
+            return number + " is perfect.\n";
+        } else {
+            return number + " is not perfect.\n";
+        }
+    }
+    	
 }
