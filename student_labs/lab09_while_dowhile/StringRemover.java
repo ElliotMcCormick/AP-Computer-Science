@@ -14,15 +14,29 @@ class StringRemover {
     private String remove;
 
     //add in constructors
+    public StringRemover(){
+        setRemover("", "");
+    }
+    
+    public StringRemover(String s, String rem){
+        setRemover(s, rem);
+    }
+    
     public void setRemover(String s, String rem) {
+        sentence = s;
+        remove = rem;
     }
 
     public String removeStrings() {
         String cleaned = sentence;
-        return cleaned;
+        while (cleaned.indexOf(remove) != -1){
+            cleaned = cleaned.substring(0, cleaned.indexOf(remove) - 1) +
+                    cleaned.substring(cleaned.indexOf(remove) + remove.length());
+        }
+        return cleaned + "\n";
     }
 
     public String toString() {
-        return "";
+        return sentence + " - String to remove " + remove;
     }
 }
