@@ -50,7 +50,13 @@ public class TenToAnyRunner {
         test.setVariables(55, 6);
         System.out.println(test);
         
+        //ok so sample data and sample output different again
+        //sample data is base 6 sample output is base 16
         test.setVariables(2500, 16);
+        System.out.println(test);
+        
+        //not in sample data but in sample output
+        test.setVariables(2500, 13);
         System.out.println(test);
         
         
