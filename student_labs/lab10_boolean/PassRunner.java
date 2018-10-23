@@ -9,7 +9,7 @@ package lab10_boolean;
 public class PassRunner {
 
     public static void main(String args[]) {
-        PasswordCheck test = new PasswordCheck();
+        PassWordCheck test = new PassWordCheck();
         test.check();
     }
 }

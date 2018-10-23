@@ -9,14 +9,23 @@ package lab10_boolean;
 import java.util.Scanner;
 import static java.lang.System.*;
 
-class PasswordCheck {
+class PassWordCheck {
 
     private String password;
 
-    public PasswordCheck() {
+    public PassWordCheck() {
+        password = "mchammergohammer";
     }
 
     public void check() {
         Scanner keyboard = new Scanner(System.in);
+        
+        System.out.print("Enter the password :: ");
+        while (!(password.equals(keyboard.nextLine()))){
+            System.out.println("INVALID");
+            System.out.print("Enter the password :: ");
+        }
+        
+        System.out.println("VALID");
     }
 }
