@@ -19,10 +19,12 @@ public class RPSRunner {
 
         String player = "";
 
-        out.print("type in your prompt [R,P,S] :: ");
-
+        out.print("type in your prompt [R,P,S,Sp,L] :: ");
+        player = keyboard.next();
         //read in the player value
 
         RockPaperScissors game = new RockPaperScissors();
+        game.setPlayers(player);
+        System.out.println(game);
     }
 }

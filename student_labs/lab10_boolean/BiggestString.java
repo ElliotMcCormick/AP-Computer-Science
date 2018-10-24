@@ -17,16 +17,26 @@ public class BiggestString {
     }
 
     public BiggestString(String a, String b, String c) {
+        setStrings(a, b, c);
     }
 
     public void setStrings(String a, String b, String c) {
+        one = a;
+        two = b;
+        three = c;
     }
 
     public String getBiggest() {
-        return "";
+        if (one.compareTo(two) > 0 && one.compareTo(three) > 0){
+            return "biggest = " + one + "\n";
+        } else if (two.compareTo(one) > 0 && two.compareTo(three) > 0){
+            return "biggest = " + two + "\n";
+        } else {
+            return "biggest = " + three + "\n";
+        }
     }
 
     public String toString() {
-        return "";
+        return one + " " + two + " " + three;
     }
 }
