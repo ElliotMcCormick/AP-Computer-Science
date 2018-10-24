@@ -40,7 +40,10 @@ public class RockPaperScissors {
     public String determineWinner() {
         String winner = "";
         
-        if (compChoice.equals("Rock") && (playChoice.equals("S") || playChoice.equals("L"))){
+        if (compChoice.equals(playChoice)){
+            winner = "No One";
+        }
+        else if (compChoice.equals("Rock") && (playChoice.equals("S") || playChoice.equals("L"))){
             winner = "Computer";
         }
         else if (compChoice.equals("Paper") && (playChoice.equals("R") || playChoice.equals("Sp"))){
@@ -65,7 +68,7 @@ public class RockPaperScissors {
         String output = "";
         output += "player had " + playChoice + "\n";
         output += "computer had " + compChoice + "\n";
-        output += "!" + determineWinner() + "wins";
+        output += "!" + determineWinner() + " wins";
         return output;
         
     }
