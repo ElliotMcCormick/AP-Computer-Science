@@ -39,27 +39,62 @@ public class RockPaperScissors {
 
     public String determineWinner() {
         String winner = "";
+        String howDidTheyWin = "";
         
-        if (compChoice.equals(playChoice)){
-            winner = "No One";
+        if (!playChoice.equals("Rock") && !playChoice.equals("Paper") && !playChoice.equals("Scissors") && !playChoice.equals("Spock") && !playChoice.equals("Lizard")) {
+            winner = "That's not an option!";
         }
-        else if (compChoice.equals("Rock") && (playChoice.equals("S") || playChoice.equals("L"))){
-            winner = "Computer";
+        else if (compChoice.equals(playChoice)){
+            winner = "No One wins! <<" + compChoice + " == " + playChoice + ">>";
         }
-        else if (compChoice.equals("Paper") && (playChoice.equals("R") || playChoice.equals("Sp"))){
-            winner = "Computer";
+        else if (compChoice.equals("Rock") && (playChoice.equals("Scissors") || playChoice.equals("Lizard"))){
+            if (playChoice.equals("Scissors")){
+                howDidTheyWin = "Breaks";
+            } else if (playChoice.equals("Lizard")){
+                howDidTheyWin = "Crushes";
+            }
+            
+            winner = "Computer wins! <<" + compChoice + " " + howDidTheyWin + " " + playChoice + ">>";
+        }
+        else if (compChoice.equals("Paper") && (playChoice.equals("Rock") || playChoice.equals("Spock"))){
+            if (playChoice.equals("Rock")){
+                howDidTheyWin = "Covers";
+            } else if (playChoice.equals("Spock")){
+                howDidTheyWin = "Disapproves";
+            }
+            
+            winner = "Computer wins! <<" + compChoice + " " + howDidTheyWin + " " + playChoice + ">>";
         } 
-        else if (compChoice.equals("Scissors") && (playChoice.equals("P") || playChoice.equals("L"))){
-            winner = "Computer";
+        else if (compChoice.equals("Scissors") && (playChoice.equals("Paper") || playChoice.equals("Lizard"))){
+            if (playChoice.equals("Paper")){
+                howDidTheyWin = "Cuts";
+            } else if (playChoice.equals("Lizard")){
+                howDidTheyWin = "Decapitates";
+            }
+            
+            winner = "Computer wins! <<" + compChoice + " " + howDidTheyWin + " " + playChoice + ">>";
         }
-        else if (compChoice.equals("Spock") && (playChoice.equals("R") || playChoice.equals("S"))){
-            winner = "Computer";
+        else if (compChoice.equals("Spock") && (playChoice.equals("Rock") || playChoice.equals("Scissors"))){
+            if (playChoice.equals("Rock")){
+                howDidTheyWin = "Breaks";
+            } else if (playChoice.equals("Scissors")){
+                howDidTheyWin = "Crushes";
+            }
+            
+            winner = "Computer wins! <<" + compChoice + " " + howDidTheyWin + " " + playChoice + ">>";
         }
-        else if (compChoice.equals("Lizard") && (playChoice.equals("P") || playChoice.equals("Sp"))){
-            winner = "Computer";
+        else if (compChoice.equals("Lizard") && (playChoice.equals("Paper") || playChoice.equals("Spock"))){
+            if (playChoice.equals("Paper")){
+                howDidTheyWin = "Eats";
+            } else if (playChoice.equals("Spock")){
+                howDidTheyWin = "Poisons";
+            }
+            
+            winner = "Computer wins! <<" + compChoice + " " + howDidTheyWin + " " + playChoice + ">>";
         }
         else {
-            winner = "Player";
+            howDidTheyWin = "beats";
+            winner = "Player wins! <<" + playChoice + " " + howDidTheyWin + " " + compChoice + ">>";
         }
         return winner;
     }
@@ -68,7 +103,7 @@ public class RockPaperScissors {
         String output = "";
         output += "player had " + playChoice + "\n";
         output += "computer had " + compChoice + "\n";
-        output += "!" + determineWinner() + " wins";
+        output += determineWinner();
         return output;
         
     }
