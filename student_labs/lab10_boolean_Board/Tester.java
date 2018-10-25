@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+//NEW TESTER ON GOOGLE DRIVE THAT ACTUALLY WORKS!
 public class Tester extends Application {
 
     private static final int WIDTH = 800;
