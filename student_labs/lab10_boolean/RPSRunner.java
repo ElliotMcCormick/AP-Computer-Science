@@ -19,7 +19,7 @@ public class RPSRunner {
         do {
             String player = "";
 
-            out.print("Pick you weapon! [Rock, Paper, Scissors, Spock, Lizard] :: ");
+            out.print("Pick you weapon! [Rock, Paper, Scissors, Lizard, Spock] :: ");
             player = keyboard.next();
             //read in the player value
 
