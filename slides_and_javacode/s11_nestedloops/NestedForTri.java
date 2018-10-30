@@ -11,7 +11,7 @@ public class NestedForTri
    {
 
    	/*
-   	 	*
+                        *
 			**
 			***
 			****
@@ -23,10 +23,13 @@ public class NestedForTri
 		*/
 
 		int stop=9;
-		//add in a for loop to print the rows   //rows
-		   //add in a for loop to print out the * on each row  //columns
-		      System.out.print("*");
-		   //print out a new line
+                for (int i = 0; i <= stop; i++){
+                    for (int star = 0; star < i; star++){
+                        System.out.print("*");
+                    }
+                    System.out.println("");
+                }
+		
 
 
 	}

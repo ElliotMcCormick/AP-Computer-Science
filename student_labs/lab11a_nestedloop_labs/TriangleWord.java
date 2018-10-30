@@ -13,16 +13,31 @@ class TriangleWord {
     private String word;
 
     public TriangleWord() {
+        this("");
     }
 
     public TriangleWord(String w) {
+        setWord(w);
     }
 
     public void setWord(String w) {
+        word = w;
     }
 
     public String toString() {
         String output = "";
+        for (int i = 0; i < word.length(); i++){
+            for (int j = word.length(); j > i; j--){
+               output += " "; 
+            } 
+            output += word.charAt(i);
+            for (int k = 0; k <= i; k++){
+                output += " ";
+            }
+            output += word.charAt(i);
+            output += "\n";
+        }
+        
         return output + "\n";
     }
 }
