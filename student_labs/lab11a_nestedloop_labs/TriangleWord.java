@@ -34,7 +34,7 @@ class TriangleWord {
             for (int k = 0; k <= i; k++){
                 output += " ";
             }
-            output += word.charAt(i);
+            
             output += "\n";
         }
         
