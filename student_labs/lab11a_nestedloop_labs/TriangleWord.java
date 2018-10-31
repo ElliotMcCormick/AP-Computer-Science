@@ -26,39 +26,46 @@ class TriangleWord {
 
     public String toString() {
         String output = "";
-        int randomCounter = 1;
+        
+        //variable for number of spaces between the letters
+        int numSpaces = 1;
+        
         /* 
         repeat for the length of the word minus the last line
-        sets the hight of the triangle
+        basically sets the height of the triangle
         */
         for (int i = 0; i < word.length()-1; i++){
            
-            //sets the spaces per line
+            //sets the spaces per line before the letter
             for (int j = word.length()-1; j > i; j--){
                output += " "; 
             } 
-            //repeats twice if not the first row
+            
+            // if not the first row
             if (i != 0){
+                
+                //repeat twice
                 for (int l = 0; l < 2; l++){
+                    
                     //prints letter we are on
                     output += word.charAt(i);
-                    //prints spaces between the letters
                     
-                    
-                   
-                    for (int p = 0; p < randomCounter; p++){ 
+                    //prints spaces between the letters           
+                    for (int p = 0; p < numSpaces; p++){ 
                         output += " ";
                     }
-                    
-                    
-                    
-                    
+               
                 }
-                randomCounter += 2;
+                
+                // the number of spaces between the letters goes up by two for each new line
+                numSpaces += 2;
             } 
-            else {
-                output += word.charAt(i);
+            
+            else {             
+                //if in first row print out char at 0
+                output += word.charAt(0);
             }
+            
             //goes to the next line
             output += "\n";
         }
@@ -67,8 +74,10 @@ class TriangleWord {
         for (int m = word.length() - 1; m >= 0; m--){ //prints the word backwards 
             output += word.charAt(m);
         }
+        
         //prints the word minus the first letter
         output += word.substring(1);
+        
         return output + "\n";
     }
 }
