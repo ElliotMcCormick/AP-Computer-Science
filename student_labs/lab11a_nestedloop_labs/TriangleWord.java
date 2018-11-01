@@ -39,42 +39,33 @@ class TriangleWord {
             //sets the spaces per line before the letter
             for (int j = word.length()-1; j > i; j--){
                output += " "; 
-            } 
-            
+            }          
             // if not the first row
-            if (i != 0){
-                
+            if (i != 0){              
                 //repeat twice
-                for (int l = 0; l < 2; l++){
-                    
+                for (int l = 0; l < 2; l++){                    
                     //prints letter we are on
                     output += word.charAt(i);
                     
                     //prints spaces between the letters           
                     for (int p = 0; p < numSpaces; p++){ 
                         output += " ";
-                    }
-               
-                }
-                
+                    }              
+                }   
                 // the number of spaces between the letters goes up by two for each new line
                 numSpaces += 2;
-            } 
-            
+            }             
             else {             
                 //if in first row print out char at 0
                 output += word.charAt(0);
-            }
-            
+            }            
             //goes to the next line
             output += "\n";
-        }
-        
+        }      
         //last line
         for (int m = word.length() - 1; m >= 0; m--){ //prints the word backwards 
             output += word.charAt(m);
-        }
-        
+        }       
         //prints the word minus the first letter
         output += word.substring(1);
         

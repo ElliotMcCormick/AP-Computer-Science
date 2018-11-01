@@ -14,21 +14,30 @@ public class TriangleTwo {
     private String letter;
 
     public TriangleTwo() {
+        this("", 0);
     }
 
     public TriangleTwo(String let, int sz) {
+        setTriangle(sz, let);
     }
 
     public void setTriangle(int count, String let) {
+        size = count;
+        letter = let;
     }
 
     public String getLetter() {
-        return "#";
+        return letter;
     }
 
     public String toString() {
         String output = "";
-
+        for (int i = 0; i < size; i++){
+            for (int j = size; j > i; j--){
+                output += letter;
+            }
+            output += "\n";
+        }
 
 
 

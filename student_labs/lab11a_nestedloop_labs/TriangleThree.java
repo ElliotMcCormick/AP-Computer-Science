@@ -27,7 +27,7 @@ public class TriangleThree {
     }
 
     public String getLetter() {
-        return "#";
+        return letter;
     }
 
     public String toString() {

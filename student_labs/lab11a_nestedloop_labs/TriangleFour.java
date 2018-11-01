@@ -14,20 +14,34 @@ public class TriangleFour {
     private String letter;
 
     public TriangleFour() {
+        this(0, "");
     }
 
     public TriangleFour(int count, String let) {
+        setTriangle(count, let);
     }
 
-    public void setTriangle(String let, int sz) {
+    public void setTriangle(int sz, String let) {
+        letter = let;
+        size = sz;
     }
 
     public String getLetter() {
-        return "#";
+        return letter;
     }
 
     public String toString() {
         String output = "";
+        for (int i = 0; i < size; i++){
+            for (int k = 0; k <= i; k++){
+                output += " ";
+            }
+            for (int j = size; j > i; j--){
+                output += letter;
+            }
+            output += "\n";
+        }
+        
         return output + "\n";
     }
 }
