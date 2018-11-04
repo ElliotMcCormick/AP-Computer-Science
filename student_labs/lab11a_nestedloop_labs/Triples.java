@@ -57,6 +57,8 @@ public class Triples {
         
        
     }
+    
+    
     public String toString() {
         String output = "";
         
@@ -64,8 +66,10 @@ public class Triples {
             for (int b = 1; b <= number; b++){
                 for (int c = 1; c <= number; c++){
                     if (greatestCommonFactor(a, b, c) <= 1 && isATriangle(a, b, c) && correctOddEvenCombo(a, b, c)){
-                        output += a + " " + b + " " + c + "\n";
-                    }
+                        if (!output.contains(b + " " + a + " " + c) && !output.contains(c + " " + b + " " + a) && !output.contains(a + " " + c + " " + b)){
+                            output += a + " " + b + " " + c + "\n";
+                        }
+                    } 
                 }
             }
         }
