@@ -32,16 +32,21 @@ public class TriangleFive {
 
     public String toString() {
         String output = "";
-        for (int i = 0; i < amount; i++){
-            for (int j = 0; j < amount; j++){
-                for (int k = 0; k < amount; k++){
-                    
-                    output += (char)(letter + j); //dont forget to wrap around, use if
+        char letterAt = letter;
+        
+        for (int i = 0; i < amount; i++){ //height
+            for (int j = 0; j < amount - i; j++){ //width && which letter
+                for (int k = amount; k > j; k--){ //number of times letters repeated                   
+                    if (letterAt + j > (int)'Z'){
+                        letterAt = (char)('A' - j);
+                    }
+                    output += (char)(letterAt + j); //dont forget to wrap around, use if 
                     
                 }
                 output += " ";
             }
             output += "\n";
+            letterAt = letter;
         }
         return output;
     }

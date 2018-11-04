@@ -29,7 +29,7 @@ public class GraphicsRunner extends Application {
         canvas = new Canvas(WIDTH, HEIGHT);
         root.getChildren().add(canvas);
 
-        new ColoredBoxes().draw(canvas);
+        new RandomColoredBoxes().draw(canvas);
         
         Scene scene = new Scene(root, WIDTH, HEIGHT);
 

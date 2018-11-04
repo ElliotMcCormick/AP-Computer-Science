@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  *
  * @author wkranz
  */
-public class GraphicsRunner extends Application {
+public class GraphicsRunnerRandom extends Application {
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
