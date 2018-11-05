@@ -19,18 +19,34 @@ public class LineBreaker {
     }
 
     public LineBreaker(String s, int b) {
+        setLineBreaker(s, b);
     }
 
     public void setLineBreaker(String s, int b) {
+        line = s;
+        breaker = b;
     }
 
     public String getLine() {
-        return "";
+        return line;
     }
 
     public String getLineBreaker() {
         String box = "";
-
+        
+        Scanner chopper = new Scanner(line);
+        
+        while(chopper.hasNext()){
+            //height
+            for (int i = 0; i < line.length(); i += breaker){
+                //repeat breaker number of times (width of box)
+                for (int j = 0; j < breaker; j++){
+                    box = chopper.next();       
+                }
+            }
+        }
+        
+        
 
 
 
