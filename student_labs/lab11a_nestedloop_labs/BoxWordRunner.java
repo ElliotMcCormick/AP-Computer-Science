@@ -11,5 +11,9 @@ import static java.lang.System.*;
 public class BoxWordRunner {
 
     public static void main(String args[]) {
+        BoxWord test = new BoxWord();
+        test.setWord("hello");
+        System.out.println(test);
+        
     }
 }

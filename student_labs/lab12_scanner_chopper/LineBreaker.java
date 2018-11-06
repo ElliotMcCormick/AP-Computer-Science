@@ -41,23 +41,19 @@ public class LineBreaker {
             for (int i = 0; i < line.length(); i += breaker){
                 //repeat breaker number of times (width of box)
                 for (int j = 0; j < breaker; j++){
-                    box = chopper.next();       
+                    if (chopper.hasNext()){
+                        box += chopper.next(); 
+                    }
                 }
+                box += "\n";
             }
         }
         
-        
-
-
-
-
-
-
 
         return box;
     }
 
     public String toString() {
-        return "";
+        return getLineBreaker();
     }
 }
