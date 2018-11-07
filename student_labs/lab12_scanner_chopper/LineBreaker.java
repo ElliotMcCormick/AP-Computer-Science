@@ -54,6 +54,6 @@ public class LineBreaker {
     }
 
     public String toString() {
-        return getLineBreaker();
+        return line + "\n" + getLineBreaker();
     }
 }
