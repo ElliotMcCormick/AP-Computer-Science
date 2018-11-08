@@ -14,17 +14,22 @@ public class ArrayLoopOne
 		int[] nums = {1,2,3,4,5,6,7};
 
 		//add in a traditional for loop to print out nums
-
+                
+                for(int i = 0; i < nums.length; i++){
+                    System.out.println(nums[i]);
+                }
 
 
 
 		out.println("\n\n");
 
 		//another bug to fix - what is the problem?
-		int[] intList = null;
+		int[] intList = {1,2,3,4,5,6,7};
 
 		//add in a for each loop print out intList - use the for each loop
-
+                for(int item : intList){
+                    System.out.println(item);
+                }
 
 
 	}

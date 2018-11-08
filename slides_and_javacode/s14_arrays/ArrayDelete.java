@@ -29,7 +29,15 @@ public class ArrayDelete
 
 	public static int[] removeIt( int[] iRay, int val )
 	{
-		return null;
+            int[] output = new int[iRay.length - countIt(iRay, val)];
+            int outputIndex = 0;
+            for (int i = 0; i < iRay.length; i++){
+                if (iRay[i] != val){
+                    output[outputIndex] = iRay[i];
+                    outputIndex += 1;
+                }
+            }
+            return output;
 	}
 
 	public static void printIt( int[] iRay  )

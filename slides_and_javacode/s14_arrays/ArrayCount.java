@@ -16,7 +16,13 @@ public class ArrayCount
 	 */
 	public static int countIt( int[] iRay, int val )
 	{
-		return 0;
+            int count = 0;
+            for(int item : iRay){
+                if (item == val){
+                    count++; 
+                }
+            }
+            return count;
 	}
 
 	public static void printIt( int[] iRay  )

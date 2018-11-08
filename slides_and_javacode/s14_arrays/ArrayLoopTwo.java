@@ -18,7 +18,10 @@ public class ArrayLoopTwo
 		    nums[spot] = spot*4;
 		}
 
-		//use a for each loop to print out the array		
+		//use a for each loop to print out the array	
+                for (int item : nums){
+                    System.out.println(item);
+                }
 	
 	}
 }
