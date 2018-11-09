@@ -15,9 +15,12 @@ public class TheLineRunner {
 
     public static void main(String args[]) throws IOException {
         Scanner file = new Scanner(new File("line.dat"));
+        TheLine test;
         int size = file.nextInt();
         file.nextLine();
         for (int i = 0; i < size; i++) {
+            test = new TheLine(file.nextLine());
+            System.out.println(test);
         }
     }
 }

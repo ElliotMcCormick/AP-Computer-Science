@@ -18,15 +18,25 @@ public class RomanNumeral {
         "L", "XL", "X", "IX", "V", "IV", "I"};
 
     public RomanNumeral(String str) {
+        
     }
 
     public RomanNumeral(Integer orig) {
+        
+        for (int i = 0; i < NUMBERS.length; i++){
+            while(orig > NUMBERS[i]){
+               roman += LETTERS[i];
+               orig -= NUMBERS[i];
+            }
+        }
     }
 
     public void setNumber(Integer num) {
+        number = num;
     }
 
     public void setRoman(String rom) {
+        roman = rom;
     }
 
     public Integer getNumber() {
