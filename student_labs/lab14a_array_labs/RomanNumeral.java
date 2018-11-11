@@ -18,17 +18,11 @@ public class RomanNumeral {
         "L", "XL", "X", "IX", "V", "IV", "I"};
 
     public RomanNumeral(String str) {
-        
+        setRoman(str);
     }
 
     public RomanNumeral(Integer orig) {
-        
-        for (int i = 0; i < NUMBERS.length; i++){
-            while(orig > NUMBERS[i]){
-               roman += LETTERS[i];
-               orig -= NUMBERS[i];
-            }
-        }
+        setNumber(orig);   
     }
 
     public void setNumber(Integer num) {
@@ -40,10 +34,29 @@ public class RomanNumeral {
     }
 
     public Integer getNumber() {
-        return number;
+        int output = 0;
+        for (int i = 0; i < LETTERS.length; i++){
+            if(!roman.substring(0,1).equals(LETTERS[i]) && !roman.substring(0,2).equals(LETTERS[i])){
+                continue;
+            } else {
+                output += NUMBERS[i];
+                roman = roman.substring(LETTERS[i].length());
+            }
+        }
+        return output;
     }
 
+    public String getRoman(){
+        String output = "";
+        for (int i = 0; i < NUMBERS.length; i++){
+            while(number >= NUMBERS[i]){
+               output += LETTERS[i];
+               number -= NUMBERS[i];
+            }
+        }
+        return output;
+    }
     public String toString() {
-        return roman + "\n";
+        return getRoman() + "\n";
     }
 }
