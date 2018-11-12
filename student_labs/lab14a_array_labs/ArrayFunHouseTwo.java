@@ -16,7 +16,15 @@ public class ArrayFunHouseTwo {
     //[9, 11, 13, 8]  returns false
 
     public static boolean goingUp(int[] numArray) {
-        return true;
+        boolean up = false;
+        for (int i = 1; i < numArray.length; i++){
+            if (numArray[i] > numArray[i-1]){
+                up = true;
+            } else {
+                return false;
+            }
+        }
+        return up;
     }
 
     //goingDown() will return true if all numbers
@@ -24,13 +32,32 @@ public class ArrayFunHouseTwo {
     //[31,12,6,2,1] returns true
     //[31, 20, 10, 15, 9] returns false
     public static boolean goingDown(int[] numArray) {
-        return true;
+        boolean down = false;
+        for (int i = 1; i < numArray.length; i++){
+            if (numArray[i] < numArray[i-1]){
+                down = true;
+            } else {
+                return false;
+            }
+        }
+        return down;
     }
 
     //getValuesBiggerThanX will return an array that contains
     //count number of values that are larter than parameter x
     //[1,2,3,4,5,6,7,8,9,10,11,6],3,5  would return [6,7,8]
     public static int[] getCountValuesBiggerThanX(int[] numArray, int count, int x) {
-        return null;
+        int[] output = new int[count];
+        int index = 0;
+        
+        for (int item : numArray){
+            if (item > x){
+                output[index] = item;
+                index++;
+            }
+            
+        }
+        
+        return output;
     }
 }
