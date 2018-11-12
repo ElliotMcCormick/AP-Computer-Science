@@ -35,14 +35,49 @@ public class RomanNumeral {
 
     public Integer getNumber() {
         int output = 0;
+        Boolean done = false;
+        
+        //go through the letters list one at a time
         for (int i = 0; i < LETTERS.length; i++){
-            if(!roman.substring(0,1).equals(LETTERS[i]) && !roman.substring(0,2).equals(LETTERS[i])){
-                continue;
-            } else {
-                output += NUMBERS[i];
-                roman = roman.substring(LETTERS[i].length());
+            
+            if (done || roman.length() <= 0){
+                break;
+            }
+            // if the roman numeral string is longer than 0 chars. . .
+            if (roman.length() > 0){
+                
+                    // if the roman numeral is longer than one char and the index of letters is
+                    // longer than one char (so two chars long). . .
+                    if (roman.length() > 1 && LETTERS[i].length() > 1){
+                        //while the first two letters match the index of letters . . .
+                        while (roman.charAt(1) == LETTERS[i].charAt(1) && roman.charAt(0) == LETTERS[i].charAt(0)){
+                            //add corresponding num to output
+                            output += NUMBERS[i];
+                  
+                            if (roman.length() > 2){
+                                roman = roman.substring(2);
+                            } else { 
+                                done = true;
+                                break;
+                            }
+                        }
+                    }  
+                    else { 
+                        while(roman.charAt(0) == LETTERS[i].charAt(0)){
+                            output += NUMBERS[i];
+                            
+                            if (roman.length() > 1){
+                                roman = roman.substring(1);
+                            } else { 
+                                done = true;
+                                break;
+                            }
+                        }
+                    }
+    
             }
         }
+        
         return output;
     }
 
