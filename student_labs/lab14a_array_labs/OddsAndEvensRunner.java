@@ -13,6 +13,8 @@ import java.util.Scanner;
 public class OddsAndEvensRunner {
 
     public static void main(String args[]) {
+        
+        
         int[] array1 = {2, 4, 6, 8, 10, 12, 14};
         
         System.out.println("Odds - " + Arrays.toString(OddsAndEvens.getAllOdds(array1)));
