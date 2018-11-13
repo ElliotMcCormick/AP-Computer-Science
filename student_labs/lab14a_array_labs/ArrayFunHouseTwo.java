@@ -51,7 +51,7 @@ public class ArrayFunHouseTwo {
         int index = 0;
         
         for (int item : numArray){
-            if (item > x){
+            if (item > x && index < count){
                 output[index] = item;
                 index++;
             }

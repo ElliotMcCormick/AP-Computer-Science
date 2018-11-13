@@ -11,14 +11,56 @@ import java.util.Scanner;
 public class OddsAndEvens {
 
     private static int countEm(int[] array, boolean odd) {
-        return 0;
+        int count = 0;
+        
+        //counts evens
+        if (odd){
+            for (int item : array){
+                if (item % 2 == 1){
+                    count++;
+                }
+            }
+        }
+        
+        //counts odds
+        if (!odd){
+            for (int item : array){
+                if (item % 2 == 0){
+                    count++;
+                }
+            }
+        }
+        
+        return count;
     }
 
     public static int[] getAllEvens(int[] array) {
-        return null;
+        int lengthOfNewArray = countEm(array, false);
+        int index = 0;
+        int [] newArray = new int[lengthOfNewArray];
+        
+        for (int item : array) {
+            if (item % 2 == 0){
+                newArray[index] = item;
+                index++;
+            }
+        }
+        
+        return newArray;
     }
 
     public static int[] getAllOdds(int[] array) {
-        return null;
+        int lengthOfNewArray = countEm(array, true);
+        int index = 0;
+        int [] newArray = new int[lengthOfNewArray];
+        
+        for (int item : array) {
+            if (item % 2 == 1){
+                newArray[index] = item;
+                index++;
+            }
+        }
+        
+        return newArray;    
     }
 }
