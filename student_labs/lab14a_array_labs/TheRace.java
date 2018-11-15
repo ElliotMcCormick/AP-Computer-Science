@@ -22,6 +22,7 @@ public class TheRace {
     private int winner;
 
     public TheRace() {
+        track = new int[18];
     }
 
     public boolean turn() {
