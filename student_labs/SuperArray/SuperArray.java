@@ -63,6 +63,17 @@ public class SuperArray{
         return output;       
     }
     
+    //Return value at any index
+    public Object returnValueAt(int index){
+        return array[index];
+    }
+    
+    //Clear array
+    public Object[] clear(){
+        array = new Object[0];
+        return array;
+    }
+    
     //toString
     public String toString(){
         String output = "";

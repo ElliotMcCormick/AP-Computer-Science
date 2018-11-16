@@ -34,6 +34,12 @@ public class SuperArrayRunner {
         
         System.out.println(test);
         
+        System.out.println(test.returnValueAt(1));
+        
+        test.clear();
+        
+        System.out.println(test);
+        
         
     }
 }
