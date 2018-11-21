@@ -15,9 +15,20 @@ import static java.lang.System.*;
 public class ArrayListFunHouse {
 
     public static ArrayList<Integer> getListOfFactors(int number) {
-        return null;
+        ArrayList<Integer> output = new ArrayList();
+        for (int i = 2; i < number; i++){
+            if (number % i == 0){
+                output.add(i);
+            }
+        }
+        return output;
     }
 
     public static void keepOnlyCompositeNumbers(List<Integer> nums) {
+        for (int i = nums.size() - 1; i >= 0; i--){
+            if (!(getListOfFactors(nums.get(i)).size() > 0)){
+                nums.remove(i);
+            }
+        }
     }
 }

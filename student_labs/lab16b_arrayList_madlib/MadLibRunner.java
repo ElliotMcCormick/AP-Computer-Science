@@ -13,6 +13,7 @@ public class MadLibRunner {
     public static void main(String args[]) {
         //make a new MadLib
 
-        out.println("\n");
+        MadLib newMadLib = new MadLib("story.dat");
+        System.out.println(newMadLib);
     }
 }
