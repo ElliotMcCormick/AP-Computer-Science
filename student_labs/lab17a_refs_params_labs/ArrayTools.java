@@ -13,6 +13,10 @@ public class ArrayTools {
     //from start to stop, not including stop
     public static int sumSection(int[] numArray, int start, int stop) {
         int sum = 0;
+        
+        for (int i = start; i < stop; i++){
+            sum += numArray[i];
+        }
         return sum;
     }
 
@@ -20,7 +24,11 @@ public class ArrayTools {
     public static int countVal(int[] numArray, int val) {
         int count = 0;
 
-
+        for (int item : numArray){
+            if (item == val){
+                count++;
+            }
+        }
 
 
 
