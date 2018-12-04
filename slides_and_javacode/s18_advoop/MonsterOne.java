@@ -7,11 +7,11 @@ package s18_advoop;
 
 import static java.lang.System.*;
 
-class Monster
+class MonsterE
 {
 	private int weight;
 	
-	public Monster( )
+	public MonsterE( )
 	{
 		weight=0;
 	}
@@ -29,7 +29,7 @@ public class MonsterOne
 {
 	public static void main ( String[] args )
 	{
-		Monster m = new Monster();
+		MonsterE m = new MonsterE();
 		m.print();
 		System.out.println(m.toString());
 		System.out.println(m.hashCode());

@@ -12,23 +12,27 @@ import java.util.Collections;
 public class Herd
 {
 	private Creature[] creatureList;
+        private int i = 0;
 
 	public Herd()
 	{
-		//must size the array		
+            this(0);
+//must size the array		
 
 	}		
 	
 	public Herd(int size)
 	{
 		//must size the array		
-
+            creatureList = new Creature[size];
 	}	
 	
 	public void add(int Herdize)
 	{
 		//add in a new creature of size Herdize
-		
+            
+            creatureList[i] = new Creature(Herdize);
+            i++;
 	}
 	
 	public String toString()

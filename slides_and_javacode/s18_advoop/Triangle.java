@@ -19,7 +19,7 @@ public class Triangle
    public Triangle(int a, int b, int c)
    {
       //complete method Triangle(int,int,int)
-
+       setSides(a,b,c);
 
 
    }
@@ -27,7 +27,9 @@ public class Triangle
    public void setSides(int a, int b, int c)
    {
 		//complete method setSides
-
+       sideA = a;
+       sideB = b;
+       sideC = c;
 
 
    }
@@ -35,6 +37,14 @@ public class Triangle
    public void setSideA(int a)
    {
    	sideA=a;
+   }
+   public void setSideB(int b)
+   {
+   	sideB=b;
+   }
+   public void setSideC(int c)
+   {
+   	sideC=c;
    }
 
    //add set methods for b and c
@@ -51,7 +61,15 @@ public class Triangle
    {
    	return sideA;
    }
-
+   public int getSideB()
+   {
+   	return sideB;
+   }
+   public int getSideC()
+   {
+   	return sideC;
+   }
+  
    //add get methods for b and c
 
 
@@ -64,6 +82,6 @@ public class Triangle
 
    public String toString()
    {
-   	return "add code here to complete the toString()";
+   	return sideA + " " + sideB + " " + sideC;
    }
 }

@@ -5,7 +5,6 @@ package s18_advoop;
 
 //OOP example
 
-import s02_oop_calc_math.Triangle;
 import static java.lang.System.*;
 
 public class TriangleRunner
@@ -20,5 +19,10 @@ public class TriangleRunner
 
 		test.setSides(1,56,22);
 		System.out.println(test);
+                
+               
 	}
 }
+
+
+
