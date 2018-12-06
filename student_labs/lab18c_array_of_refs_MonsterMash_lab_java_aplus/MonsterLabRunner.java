@@ -21,14 +21,24 @@ public class MonsterLabRunner {
         Monsters herd = new Monsters(size);
 
         for (int i = 0; i < size; i++) {
-            //read in monster values 
-            //ask for ht
-            //ask for wt
-            //ask for age
-            //instantiate a new Monster() and add it to the herd			
+            out.print("\nEnter the ht :: ");
+            int ht = keyboard.nextInt();
+            out.print("Enter the wt :: ");
+            int wt = keyboard.nextInt();
+            out.print("Enter the age :: ");
+            int age = keyboard.nextInt();
+            //instantiate a new Monster() and add it to the herd
+            
+            Monster newMonster = new Monster(ht, wt, age);
+            
+            herd.add(i, newMonster);
         }
 
-        System.out.println("HERD :: " + herd + "\n");
+        System.out.println("\nHERD :: " + herd + "\n");
+        System.out.println("SMALLEST :: " + herd.getSmallest() + "\n");
+        System.out.println("LARGEST :: " + herd.getLargest() + "\n");
+        System.out.println("HERD :: " + herd.sort() + "\n");
+
         //print out the other stats
 
     }

@@ -18,21 +18,46 @@ public class Monsters {
     private Monster[] myMonsters;
 
     public Monsters(int size) {
+        myMonsters = new Monster[size];
     }
 
     public void add(int spot, Monster m) {
-        //put m in the Monster array at [spot]
+        myMonsters[spot] = m;
     }
 
-    public String getLargest() {
-        return null;
+    public Monster getLargest() {
+        Monster largest = null;
+        for (int i = 0; i < myMonsters.length - 1; i++){
+            if (myMonsters[i+1].getHeight() > myMonsters[i].getHeight()){
+                largest = myMonsters[i+1];
+            }
+            else {
+                largest = myMonsters[i];
+            }
+        }
+        return largest;
+        
     }
 
     public Monster getSmallest() {
-        return null;
+        Monster smallest = null;
+        for (int i = 0; i < myMonsters.length - 1; i++){
+            if (myMonsters[i+1].getHeight() < myMonsters[i].getHeight()){
+                smallest = myMonsters[i+1];
+            }
+            else {
+                smallest = myMonsters[i];
+            }
+        }
+        return smallest;
     }
 
+    public Monster[] sort() {
+        myMonsters = Arrays.sort(myMonsters);
+        return myMonsters;
+    }
+    
     public String toString() {
-        return "";
+        return Arrays.toString(myMonsters);
     }
 }
