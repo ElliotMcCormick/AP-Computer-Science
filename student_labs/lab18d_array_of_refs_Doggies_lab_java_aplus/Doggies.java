@@ -23,11 +23,29 @@ public class Doggies {
     }
 
     public String getNameOfOldest() {
-        return null;
+        Dog oldest = null;
+        for (int i = 0; i < pups.length-1; i++){
+            if (pups[i+1].getAge() > pups[i].getAge()){
+                oldest = pups[i+1];
+            }
+            else {
+                oldest = pups[i];
+            }
+        }
+        return oldest.getName();
     }
 
     public String getNameOfYoungest() {
-        return null;
+        Dog youngest = null;
+        for (int i = 0; i < pups.length-1; i++){
+            if (pups[i+1].getAge() < pups[i].getAge()){
+                youngest = pups[i+1];
+            }
+            else {
+                youngest = pups[i];
+            }
+        }
+        return youngest.getName();
     }
 
     public String toString() {
