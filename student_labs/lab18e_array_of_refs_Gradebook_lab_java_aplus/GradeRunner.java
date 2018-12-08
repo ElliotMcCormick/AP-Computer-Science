@@ -15,5 +15,23 @@ public class GradeRunner {
 
     public static void main(String args[]) {
         //add in test cases
+        Grade test = new Grade(92.5);
+        System.out.println(test);
+        System.out.println(test.getLetterGrade());
+        
+        test.setValue(77.5);
+        System.out.println(test);
+        System.out.println(test.getLetterGrade());
+        
+        
+        test.setValue(47.5);
+        System.out.println(test);
+         System.out.println(test.getLetterGrade());
+
+        
+        test.setValue(87.5);
+        System.out.println(test);
+        System.out.println(test.getLetterGrade());
+        
     }
 }

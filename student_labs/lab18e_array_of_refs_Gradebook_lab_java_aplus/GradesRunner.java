@@ -20,5 +20,15 @@ public class GradesRunner {
         out.println("num grades = " + test.getNumGrades());
         out.println("low grade = " + test.getLowGrade());
         out.println("high grade = " + test.getHighGrade());
+        
+        System.out.println("");
+        System.out.println("");
+        
+        Grades test1 = new Grades("9 - 10 70 90 92.5 85 95.5 77.5 88 100.0");
+        out.println(test1);
+        out.println("sum = " + test1.getSum());
+        out.println("num grades = " + test1.getNumGrades());
+        out.println("low grade = " + test1.getLowGrade());
+        out.println("high grade = " + test1.getHighGrade());
     }
 }
