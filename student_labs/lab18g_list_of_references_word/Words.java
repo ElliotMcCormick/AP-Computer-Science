@@ -20,15 +20,26 @@ public class Words {
     }
 
     public Words(String wordList) {
+        setWords(wordList);
     }
 
     public void setWords(String wordList) {
+        words = new ArrayList();
+        words.clear();
+        Scanner chopper = new Scanner(wordList);
+        while (chopper.hasNext()){
+            words.add(new Word(chopper.next()));
+        }
     }
 
     public int countWordsWithXChars(int size) {
         int count = 0;
 
-
+        for (Word word : words){
+            if (word.getLength() == size){
+                count++;
+            }
+        }
 
 
 
@@ -38,18 +49,29 @@ public class Words {
     //this method will remove all words with a specified size / length
     //this method will also return the sum of the vowels in all words removed
     public int removeWordsWithXChars(int size) {
+        int vowelCount = 0;
+        
+        for(int i = words.size()-1; i >= 0; i--){
+            if (words.get(i).getLength() == size){
+                vowelCount += words.get(i).getNumVowels();
+                words.remove(i);                
+            }
+            
+        }
 
 
 
-
-
-        return 0;
+        return vowelCount;
     }
 
     public int countWordsWithXVowels(int numVowels) {
         int count = 0;
 
-
+        for (Word word : words){
+            if (word.getNumVowels() == numVowels){
+                count++;
+            }
+        }
 
 
 
@@ -58,6 +80,6 @@ public class Words {
     }
 
     public String toString() {
-        return "";
+        return words.toString();
     }
 }
