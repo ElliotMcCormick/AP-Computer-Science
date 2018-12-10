@@ -13,7 +13,7 @@ import static java.lang.Math.*;
 import static java.util.Arrays.*;
 import static java.util.Collections.*;
 
-public class Monster {
+public class Monster implements Comparable{
     //add stuff like methods and instance variables
     private int height;
     private int weight;
@@ -55,5 +55,18 @@ public class Monster {
     }
     public String toString(){
         return height + " " + weight + " " + age;
+    }
+    
+    @Override
+    public int compareTo(Object o) {
+        Monster compare = (Monster)o;
+        if (height > compare.height){
+            return 1;
+        }
+        else if (height < compare.height){
+            return -1;
+        }
+        
+        return 0;
     }
 }

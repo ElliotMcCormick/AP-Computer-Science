@@ -13,7 +13,7 @@ import static java.lang.Math.*;
 import static java.util.Arrays.*;
 import static java.util.Collections.*;
 
-public class Monsters {
+public class Monsters{
 
     private Monster[] myMonsters;
 
@@ -51,13 +51,16 @@ public class Monsters {
         }
         return smallest;
     }
+ 
 
-    public Monster[] sort() {
-        myMonsters = Arrays.sort(myMonsters);
-        return myMonsters;
+    public String sort() {
+        Arrays.sort(myMonsters);
+        return Arrays.toString(myMonsters);
     }
     
     public String toString() {
         return Arrays.toString(myMonsters);
     }
+
+    
 }
