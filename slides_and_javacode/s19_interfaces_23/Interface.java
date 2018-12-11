@@ -17,7 +17,10 @@ public class Interface
 		//Locatable x = new Locatable();  //not possible to instantiate an interface
 
 		Locatable y = new Ship();  //change the constructor up
+                Locatable x = new Ship(9,0);
 
 		out.println("Here is a ship " + y);
+		out.println("Here is a ship " + x);
+                
 	}
 }
