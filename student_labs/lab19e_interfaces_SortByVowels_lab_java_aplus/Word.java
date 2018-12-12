@@ -13,13 +13,14 @@ public class Word implements Comparable<Word> {
     private String word;
 
     public Word(String s) {
+        word = s;
     }
 
     private int numVowels() {
         String vowels = "AEIOUaeiou";
         int vowelCount = 0;
 
-
+        
 
 
 
