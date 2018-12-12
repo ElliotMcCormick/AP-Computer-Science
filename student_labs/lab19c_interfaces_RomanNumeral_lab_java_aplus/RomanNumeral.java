@@ -100,15 +100,13 @@ public class RomanNumeral implements Comparable<RomanNumeral> {
     }
     
     public int compareTo(RomanNumeral num){
-        if(getNumber() > num.getNumber()){
-            return 1;
-        } else if (getNumber() < num.getNumber()){
-            return -1;
-        }
+        if(getNumber() != num.getNumber()){
+            return num.getNumber() - getNumber();
+        } 
         
         return 0;
     }
     public String toString() {
-        return getRoman() + "\n";
+        return roman + "\n";
     }
 }
