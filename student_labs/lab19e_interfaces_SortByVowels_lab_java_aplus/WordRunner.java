@@ -13,8 +13,27 @@ import java.util.Scanner;
 import java.util.Arrays;
 import static java.lang.System.*;
 
-public class Lab18e {
+public class WordRunner {
 
     public static void main(String args[]) throws IOException {
+        Scanner file = new Scanner(new File("word.dat"));
+        Word[] output;
+        
+        int fileLength = file.nextInt();
+        file.nextLine();
+        
+        output = new Word[fileLength];
+        
+        for (int i = 0; i < fileLength; i++){
+            output[i] = new Word(file.nextLine());
+        }
+        
+        Arrays.sort(output);
+        
+        for (int i = 0; i < output.length; i++){
+            System.out.println(output[i]);
+        }
+        
+        
     }
 }
