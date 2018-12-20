@@ -29,8 +29,7 @@ public class Test {
     }
     
     public static void main(String[] args){
-        System.out.println(fun(3, 6));
-        recur();
+        System.out.println('A'+3);
     }
     
 }
