@@ -21,12 +21,12 @@ class Monster
 
 	public final void overRide( )
 	{
-		System.out.println("overRide in Monster\n");
+		System.out.println("overRide in Monstern");
 	}
 
 	public String toString()
 	{
-		return "Monster name :: " + myName + "\n";
+		return "Monstername :: " + myName + "\n";
 	}
 }
 

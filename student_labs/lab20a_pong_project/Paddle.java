@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pong;
+package lab20a_pong_project;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.paint.Color;

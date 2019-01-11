@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package pong;
+package lab20a_pong_project;
 
 import javafx.scene.canvas.Canvas;
 

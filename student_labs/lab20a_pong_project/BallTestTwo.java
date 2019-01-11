@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pong;
+package lab20a_pong_project;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -33,6 +33,7 @@ public class BallTestTwo extends Application {
         root.getChildren().add(canvas);
 
         //instantiate a new Ball
+        one = new Ball(100, 100, 30, 50, Color.BLUE);
         //test the Ball thoroughly
         //test all constructors
         Scene scene = new Scene(root, WIDTH, HEIGHT);

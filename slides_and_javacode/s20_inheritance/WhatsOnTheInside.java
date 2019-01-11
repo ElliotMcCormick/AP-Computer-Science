@@ -7,16 +7,16 @@ package s20_inheritance;
 
 import static java.lang.System.*;
 
-class Monster
+class Monster1
 {
 	private String myName = "long way to go for a toString()";
 
-	public Monster()
+	public Monster1()
 	{
-		//myName = "Monster";    //uncomment and recompile and run
+		myName = "Monster1";    //uncomment and recompile and run
 	}
 
-	public Monster( String name )
+	public Monster1( String name )
 	{
 		myName = name;
 	}
@@ -27,27 +27,31 @@ class Monster
 	}
 }
 
-class Witch extends Monster
+class Witch1 extends Monster1
 {
-   public Witch( )	//GoodWitch will not compile without this constructor
+   public Witch1( )	//GoodWitch1 will not compile without this constructor
    { 
    	//automatically calls super()
    }  
 
-   public Witch( String name )
+   public Witch1( String name )
    {
-
+       super(name);
    }
 }
 
-class GoodWitch extends Witch
+class GoodWitch1 extends Witch1
 {
    //what do we need here??
+   public GoodWitch1(){
    
+   }
    
-   public GoodWitch( String name )
+   public GoodWitch1( String name )
    {
  	  //automatically calls super()
+              super(name);
+
    }
 }
 
@@ -55,10 +59,10 @@ public class WhatsOnTheInside
 {
 	public static void main ( String[] args )
 	{
-		GoodWitch bad = new GoodWitch();		//why does this not compile
+		GoodWitch1 bad = new GoodWitch1();		//why does this not compile
 		out.println(bad);
 		
-		GoodWitch witch = new GoodWitch("Harriet");
-		out.println(witch);
+		GoodWitch1 witch1 = new GoodWitch1("Harriet");
+		out.println(witch1);
 	}
 }
