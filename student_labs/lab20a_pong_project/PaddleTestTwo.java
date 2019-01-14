@@ -39,11 +39,12 @@ public class PaddleTestTwo extends Application {
         root.getChildren().add(canvas);
 
         //instantiate a Ball
-
+        one = new Ball();
         //instantiate a left Paddle
-
+        left = new Paddle(10, 10);
         //instantiate a right Paddle
-
+        right = new Paddle(WIDTH - 20, 10);
+        
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override

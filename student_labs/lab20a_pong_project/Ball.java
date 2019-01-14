@@ -23,6 +23,9 @@ public class Ball extends Block implements Renderable, Updateable {
         ySpeed = 1;
     }
 
+    public Ball(int x, int y){
+        this(x, y, 2, 2, Color.BLACK, 3, 1);
+    }
     public Ball(int x, int y, int wid, int ht, Color c){
         this(x, y, wid, ht, c, 3, 1);
     }
@@ -62,8 +65,8 @@ public class Ball extends Block implements Renderable, Updateable {
         //draw a white ball at old ball location
         draw(canvas, Color.WHITE);
 		//update the ball location
-        new Ball(super.getX() + xSpeed, super.getY() + ySpeed);        
-
+        this.setX(getX() + getXSpeed());
+        this.setY(getY() + getYSpeed());
     }
 
     @Override

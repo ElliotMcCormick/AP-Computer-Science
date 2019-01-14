@@ -34,6 +34,7 @@ public class BallTestTwo extends Application {
 
         //instantiate a new Ball
         one = new Ball(100, 100, 30, 50, Color.BLUE);
+        
         //test the Ball thoroughly
         //test all constructors
         Scene scene = new Scene(root, WIDTH, HEIGHT);
