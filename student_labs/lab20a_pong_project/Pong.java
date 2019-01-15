@@ -32,6 +32,8 @@ public class Pong extends Application {
     private int rightscore;
 
     //declare a ball, right paddle and left paddle
+    Ball ball;
+    
     @Override
     public void start(Stage primaryStage) {
 
@@ -41,7 +43,8 @@ public class Pong extends Application {
         leftscore = 0;
         rightscore = 0;
         //instantiate a ball that will randomly come out of the middle of the screen
-        //  going to the right or left
+        //  going to the right or left        
+        ball = new Ball(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, -1 + (int)(Math.random() * 3), -1 + (int)(Math.random() * 3));
         //instantiate a right paddle and left paddle
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -105,7 +108,10 @@ public class Pong extends Application {
 
             //check for ball collision with the top and bottom "wall" and the paddles
             //update all objects
+            ball.update(canvas);
             //draw all objects
+            ball.draw(canvas, ball.getColor());
+
             //check to see if the ball hits the left or right walls.
             //  If so, reset the ball in the middle and adjust the score
 

@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 //Name -
@@ -22,7 +23,9 @@ public class GraphicsRunner extends Application {
     private Canvas canvas;
 
     public void start(Stage stage) {
+        
         canvas = new Canvas();
+        canvas.setBackground(Color.AQUAMARINE);
         
         StackPane root = new StackPane();
         root.getChildren().add(canvas);
@@ -31,6 +34,8 @@ public class GraphicsRunner extends Application {
         stage.setScene(scene);
         stage.setTitle("THE WINTER SCENE PROJECT");
         stage.show();
+        
+        
     }
     
     public static void main(String args[]) {
