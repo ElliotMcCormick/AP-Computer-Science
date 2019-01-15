@@ -78,8 +78,15 @@ public class Ball extends Block implements Renderable, Updateable {
 
     public void checkCollideLeft(Block b) {
 	//complete this method - the word document might be helpful
-        if (super.getX() == (b.getX() + b.getWidth())){
-            setXSpeed(xSpeed * -1);
+        if (super.getX() <= b.getX() + b.getWidth() + Math.abs(xSpeed) && (super.getY() >= b.getY() && 
+                super.getY() <= b.getY() + b.getHeight() || super.getY() + super.getHeight() >= b.getY() &&
+                super.getY() + super.getHeight() < b.getY() + b.getHeight())){
+            if (super.getX() <= b.getX() + b.getWidth() - Math.abs(xSpeed)){
+                setYSpeed(ySpeed * -1);
+            }
+            else {
+                setXSpeed(xSpeed * -1);
+            }
         }
     }
     public void checkCollideRight(Block b) { 
