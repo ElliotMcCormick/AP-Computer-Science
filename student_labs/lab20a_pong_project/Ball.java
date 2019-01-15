@@ -88,6 +88,15 @@ public class Ball extends Block implements Renderable, Updateable {
             setXSpeed(xSpeed * -1);
         }
     }
-
+    public void checkCollideTop(Canvas canvas){
+        if (super.getY() > 0){
+            setYSpeed(ySpeed * -1);
+        }
+    }
+    public void checkCollideBottom(Canvas canvas){
+        if ((super.getY() + super.getHeight()) < canvas.getHeight() - Math.abs(xSpeed)){
+            setYSpeed(ySpeed * -1);
+        }
+    }
 
 }

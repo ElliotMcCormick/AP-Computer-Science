@@ -33,7 +33,15 @@ public class Pong extends Application {
 
     //declare a ball, right paddle and left paddle
     Ball ball;
+    Paddle left;
+    Paddle right;
     
+    private int randomDirection(){
+        if ((int)((Math.random()*2)) == 1){
+            return 1;
+        }
+        return -1;
+    }
     @Override
     public void start(Stage primaryStage) {
 
@@ -43,25 +51,32 @@ public class Pong extends Application {
         leftscore = 0;
         rightscore = 0;
         //instantiate a ball that will randomly come out of the middle of the screen
-        //  going to the right or left        
-        ball = new Ball(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, -1 + (int)(Math.random() * 3), -1 + (int)(Math.random() * 3));
+        //  going to the right or left
+        int xSpeed = randomDirection() * ((int)(Math.random() * 3) + 1);
+        int ySpeed = randomDirection() * ((int)(Math.random() * 3) + 1);
+        
+        ball = new Ball(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
+        
         //instantiate a right paddle and left paddle
+        left = new Paddle(10, HEIGHT/2);
+        right = new Paddle (WIDTH - 20, HEIGHT/2);
+        
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			//Fill in the code for the keypress events
             @Override
             public void handle(KeyEvent event) {
                 if (event.getCode() == KeyCode.UP) {
-                    
+                    right.setDirection("UP");
                 }
                 if (event.getCode() == KeyCode.DOWN) {
-
+                    right.setDirection("DOWN");
                 }
                 if (event.getCode() == KeyCode.W) {
-
+                    left.setDirection("UP");
                 }
                 if (event.getCode() == KeyCode.S) {
-
+                    left.setDirection("DOWN");
                 }
             }
         });
@@ -69,16 +84,16 @@ public class Pong extends Application {
             @Override
             public void handle(KeyEvent event) {
                 if (event.getCode() == KeyCode.UP) {
-
+                    right.setDirection("NEUTRAL");
                 }
                 if (event.getCode() == KeyCode.DOWN) {
-
+                    right.setDirection("NEUTRAL");
                 }
                 if (event.getCode() == KeyCode.W) {
-
+                    left.setDirection("NEUTRAL");
                 }
                 if (event.getCode() == KeyCode.S) {
-
+                    left.setDirection("NEUTRAL");
                 }
             }
         });
@@ -107,11 +122,18 @@ public class Pong extends Application {
             gc.strokeText("Right Score:" + rightscore, 50,580);
 
             //check for ball collision with the top and bottom "wall" and the paddles
+            ball.checkCollideTop(canvas);
+            ball.checkCollideBottom(canvas);
+            ball.checkCollideLeft(left);
+            ball.checkCollideRight(right);
             //update all objects
             ball.update(canvas);
+            left.update(canvas);
+            right.update(canvas);
             //draw all objects
             ball.draw(canvas, ball.getColor());
-
+            left.draw(canvas, left.getColor());
+            right.draw(canvas, right.getColor());
             //check to see if the ball hits the left or right walls.
             //  If so, reset the ball in the middle and adjust the score
 

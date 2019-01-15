@@ -61,10 +61,10 @@ public class Paddle extends Block implements Renderable, Updateable {
     @Override
     public void update(Canvas canvas) {
         draw(canvas, Color.WHITE);
-        if (direction.equals("UP")) {
+        if (direction.equals("UP") && super.getY() > 0) {
             super.setY(super.getY() - speed);
             //update paddle
-        } else if (direction.equals("DOWN")) {
+        } else if (direction.equals("DOWN") && (super.getY() + super.getHeight()) < canvas.getHeight()) {
             super.setY(super.getY() + speed);
             //update paddle
         }
