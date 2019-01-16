@@ -26,13 +26,7 @@ public class BlinkyBall extends Ball{
     }
 
     public BlinkyBall(int x, int y, int wid, int ht, Color c, int xSpd, int ySpd){
-        setX(x);
-        setY(y);
-        setWidth(wid);
-        setHeight(ht);
-        setColor(c);
-        setXSpeed(xSpd);
-        setXSpeed(ySpd);
+        super(x, y, wid, ht, c, xSpd, ySpd);
     }
     
     @Override

@@ -31,7 +31,8 @@ public class Pong extends Application {
     private int leftscore;
     private int rightscore;
 
-    private int speedFactor = 4;
+    private int speedFactor = 2;
+    private int ballSize = 7;
     //declare a ball, right paddle and left paddle
     Ball ball;
     Paddle left;
@@ -49,7 +50,7 @@ public class Pong extends Application {
     private static ballType ballType;
     
     private int randomDirection(){
-        if ((int)((Math.random()*2)) == 1){
+        if ((int)(Math.random()*2) == 1){
             return 1;
         }
         return -1;
@@ -69,7 +70,7 @@ public class Pong extends Application {
         
         ballType = ballType.NORMAL;
         
-        ball = new Ball(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
+        ball = new Ball(WIDTH/2, HEIGHT/2, ballSize, ballSize, Color.BLACK, xSpeed, ySpeed);
         
         //instantiate a right paddle and left paddle
         left = new Paddle(10, HEIGHT/2);
@@ -102,6 +103,9 @@ public class Pong extends Application {
                 }
                 if (event.getCode() == KeyCode.N) {
                     ballType = ballType.NORMAL;
+                }
+                if (event.getCode() == KeyCode.I) {
+                    ballType = ballType.INVISIBLE;
                 }
             }
         });
@@ -144,9 +148,26 @@ public class Pong extends Application {
             gc.clearRect(0, 0, WIDTH, HEIGHT);
             gc.setFont(new Font("Verdana", 14));
             gc.strokeText("Left Score:" + leftscore, 50, 550);
-            gc.strokeText("Right Score:" + rightscore, 50,580);
-            gc.strokeText("Press 'b' for next ball to be blinky!", 50, 50);
-            gc.strokeText("Press 'n' for next ball to be normal!", 50, 70);
+            gc.strokeText("Right Score:" + rightscore, 50, 580);
+            gc.strokeText("Press 'b' for ball to blink colors!", 50, 50);
+            gc.strokeText("Press 'n' for ball to be normal!", 50, 70);
+            gc.strokeText("Press 'i' for ball to be partially invisble!", 50, 90);
+            
+            
+
+            if (ballType == ballType.BLINKY){
+                ball = new BlinkyBall(ball.getX(), ball.getY(), ballSize, ballSize, Color.BLACK, ball.getXSpeed(), ball.getYSpeed());
+                ball.update(canvas);
+            }
+            else if (ballType == ballType.NORMAL){
+                ball = new Ball(ball.getX(), ball.getY(), ballSize, ballSize, Color.BLACK, ball.getXSpeed(), ball.getYSpeed());
+                ball.update(canvas);
+            }
+            else if (ballType == ballType.INVISIBLE){
+                ball = new InvisibleBall(ball.getX(), ball.getY(), ballSize, ballSize, Color.BLACK, ball.getXSpeed(), ball.getYSpeed());
+                ball.update(canvas);
+            }
+            
 
             //check for ball collision with the top and bottom "wall" and the paddles
             ball.checkCollideTop(topWall);
@@ -155,6 +176,7 @@ public class Pong extends Application {
             ball.checkCollideLeft(left);
             ball.checkCollideRight(right);
             //update all objects
+            
             
             ball.update(canvas);
 
@@ -171,18 +193,24 @@ public class Pong extends Application {
             if (ball.checkCollideLeftWall(leftWall)){
                 rightscore++;
                 if (ballType == ballType.BLINKY){
-                    ball = new BlinkyBall(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
+                    ball = new BlinkyBall(WIDTH/2, HEIGHT/2, ballSize, ballSize, Color.BLACK, xSpeed, ySpeed);
                 } else if (ballType == ballType.NORMAL){
-                    ball = new Ball (WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
+                    ball = new Ball (WIDTH/2, HEIGHT/2, ballSize, ballSize, Color.BLACK, xSpeed, ySpeed);
+                } else if (ballType == ballType.INVISIBLE){
+                    ball = new InvisibleBall (WIDTH/2, HEIGHT/2, ballSize, ballSize, Color.BLACK, xSpeed, ySpeed);
+                    
                 }
             }
             if (ball.checkCollideRightWall(rightWall)){
                 leftscore++;
                 if (ballType == ballType.BLINKY){
-                    ball = new BlinkyBall(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
+                    ball = new BlinkyBall(WIDTH/2, HEIGHT/2, ballSize, ballSize, Color.BLACK, xSpeed, ySpeed);
                 } else if (ballType == ballType.NORMAL){
-                    ball = new Ball (WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
-                }            }
+                    ball = new Ball (WIDTH/2, HEIGHT/2, ballSize, ballSize, Color.BLACK, xSpeed, ySpeed);
+                } else if (ballType == ballType.INVISIBLE){
+                    ball = new InvisibleBall (WIDTH/2, HEIGHT/2, ballSize, ballSize, Color.BLACK, xSpeed, ySpeed);                    
+                } 
+            }
             //  If so, reset the ball in the middle and adjust the score
 
 
