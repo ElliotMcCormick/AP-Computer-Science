@@ -91,19 +91,40 @@ public class Ball extends Block implements Renderable, Updateable {
     }
     public void checkCollideRight(Block b) { 
 	//complete this method - the word document might be helpful
-        if ((super.getX() - super.getWidth()) == b.getX()){
-            setXSpeed(xSpeed * -1);
+        if (super.getX() + super.getWidth() >= b.getX() - Math.abs(xSpeed) && (super.getY() >= b.getY() && 
+                super.getY() <= b.getY() + b.getHeight() || super.getY() + super.getHeight() >= b.getY() &&
+                super.getY() + super.getHeight() < b.getY() + b.getHeight())){
+            if (super.getX() + super.getWidth() >= b.getX() + Math.abs(xSpeed)){
+                setYSpeed(ySpeed * -1);
+            }
+            else {
+                setXSpeed(xSpeed * -1);
+            }
         }
     }
-    public void checkCollideTop(Canvas canvas){
-        if (super.getY() > 0){
+    public void checkCollideTop(Block b){
+        if (super.getY() < b.getY()){
             setYSpeed(ySpeed * -1);
         }
     }
-    public void checkCollideBottom(Canvas canvas){
-        if ((super.getY() + super.getHeight()) < canvas.getHeight() - Math.abs(xSpeed)){
+    public void checkCollideBottom(Block b){
+        if ((super.getY() + super.getHeight()) > b.getY() - Math.abs(xSpeed)){
             setYSpeed(ySpeed * -1);
         }
+    }
+    
+    public boolean checkCollideLeftWall(Block b){
+        if (super.getX() < b.getX()){
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean checkCollideRightWall(Block b){
+        if (super.getX() + super.getWidth() > b.getX()){
+            return true;
+        }
+        return false;
     }
 
 }

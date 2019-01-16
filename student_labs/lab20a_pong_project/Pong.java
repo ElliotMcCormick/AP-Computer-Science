@@ -31,10 +31,16 @@ public class Pong extends Application {
     private int leftscore;
     private int rightscore;
 
+    private int speedFactor = 2;
     //declare a ball, right paddle and left paddle
     Ball ball;
     Paddle left;
     Paddle right;
+    
+    Wall topWall;
+    Wall leftWall;
+    Wall rightWall;
+    Wall bottomWall;
     
     private int randomDirection(){
         if ((int)((Math.random()*2)) == 1){
@@ -52,14 +58,19 @@ public class Pong extends Application {
         rightscore = 0;
         //instantiate a ball that will randomly come out of the middle of the screen
         //  going to the right or left
-        int xSpeed = randomDirection() * ((int)(Math.random() * 3) + 1);
-        int ySpeed = randomDirection() * ((int)(Math.random() * 3) + 1);
+        int xSpeed = randomDirection() * ((int)(Math.random() * speedFactor) + 1);
+        int ySpeed = randomDirection() * ((int)(Math.random() * speedFactor) + 1);
         
-        ball = new Ball(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
+        ball = new BlinkyBall(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
         
         //instantiate a right paddle and left paddle
         left = new Paddle(10, HEIGHT/2);
         right = new Paddle (WIDTH - 20, HEIGHT/2);
+        
+        topWall = new Wall(0, 0, WIDTH, 0);
+        bottomWall = new Wall(0, HEIGHT, WIDTH, 0);
+        leftWall = new Wall (0, 0, 0, HEIGHT);
+        rightWall = new Wall (WIDTH, 0, 0, HEIGHT);
         
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -122,11 +133,13 @@ public class Pong extends Application {
             gc.strokeText("Right Score:" + rightscore, 50,580);
 
             //check for ball collision with the top and bottom "wall" and the paddles
-            ball.checkCollideTop(canvas);
-            ball.checkCollideBottom(canvas);
+            ball.checkCollideTop(topWall);
+            ball.checkCollideBottom(bottomWall);
+            
             ball.checkCollideLeft(left);
             ball.checkCollideRight(right);
             //update all objects
+            
             ball.update(canvas);
             left.update(canvas);
             right.update(canvas);
@@ -135,6 +148,16 @@ public class Pong extends Application {
             left.draw(canvas, left.getColor());
             right.draw(canvas, right.getColor());
             //check to see if the ball hits the left or right walls.
+            int xSpeed = randomDirection() * ((int)(Math.random() * speedFactor) + 1);
+            int ySpeed = randomDirection() * ((int)(Math.random() * speedFactor) + 1);
+            if (ball.checkCollideLeftWall(leftWall)){
+                rightscore++;
+                ball = new BlinkyBall(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
+            }
+            if (ball.checkCollideRightWall(rightWall)){
+                leftscore++;
+                ball = new BlinkyBall(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
+            }
             //  If so, reset the ball in the middle and adjust the score
 
 
