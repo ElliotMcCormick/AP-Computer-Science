@@ -19,18 +19,18 @@ public class Paddle extends Block implements Renderable, Updateable {
 
     public Paddle() {
         super(10, 10, 10, 40, Color.BLACK);
-        speed = 2;
+        speed = 4;
         direction = "NEUTRAL	";
     }
     public Paddle(int x, int y) {
         super(x, y, 10, 40, Color.BLACK);
-        speed = 2;
+        speed = 4;
         direction = "NEUTRAL	";
     }
     //add the other Paddle constructors
     public Paddle(int x, int y, int wid, int ht, Color c){
         super(x, y, wid, ht, c);
-        speed = 2;
+        speed = 4;
         direction = "NEUTRAL    ";
     }
     

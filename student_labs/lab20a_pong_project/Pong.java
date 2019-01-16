@@ -31,7 +31,7 @@ public class Pong extends Application {
     private int leftscore;
     private int rightscore;
 
-    private int speedFactor = 2;
+    private int speedFactor = 4;
     //declare a ball, right paddle and left paddle
     Ball ball;
     Paddle left;
@@ -41,6 +41,12 @@ public class Pong extends Application {
     Wall leftWall;
     Wall rightWall;
     Wall bottomWall;
+    
+    public enum ballType{
+        BLINKY, NORMAL, INVISIBLE
+    }
+    
+    private static ballType ballType;
     
     private int randomDirection(){
         if ((int)((Math.random()*2)) == 1){
@@ -61,7 +67,9 @@ public class Pong extends Application {
         int xSpeed = randomDirection() * ((int)(Math.random() * speedFactor) + 1);
         int ySpeed = randomDirection() * ((int)(Math.random() * speedFactor) + 1);
         
-        ball = new BlinkyBall(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
+        ballType = ballType.NORMAL;
+        
+        ball = new Ball(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
         
         //instantiate a right paddle and left paddle
         left = new Paddle(10, HEIGHT/2);
@@ -88,6 +96,12 @@ public class Pong extends Application {
                 }
                 if (event.getCode() == KeyCode.S) {
                     left.setDirection("DOWN");
+                }
+                if (event.getCode() == KeyCode.B) {
+                    ballType = ballType.BLINKY;
+                }
+                if (event.getCode() == KeyCode.N) {
+                    ballType = ballType.NORMAL;
                 }
             }
         });
@@ -131,6 +145,8 @@ public class Pong extends Application {
             gc.setFont(new Font("Verdana", 14));
             gc.strokeText("Left Score:" + leftscore, 50, 550);
             gc.strokeText("Right Score:" + rightscore, 50,580);
+            gc.strokeText("Press 'b' for next ball to be blinky!", 50, 50);
+            gc.strokeText("Press 'n' for next ball to be normal!", 50, 70);
 
             //check for ball collision with the top and bottom "wall" and the paddles
             ball.checkCollideTop(topWall);
@@ -141,6 +157,7 @@ public class Pong extends Application {
             //update all objects
             
             ball.update(canvas);
+
             left.update(canvas);
             right.update(canvas);
             //draw all objects
@@ -150,14 +167,22 @@ public class Pong extends Application {
             //check to see if the ball hits the left or right walls.
             int xSpeed = randomDirection() * ((int)(Math.random() * speedFactor) + 1);
             int ySpeed = randomDirection() * ((int)(Math.random() * speedFactor) + 1);
+            
             if (ball.checkCollideLeftWall(leftWall)){
                 rightscore++;
-                ball = new BlinkyBall(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
+                if (ballType == ballType.BLINKY){
+                    ball = new BlinkyBall(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
+                } else if (ballType == ballType.NORMAL){
+                    ball = new Ball (WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
+                }
             }
             if (ball.checkCollideRightWall(rightWall)){
                 leftscore++;
-                ball = new BlinkyBall(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
-            }
+                if (ballType == ballType.BLINKY){
+                    ball = new BlinkyBall(WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
+                } else if (ballType == ballType.NORMAL){
+                    ball = new Ball (WIDTH/2, HEIGHT/2, 7, 7, Color.BLACK, xSpeed, ySpeed);
+                }            }
             //  If so, reset the ball in the middle and adjust the score
 
 
