@@ -107,6 +107,10 @@ public class Pong extends Application {
                 if (event.getCode() == KeyCode.I) {
                     ballType = ballType.INVISIBLE;
                 }
+                if (event.getCode() == KeyCode.R){
+                    rightscore = 0;
+                    leftscore = 0;
+                }
             }
         });
         scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
@@ -149,6 +153,7 @@ public class Pong extends Application {
             gc.setFont(new Font("Verdana", 14));
             gc.strokeText("Left Score:" + leftscore, 50, 550);
             gc.strokeText("Right Score:" + rightscore, 50, 580);
+            gc.strokeText("Press 'r' to reset score!", 50, 30);
             gc.strokeText("Press 'b' for ball to blink colors!", 50, 50);
             gc.strokeText("Press 'n' for ball to be normal!", 50, 70);
             gc.strokeText("Press 'i' for ball to be partially invisble!", 50, 90);

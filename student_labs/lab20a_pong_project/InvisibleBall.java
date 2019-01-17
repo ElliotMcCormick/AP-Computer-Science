@@ -36,7 +36,7 @@ public class InvisibleBall extends Ball{
         setX(getX() + getXSpeed());
         setY(getY() + getYSpeed());
         
-        if ((int)(Math.random() * 2) == 1){
+        if ((int)(Math.random() * 10) >= 3){
             setColor(Color.WHITE);
         }
     }
