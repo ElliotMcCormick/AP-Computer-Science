@@ -43,7 +43,7 @@ public class Pong extends Application {
     Wall rightWall;
     Wall bottomWall;
     
-    public enum ballType{
+    private enum ballType{
         BLINKY, NORMAL, INVISIBLE
     }
     
