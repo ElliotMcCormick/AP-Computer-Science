@@ -23,12 +23,22 @@ public class CardTester {
             System.out.println(one);
             
             Card two = new Card("Jack", "Spade", 10);
+            Card three = new Card("Queen", "Diamond", 4);
             
+            System.out.println(one.matches(three));
             System.out.println(one.matches(two));
 
             System.out.println(one.pointValue());
             System.out.println(one.rank());
             System.out.println(one.suit());
+            
+            System.out.println(two.pointValue());
+            System.out.println(two.rank());
+            System.out.println(two.suit());
+            
+            System.out.println(three.pointValue());
+            System.out.println(three.rank());
+            System.out.println(three.suit());
                     
 	}
 }
