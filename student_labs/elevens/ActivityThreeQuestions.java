@@ -39,4 +39,5 @@ public class ActivityThreeQuestions {
     // #3
     
     // A: 1, 2
+    // actual answer: 0, 1, 1
 }
