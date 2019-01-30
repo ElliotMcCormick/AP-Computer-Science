@@ -86,7 +86,7 @@ public class Deck {
 	 */
 	public Card deal() {
             if (size > 0){
-                Card output = this.cards.get(size-1);
+                Card output = cards.get(size-1);
                 size--;
                 return output;
             }
