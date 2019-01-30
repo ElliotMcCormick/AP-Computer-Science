@@ -41,6 +41,7 @@ public class DeckTester {
         pointValues = new int [] {1, 1, 1, 1, 1};
         Deck three = new Deck(ranks, suits, pointValues);
         
+        System.out.println("three");
         System.out.println(three.isEmpty());
         System.out.println(three.size());
         System.out.println(three.deal());
@@ -52,9 +53,7 @@ public class DeckTester {
         System.out.println(three.deal());
         System.out.println(three.deal());
         System.out.println(three.deal());
-        System.out.println(three.deal());
-        System.out.println(three.deal());
-        System.out.println(three.deal());
+        
         System.out.println(three);
         
         
