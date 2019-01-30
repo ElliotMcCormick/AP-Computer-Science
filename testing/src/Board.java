@@ -122,6 +122,7 @@ public abstract class Board {
 	}
 
 	/**
+         * 
 	 * Gets the indexes of the actual (non-null) cards on the board.
 	 *
 	 * @return a List that contains the locations (indexes)

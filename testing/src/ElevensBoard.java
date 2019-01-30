@@ -32,7 +32,8 @@ public class ElevensBoard extends Board {
 	 * The ranks of the cards for this game to be sent to the deck.
 	 */
 	private static final String[] RANKS =
-		{"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
+		//{"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
+                {"ace", "10"};
 
 	/**
 	 * The suits of the cards for this game to be sent to the deck.
@@ -44,7 +45,8 @@ public class ElevensBoard extends Board {
 	 * The values of the cards for this game to be sent to the deck.
 	 */
 	private static final int[] POINT_VALUES =
-		{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0, 0};
+		//{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0, 0};
+                {1, 10};
 
 	/**
 	 * Flag used to control debugging print statements.
@@ -95,9 +97,9 @@ public class ElevensBoard extends Board {
 	 *              contain an 11-pair; false otherwise.
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
-            for (int i = 0; i < selectedCards.size() - 2; i++) {
+            for (int i = 0; i < selectedCards.size() - 1; i++) {
                 for (int j = i+1; j < selectedCards.size(); j++){
-                    if(selectedCards.get(i) + selectedCards.get(j) == 11){
+                    if(cardAt(selectedCards.get(i)).pointValue() + cardAt(selectedCards.get(j)).pointValue() == 11){
                         return true;
                     }
                 }
@@ -118,8 +120,18 @@ public class ElevensBoard extends Board {
             boolean foundQueen = false;
             boolean foundJack = false;
             
-            for (int i = 0; i < selectedCards.size() - 1; i++) {
-                if selectedCards.get(i)
+            for (int i = 0; i < selectedCards.size(); i++) {
+                if (cardAt(selectedCards.get(i)).rank().equals("king")){
+                    foundKing = true;
+                } else if (cardAt(selectedCards.get(i)).rank().equals("queen")){
+                    foundQueen = true;
+                } else if (cardAt(selectedCards.get(i)).rank().equals("jack")){
+                    foundJack = true;
+                }
+            }
+            
+            if (foundKing && foundQueen && foundJack){
+                return true;
             }
             return false;
         }
