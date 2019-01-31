@@ -1,3 +1,5 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -22,7 +24,7 @@ public abstract class Board {
 	/**
 	 * The cards on this board.
 	 */
-	private Card[] cards;
+	private Card[] cardsOnBoard;
 
 	/**
 	 * The deck of cards being used to play the current game.
@@ -43,11 +45,13 @@ public abstract class Board {
 	 *                    the deck
 	 */
 	public Board(int size, String[] ranks, String[] suits, int[] pointValues) {
-		cards = new Card[size];
+		cardsOnBoard = new Card[size];
 		deck = new Deck(ranks, suits, pointValues);
+                
 		if (I_AM_DEBUGGING) {
 			System.out.println(deck);
 			System.out.println("----------");
+                        System.out.println(deck.size());
 		}
 		dealMyCards();
 	}
@@ -68,7 +72,7 @@ public abstract class Board {
 	 * @return the size of the board
 	 */
 	public int size() {
-		return cards.length;
+		return cardsOnBoard.length;
 	}
 
 	/**
@@ -76,8 +80,8 @@ public abstract class Board {
 	 * @return true if this board is empty; false otherwise.
 	 */
 	public boolean isEmpty() {
-		for (int k = 0; k < cards.length; k++) {
-			if (cards[k] != null) {
+		for (int k = 0; k < cardsOnBoard.length; k++) {
+			if (cardsOnBoard[k] != null) {
 				return false;
 			}
 		}
@@ -90,7 +94,7 @@ public abstract class Board {
 	 * @param k the index of the card to be dealt.
 	 */
 	public void deal(int k) {
-		cards[k] = deck.deal();
+		cardsOnBoard[k] = deck.deal();
 	}
 
 	/**
@@ -107,7 +111,7 @@ public abstract class Board {
 	 * @param k is the board position of the card to return.
 	 */
 	public Card cardAt(int k) {
-		return cards[k];
+		return cardsOnBoard[k];
 	}
 
 	/**
@@ -130,8 +134,8 @@ public abstract class Board {
 	 */
 	public List<Integer> cardIndexes() {
 		List<Integer> selected = new ArrayList<Integer>();
-		for (int k = 0; k < cards.length; k++) {
-			if (cards[k] != null) {
+		for (int k = 0; k < cardsOnBoard.length; k++) {
+			if (cardsOnBoard[k] != null) {
 				selected.add(new Integer(k));
 			}
 		}
@@ -144,8 +148,8 @@ public abstract class Board {
 	 */
 	public String toString() {
 		String s = "";
-		for (int k = 0; k < cards.length; k++) {
-			s = s + k + ": " + cards[k] + "\n";
+		for (int k = 0; k < cardsOnBoard.length; k++) {
+			s = s + k + ": " + cardsOnBoard[k] + "\n";
 		}
 		return s;
 	}
@@ -158,7 +162,7 @@ public abstract class Board {
 	 */
 	public boolean gameIsWon() {
 		if (deck.isEmpty()) {
-			for (Card c : cards) {
+			for (Card c : cardsOnBoard) {
 				if (c != null) {
 					return false;
 				}
@@ -189,8 +193,8 @@ public abstract class Board {
 	 * Deal cards to this board to start the game.
 	 */
 	private void dealMyCards() {
-		for (int k = 0; k < cards.length; k++) {
-			cards[k] = deck.deal();
+		for (int k = 0; k < cardsOnBoard.length; k++) {
+			cardsOnBoard[k] = deck.deal();
 		}
 	}
 }

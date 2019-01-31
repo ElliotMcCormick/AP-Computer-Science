@@ -1,3 +1,5 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -21,6 +23,7 @@ public class ElevensGUIRunner {
 	 */
 	public static void main(String[] args) {
 		Board board = new ElevensBoard();
+                //System.out.println(board);
 		CardGameGUI gui = new CardGameGUI(board);
 		gui.displayGame();
 	}

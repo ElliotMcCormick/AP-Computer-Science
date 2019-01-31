@@ -1,3 +1,5 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,12 +22,12 @@ public class DeckTester {
         System.out.println(one.isEmpty());
         System.out.println(one.size());
         System.out.println(one);
+        System.out.println("-----------------");
         System.out.println("");
-        System.out.println("");
         System.out.println(one.deal());
         System.out.println(one.deal());
         System.out.println(one.deal());
-        System.out.println(one);
+        System.out.println(one.size());
         
 //        ranks = new String[] {"ace", "king", "queen", "jack", "ten"};
 //        suits = new String[] {"spades", "hearts", "diamonds", "clubs"};

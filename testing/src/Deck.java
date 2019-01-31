@@ -1,3 +1,5 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -39,13 +41,15 @@ public class Deck {
 	 * @param values is an array containing all of the card point values.
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
-            cards = new ArrayList();
+            cards = new ArrayList<Card>();
             for (String suit : suits){
                 for (int i = 0; i < ranks.length; i++){
                     cards.add(new Card(ranks[i], suit, values[i]));
                 }
             }
+            size = cards.size();
             shuffle();
+            
         }
 
 
@@ -62,7 +66,6 @@ public class Deck {
 	 * @return the number of undealt cards in this deck.
 	 */
 	public int size() {
-            size = cards.size();
             return size;
         }
 
@@ -71,6 +74,7 @@ public class Deck {
 	 * and reset the size to represent the entire deck.
 	 */
 	public void shuffle() {
+            size = cards.size();
             for (int i = cards.size() - 1; i > 0; i--){
                 int random = (int)(Math.random() * (cards.size() - 1) + 1);
                 Card randomCard = cards.get(random);
@@ -86,10 +90,12 @@ public class Deck {
 	 */
 	public Card deal() {
             if (size > 0){
-                Card output = cards.get(size-1);
+                Card output = cards.get(size -1);
                 size--;
+                
                 return output;
             }
+            
             return null;
         }
 
