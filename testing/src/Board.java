@@ -120,9 +120,11 @@ public abstract class Board {
 	 *        cards to be replaced.
 	 */
 	public void replaceSelectedCards(List<Integer> selectedCards) {
-		for (Integer k : selectedCards) {
+                if (selectedCards.size() < 4){
+                    for (Integer k : selectedCards) {
 			deal(k);
-		}
+                    }
+                }
 	}
 
 	/**
