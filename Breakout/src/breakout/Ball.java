@@ -9,6 +9,10 @@ package breakout;
  *
  * @author mccormick.elliot19
  */
-public class Ball {
+public class Ball extends GameElement implements Renderable, Updateable {
+    //instance variables
+    private double xVelocity, yVelocity;
     
+    //
+    public void setX
 }

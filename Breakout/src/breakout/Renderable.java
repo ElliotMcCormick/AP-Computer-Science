@@ -5,10 +5,12 @@
  */
 package breakout;
 
+import javafx.scene.canvas.Canvas;
+
 /**
  *
  * @author mccormick.elliot19
  */
-public class Renderable {
-    
+public interface Renderable {
+    public abstract void draw(Canvas canvas);
 }

@@ -9,6 +9,6 @@ package breakout;
  *
  * @author mccormick.elliot19
  */
-public class Ubdateable {
-    
+public interface Updateable {
+    public abstract void update();
 }

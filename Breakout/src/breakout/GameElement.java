@@ -63,16 +63,25 @@ public abstract class GameElement {
     public abstract void onCollision(GameElement element);
     
     //Checks to see if elements collide
-    public boolean checkCollision(GameElement element){
-        //if right side of @this collides with the left of 
-        //@element
-        if (xPos < element.xPos + element.width){
-            return true;
+    public double[] checkCollision(GameElement element){
+        // x1 + w1 - x2 = num
+        // x2 + w2 - x1 = num 2
+        // if nums are both pos then take lowest number
+        
+        double xOverlap1 = xPos + width - element.xPos;
+        double xOverlap2 = element.xPos + element.width - xPos;
+        
+        double yOverlap1 = yPos + height - element.yPos;
+        double yOverlap2 = element.yPos + element.height - yPos;
+        
+        double minXOverlap = Math.min(xOverlap1, xOverlap2);
+        double minYOverlap = Math.min(yOverlap1, yOverlap2);
+        
+        if (minXOverlap > 0 && minYOverlap > 0){
+            double[] output = {minXOverlap, minYOverlap};
+            return output;
         }
-        //if left side of @this collide with the right of
-        //@element
-        if (xPos + width > element.yPos){
-            return true;
-        }
+        
+        return null;
     }
 }
