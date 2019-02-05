@@ -5,6 +5,8 @@
  */
 package breakout;
 
+import javafx.scene.paint.Color;
+
 /**
  *
  * @author mccormick.elliot19
@@ -16,16 +18,18 @@ public abstract class GameElement {
     private double height;
     private double xPos;
     private double yPos;
+    private Color color;
     
     //constructors
     public GameElement(){
-        this(0.0, 0.0, 0.0, 0.0);
+        this(0.0, 0.0, 0.0, 0.0, Color.BLACK);
     }
-    public GameElement(double wid, double ht, double x, double y){
+    public GameElement(double wid, double ht, double x, double y, Color c){
         width = wid;
         height = ht;
         xPos = x;
         yPos = y;
+        color = c;
     }
     
     //set methods for each instance var
@@ -41,6 +45,9 @@ public abstract class GameElement {
     public void setY(double y){
         yPos = y;
     }
+    public void setColor(Color c){
+        color = c;
+    }
     
     //get methods for each instance var
     public double getWidth(){
@@ -54,6 +61,9 @@ public abstract class GameElement {
     }
     public double getYPos(){
         return yPos;
+    }
+    public Color getColor(){
+        return color;
     }
     
     /*
