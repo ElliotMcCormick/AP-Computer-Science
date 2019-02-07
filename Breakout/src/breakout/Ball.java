@@ -6,6 +6,7 @@
 package breakout;
 
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 /**
@@ -16,6 +17,14 @@ public class Ball extends GameElement implements Renderable, Updateable {
     //instance variables
     private double xVelocity, yVelocity;
     
+    public Ball(){
+        super();
+    }
+    public Ball(int x, int y, int wid, int ht, Color c, int xVel, int yVel){
+        super(x, y, wid, ht, c);
+        xVelocity = xVel;
+        yVelocity = yVel;
+    }
     //set methods
     public void setXVelocity(double xVel){
         xVelocity = xVel;
@@ -46,16 +55,21 @@ public class Ball extends GameElement implements Renderable, Updateable {
     }
     
     @Override
-    public void update(){
+    public void update(Canvas canvas){    
+        GraphicsContext graphics = canvas.getGraphicsContext2D();
         
-        setColor(Color.WHITE);
-        
+        graphics.setFill(Color.WHITE);
+        graphics.fillRect(getXPos(), getYPos(), getWidth(), getHeight());
+    
         setX(getXPos() + xVelocity);
         setY(getYPos() + yVelocity);
     }
     
     @Override
     public void draw(Canvas canvas){
+        GraphicsContext graphics = canvas.getGraphicsContext2D();
         
+        graphics.setFill(getColor());
+        graphics.fillRect(getXPos(), getYPos(), getWidth(), getHeight());
     }
 }

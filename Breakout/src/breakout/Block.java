@@ -24,8 +24,8 @@ public class Block extends GameElement implements Renderable {
     }
     
     private void destroy(){
-        setWidth(0.0);
-        setHeight(0.0);
+        // Breakout GameState state is removed
+        Breakout.state.remove(this);
     }
     
     @Override

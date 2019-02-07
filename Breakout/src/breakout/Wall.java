@@ -5,10 +5,23 @@
  */
 package breakout;
 
+import javafx.scene.paint.Color;
+
 /**
  *
  * @author mccormick.elliot19
  */
-public class Wall {
+public class Wall extends GameElement{
+
+    public Wall(){
+        super();
+    }
     
+    public Wall(double wid, double ht, double x, double y, Color c){
+        super(wid, ht, x, y, c);
+    }
+    
+    @Override
+    public void onCollision(GameElement element) {
+    }   
 }

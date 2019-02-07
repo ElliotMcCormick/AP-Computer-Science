@@ -5,10 +5,12 @@
  */
 package breakout;
 
+import javafx.scene.canvas.Canvas;
+
 /**
  *
  * @author mccormick.elliot19
  */
 public interface Updateable {
-    public abstract void update();
+    public abstract void update(Canvas canvas);
 }
