@@ -24,7 +24,7 @@ public abstract class GameElement {
     public GameElement(){
         this(0.0, 0.0, 0.0, 0.0, Color.BLACK);
     }
-    public GameElement(double wid, double ht, double x, double y, Color c){
+    public GameElement(double x, double y, double wid, double ht, Color c){
         width = wid;
         height = ht;
         xPos = x;
@@ -89,7 +89,10 @@ public abstract class GameElement {
         
         if (minXOverlap > 0 && minYOverlap > 0){
             double[] output = {minXOverlap, minYOverlap};
+            System.out.println("collision!");
+            
             return output;
+            
         }
         
         return null;

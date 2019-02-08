@@ -64,9 +64,16 @@ public class GameState {
     
     public void collideAll(){
         for (int element = 0; element < collideables.size() - 1; element++){
-            if (!collideables.get(element).checkCollision(collideables.get(element + 1)).equals(null)){
+            if ((collideables.get(element).checkCollision(collideables.get(element + 1))) != null){
                 if(collideables.get(element) instanceof Ball){
-                    
+                    System.out.println("Ball Collide?");
+
+                    ((Ball)collideables.get(element)).onCollision(collideables.get(element + 1));
+                }
+                if(collideables.get(element) instanceof Block){
+                    System.out.println("Block Collide?");
+
+                    ((Block)collideables.get(element)).onCollision(collideables.get(element + 1));
                 }
             }
             

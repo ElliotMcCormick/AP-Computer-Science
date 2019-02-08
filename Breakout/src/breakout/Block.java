@@ -26,13 +26,15 @@ public class Block extends GameElement implements Renderable {
     private void destroy(){
         // Breakout GameState state is removed
         Breakout.state.remove(this);
+        
     }
     
     @Override
     public void onCollision(GameElement element){
-        if (!checkCollision(element).equals(null)){
+        if (checkCollision(element) != (null)){
+            System.out.println("destroy!");
             destroy();
-        }       
+        }
     }
     
     public void draw(Canvas canvas){

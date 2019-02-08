@@ -31,6 +31,13 @@ public class Breakout extends Application {
     private static Canvas canvas;
     
     public static GameState state;
+    private Ball ball;
+    private Wall topWall;
+    private Wall bottomWall;
+    private Wall leftWall;
+    private Wall rightWall;
+    private Paddle paddle;
+    private Block testBlock;
     //DECLARE a static GameState object here (used in the timer)
     RedrawTimer timer = new RedrawTimer();
 
@@ -43,13 +50,14 @@ public class Breakout extends Application {
         //instantiate your GameState object
         state = new GameState();
         //create walls, ball, paddle, and blocks
-        Wall topWall = new Wall(WIDTH, 0, 0, 0, Color.WHITE);
-        Wall bottomWall = new Wall(WIDTH, 0, 0, HEIGHT, Color.WHITE);
-        Wall leftWall = new Wall(0, HEIGHT, 0, 0, Color.WHITE);
-        Wall rightWall = new Wall(0, HEIGHT, WIDTH, HEIGHT, Color.WHITE);
+        topWall = new Wall(0, 0, WIDTH, 0, Color.WHITE);
+        bottomWall = new Wall(0, HEIGHT, WIDTH, 0, Color.WHITE);
+        leftWall = new Wall(0, 0, 0, HEIGHT, Color.WHITE);
+        rightWall = new Wall(WIDTH, 0, 0, HEIGHT, Color.WHITE);
         
-        Ball ball = new Ball(WIDTH/2, HEIGHT - 10, 10, 10, Color.AQUAMARINE, 2, 3);
-        Paddle paddle = new Paddle((WIDTH/2) - 10, HEIGHT - 5, 40, 5, Color.BLACK, 5);
+        ball = new Ball(WIDTH/2, HEIGHT - 200, 10, 10, Color.AQUAMARINE, 0, 1);
+        paddle = new Paddle((WIDTH/2) - 10, HEIGHT - 10, 50, 5, Color.BLACK, 5);
+
         
         // first loop x pos
         for (int x = 0; x < WIDTH - 86; x += WIDTH/10){
@@ -59,6 +67,9 @@ public class Breakout extends Application {
                 state.add(block);
             }
         }
+//        testBlock = new Block(10, 10, 880, 10, Color.BLACK);
+//        state.add(testBlock);
+
         //add the game elements (walls, ball, paddle, and blocks) to the GameState object
         state.add(topWall);
         state.add(bottomWall);
@@ -108,11 +119,18 @@ public class Breakout extends Application {
 
         public void handle(long now) {
             GraphicsContext gc = canvas.getGraphicsContext2D();
-            gc.clearRect(now, now, now, now);
+            
+            
+            state.collideAll();
+            
+            gc.clearRect(0, 0, WIDTH, HEIGHT);
             state.updateAll(canvas);
             state.drawAll(canvas);
             
-            state.collideAll();
+            
+            
+            
+            
             //update, draw and collide all of the Game Elements in the GameState object 
         }
     }

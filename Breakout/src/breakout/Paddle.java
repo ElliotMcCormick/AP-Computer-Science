@@ -51,6 +51,11 @@ public class Paddle extends GameElement implements Renderable, Updateable{
      
     @Override
     public void update(Canvas canvas) {
+        GraphicsContext graphics = canvas.getGraphicsContext2D();
+        
+        graphics.setFill(Color.WHITE);
+        graphics.fillRect(getXPos(), getYPos(), getWidth(), getHeight());
+        
         if (direction.equals("RIGHT") && getXPos() + getWidth() < canvas.getWidth()) {
             setX(getXPos() + speed);
             //update paddle

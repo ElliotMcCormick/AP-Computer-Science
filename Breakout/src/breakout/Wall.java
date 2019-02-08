@@ -17,8 +17,8 @@ public class Wall extends GameElement{
         super();
     }
     
-    public Wall(double wid, double ht, double x, double y, Color c){
-        super(wid, ht, x, y, c);
+    public Wall(double x, double y, double wid, double ht, Color c){
+        super(x, y, wid, ht, c);
     }
     
     @Override
