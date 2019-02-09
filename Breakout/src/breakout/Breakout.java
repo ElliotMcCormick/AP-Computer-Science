@@ -15,6 +15,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -38,7 +39,11 @@ public class Breakout extends Application {
     private Wall rightWall;
     private Paddle paddle;
     private Block testBlock;
-    //DECLARE a static GameState object here (used in the timer)
+    
+    private int deaths;
+    
+    private Color blockColor;
+    
     RedrawTimer timer = new RedrawTimer();
 
 
@@ -47,36 +52,42 @@ public class Breakout extends Application {
         StackPane root = new StackPane();
         canvas = new Canvas(WIDTH, HEIGHT);
         root.getChildren().add(canvas);
+        
         //instantiate your GameState object
         state = new GameState();
+        
         //create walls, ball, paddle, and blocks
         topWall = new Wall(0, 0, WIDTH, 0, Color.WHITE);
         bottomWall = new Wall(0, HEIGHT, WIDTH, 0, Color.WHITE);
         leftWall = new Wall(0, 0, 0, HEIGHT, Color.WHITE);
         rightWall = new Wall(WIDTH, 0, 0, HEIGHT, Color.WHITE);
         
-        ball = new Ball(WIDTH/2, HEIGHT - 200, 10, 10, Color.AQUAMARINE, 0, 1);
-        paddle = new Paddle((WIDTH/2) - 10, HEIGHT - 10, 50, 5, Color.BLACK, 5);
+        ball = new Ball(WIDTH/2, HEIGHT - 200, 10, 10, Color.BLACK, 1, -1);
+        paddle = new Paddle((WIDTH/2) - 10, HEIGHT - 10, 50, 5, Color.BLACK, 3);
 
-        
-        // first loop x pos
-        for (int x = 0; x < WIDTH - 86; x += WIDTH/10){
-            // second loop y pos
-            for (int y = 5; y < 55; y += 10){
-                Block block = new Block(x, y, 85, 8, Color.BLACK);
-                state.add(block);
-            }
-        }
-//        testBlock = new Block(10, 10, 880, 10, Color.BLACK);
-//        state.add(testBlock);
-
-        //add the game elements (walls, ball, paddle, and blocks) to the GameState object
-        state.add(topWall);
+        //DO NOT MOVE. BALL MUST BE INDEX ZERO
+        state.add(ball); 
+        state.add(paddle); //index one
+        state.add(topWall); //etc
         state.add(bottomWall);
         state.add(leftWall);
         state.add(rightWall);
-        state.add(ball);
-        state.add(paddle);
+        
+        // first loop y pos
+        for (int y = 30; y < 105; y += 10){
+        
+            blockColor = Color.rgb((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256));
+            
+            // second loop x pos
+            for (int x = 0; x < WIDTH - 86; x += WIDTH/10){
+                Block block = new StrongBlock(x, y, 85, 8, blockColor);
+                state.add(block);
+            }
+        }
+       
+        deaths = 0;
+        
+        
         
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         primaryStage.setTitle("Breakout");
@@ -119,15 +130,21 @@ public class Breakout extends Application {
 
         public void handle(long now) {
             GraphicsContext gc = canvas.getGraphicsContext2D();
-            
+            gc.clearRect(0, 0, WIDTH, HEIGHT);
+            gc.setFont(new Font("Verdana", 14));
+            gc.strokeText("Deaths:" + deaths, 50, 550);
             
             state.collideAll();
             
-            gc.clearRect(0, 0, WIDTH, HEIGHT);
             state.updateAll(canvas);
             state.drawAll(canvas);
             
-            
+            if (ball.checkCollision(bottomWall) != null){
+                deaths++;
+                state.remove(ball);
+                ball = new Ball(WIDTH/2, HEIGHT - 200, 10, 10, Color.BLACK, 1, -1);
+                state.add(0, ball);
+            }
             
             
             

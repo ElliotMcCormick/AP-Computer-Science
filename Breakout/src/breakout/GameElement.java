@@ -89,7 +89,6 @@ public abstract class GameElement {
         
         if (minXOverlap > 0 && minYOverlap > 0){
             double[] output = {minXOverlap, minYOverlap};
-            System.out.println("collision!");
             
             return output;
             

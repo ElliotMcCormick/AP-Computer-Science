@@ -32,7 +32,6 @@ public class Block extends GameElement implements Renderable {
     @Override
     public void onCollision(GameElement element){
         if (checkCollision(element) != (null)){
-            System.out.println("destroy!");
             destroy();
         }
     }

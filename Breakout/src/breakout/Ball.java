@@ -44,15 +44,12 @@ public class Ball extends GameElement implements Renderable, Updateable {
     @Override
     public void onCollision(GameElement element){
         if (checkCollision(element) != (null)){
-            System.out.println("onCollision verifies collison");
             //if x overlap > y overlap - x velocity * -1
             if (checkCollision(element)[0] < checkCollision(element)[1]){
-                System.out.println("bounce? x");
                 xVelocity *= -1;
                 
             //if x overlap < y overlap - y velocity * -1    
             } else if (checkCollision(element)[0] > checkCollision(element)[1]){
-                System.out.println("bounce? y");
                 yVelocity *= -1;
             }
         }  

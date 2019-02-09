@@ -38,6 +38,20 @@ public class GameState {
         
     }
     
+    public void add(int index, Object object){
+        
+        if (object instanceof Renderable){
+            renderables.add(index, (Renderable)object);
+        }
+        if (object instanceof Updateable){
+            updateables.add(index, (Updateable)object);
+        }
+        if (object instanceof GameElement){
+            collideables.add(index, (GameElement)object);
+        }
+        
+    }
+    
     public void remove(Object object){
         if (object instanceof Renderable){
             renderables.remove((Renderable)object);
@@ -63,20 +77,11 @@ public class GameState {
     }
     
     public void collideAll(){
-        for (int element = 0; element < collideables.size() - 1; element++){
-            if ((collideables.get(element).checkCollision(collideables.get(element + 1))) != null){
-                if(collideables.get(element) instanceof Ball){
-                    System.out.println("Ball Collide?");
-
-                    ((Ball)collideables.get(element)).onCollision(collideables.get(element + 1));
-                }
-                if(collideables.get(element) instanceof Block){
-                    System.out.println("Block Collide?");
-
-                    ((Block)collideables.get(element)).onCollision(collideables.get(element + 1));
-                }
+        for (int element = 1; element < collideables.size(); element++){           
+            collideables.get(0).onCollision(collideables.get(element));
+            if (collideables.get(element) instanceof Block){
+                collideables.get(element).onCollision(collideables.get(0));
             }
-            
         }
     }
 }
