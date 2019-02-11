@@ -15,7 +15,15 @@ public class MatrixSearch
 	 */
 	public static int searchMat( int[][] mat, int toFind)
 	{
-		return 0;
+            int occurrences = 0;
+            for (int[] array : mat){
+                for(int i = 0; i < array.length; i++){
+                    if (array[i] == toFind){
+                        occurrences ++;
+                    }
+                }
+            }
+            return occurrences;
 	}
 
 	public static void main(String args[])

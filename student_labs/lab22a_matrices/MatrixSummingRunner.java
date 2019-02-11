@@ -15,6 +15,19 @@ public class MatrixSummingRunner {
 
     public static void main(String args[]) throws IOException {
         Scanner file = new Scanner(new File("matsum.dat"));
-        //slideshow 13 has info on reading from a file
+        
+        
+        int numRows = file.nextInt();
+        int numColumns = 2;
+        
+        int[][] matIndex = new int[numRows][numColumns];
+        
+        for (int row = 0; row < matIndex.length; row++){
+            for (int col = 0; col < matIndex[row].length; col++){
+                matIndex[row][col] = file.nextInt();
+            }
+        }
+        
+        
     }
 }

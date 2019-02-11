@@ -62,7 +62,7 @@ public class Breakout extends Application {
         leftWall = new Wall(0, 0, 0, HEIGHT, Color.WHITE);
         rightWall = new Wall(WIDTH, 0, 0, HEIGHT, Color.WHITE);
         
-        ball = new Ball(WIDTH/2, HEIGHT - 200, 10, 10, Color.BLACK, 1, -1);
+        ball = new Ball(WIDTH/2, HEIGHT - 200, 10, 10, Color.BLACK, 2, -1);
         paddle = new Paddle((WIDTH/2) - 10, HEIGHT - 10, 50, 5, Color.BLACK, 3);
 
         //DO NOT MOVE. BALL MUST BE INDEX ZERO
@@ -74,13 +74,13 @@ public class Breakout extends Application {
         state.add(rightWall);
         
         // first loop y pos
-        for (int y = 30; y < 105; y += 10){
+        for (int y = 30; y < 300; y += 25){
         
             blockColor = Color.rgb((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256));
             
             // second loop x pos
             for (int x = 0; x < WIDTH - 86; x += WIDTH/10){
-                Block block = new StrongBlock(x, y, 85, 8, blockColor);
+                Block block = new StrongBlock(x, y, 85, 20, blockColor);
                 state.add(block);
             }
         }
@@ -142,7 +142,7 @@ public class Breakout extends Application {
             if (ball.checkCollision(bottomWall) != null){
                 deaths++;
                 state.remove(ball);
-                ball = new Ball(WIDTH/2, HEIGHT - 200, 10, 10, Color.BLACK, 1, -1);
+                ball = new Ball(WIDTH/2, HEIGHT - 200, 10, 10, Color.BLACK, 2, -1);
                 state.add(0, ball);
             }
             

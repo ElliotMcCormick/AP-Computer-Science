@@ -21,6 +21,13 @@ public class MatrixOutThree
 			//loop for col
 				//print stuff		
 		
+            for (int row = 0; row < mat.length; row++){
+                System.out.print("row " + row + "  ");
+                for (int col = 0; col < mat[row].length; col++){
+                    System.out.print(mat[row][col] + " ");
+                }
+                System.out.println();
+            }
 		
 		
 		//expected output

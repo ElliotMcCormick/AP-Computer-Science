@@ -14,11 +14,13 @@ class MatrixFun
 	public MatrixFun(int numRows, int numCols)
 	{
 		//instantiate the matrix
+            mat = new int[numRows][numCols];
 	}
 
    public void setSpot(int row, int col, int val)
    {
    	//set spot [row, col] to val
+       mat[row][col] = val;
    }
 	
 	public String toString()
