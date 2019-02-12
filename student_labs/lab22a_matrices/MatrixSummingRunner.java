@@ -16,6 +16,7 @@ public class MatrixSummingRunner {
     public static void main(String args[]) throws IOException {
         Scanner file = new Scanner(new File("matsum.dat"));
         
+        MatrixSumming summer = new MatrixSumming();
         
         int numRows = file.nextInt();
         int numColumns = 2;
@@ -28,6 +29,13 @@ public class MatrixSummingRunner {
             }
         }
         
+        for (int row = 0; row < matIndex.length; row++){
+            
+            int r = matIndex[row][0];
+            int c = matIndex[row][1];
+            
+            System.out.println("The sum of " + r + "," + c + " is " + summer.sum(r,c) + ".");
+        }
         
     }
 }
