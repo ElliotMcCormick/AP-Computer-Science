@@ -22,6 +22,9 @@ public class Grid {
         }
     }
 
+    public String[][] getGrid(){
+        return grid;
+    }
     //find out which of the vals occurs the most
     public String findMax(String[] vals) {
         int maxNumber = Integer.MIN_VALUE;
