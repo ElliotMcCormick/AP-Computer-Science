@@ -14,5 +14,17 @@ import static java.lang.System.*;
 public class PascalsTriangleRunner {
 
     public static void main(String args[]) throws IOException {
+        Scanner file = new Scanner(new File("triangle.dat"));
+        int size = file.nextInt();
+        file.nextLine();
+        
+        PascalsTriangle test;
+        
+        for (int i = 0; i < size; i++) {
+            test = new PascalsTriangle(file.nextInt());
+            test.createTriangle();
+            System.out.println(test);
+        }
+        
     }
 }
