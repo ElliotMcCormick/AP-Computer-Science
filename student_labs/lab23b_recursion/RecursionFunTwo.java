@@ -12,7 +12,7 @@ public class RecursionFunTwo {
 
     public static int countChickens(String word) {
         if (word.contains("chicken")){
-            return 1 + countChickens(word.replace("chicken", ""));
+            return 1 + countChickens(word.replaceFirst("chicken", ""));
         }
 
         return 0;
