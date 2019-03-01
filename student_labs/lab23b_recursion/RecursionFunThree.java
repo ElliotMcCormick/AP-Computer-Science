@@ -5,10 +5,10 @@ package lab23b_recursion;
 //Date - 
 //Class -
 //Lab  -
-
 import static java.lang.System.*;
 
 public class RecursionFunThree {
+
     /* luckySevens will return a count of the 7s in the number
      *    unless the 7s are side by side in which case they are worth 14
      *
@@ -20,8 +20,18 @@ public class RecursionFunThree {
      *
      * the solution to this problem must use recursion
      */
-
     public static int luckySevens(long number) {
+        if (number == 0) {
+            return 0;
+        }
+        if (number % 10 == 7) {
+            if (number % 100 == 77) {
+                return 13 + (luckySevens(number / 10));
+            }
+            return 1 + (luckySevens(number / 10));
+
+        }
+
         return 0;
     }
 }
