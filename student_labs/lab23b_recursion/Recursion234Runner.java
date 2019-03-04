@@ -23,6 +23,11 @@ public class Recursion234Runner {
 //        System.out.println(RecursionFunTwo.countChickens("chickenbouncetheballchicken"));
         //add more test cases
         
-        System.out.println(RecursionFunThree.luckySevens(707));
+        System.out.println(RecursionFunThree.luckySevens(1087171));
+        System.out.println(RecursionFunThree.luckySevens(1077171));
+        System.out.println(RecursionFunThree.luckySevens(77077));
+        System.out.println(RecursionFunThree.luckySevens(97171771707797L));
+        System.out.println(RecursionFunThree.luckySevens(1089651234));
+
     }
 }

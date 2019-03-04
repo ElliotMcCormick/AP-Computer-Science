@@ -24,14 +24,14 @@ public class RecursionFunThree {
         if (number == 0) {
             return 0;
         }
-        if (number % 10 == 7) {
-            if (number % 100 == 77) {
-                return 13 + (luckySevens(number / 10));
-            }
+
+        if (number % 100 == 77) {
+            return 14 + (luckySevens(number / 100));
+            
+        } else if (number % 10 == 7) {
+
             return 1 + (luckySevens(number / 10));
-
         }
-
-        return 0;
+        
+        return luckySevens(number / 10);
     }
-}
