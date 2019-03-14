@@ -17,7 +17,20 @@ public class LongPalindrome {
      */
 
     public static ArrayList<Palin> getAllPalins(String word) {
-        return null;
+        ArrayList<Palin> palinList = new ArrayList<Palin>();
+        
+        for (int i = 0; i < word.length(); i++){
+            for (int j = i; j < word.length(); j++){
+                if (word.substring(i, j).length() > 1){
+                    Palin newPalin = new Palin(word);
+                    if (newPalin.isPalin()){
+                        palinList.add(newPalin);
+                    }
+                }
+            } 
+        }
+        
+        return palinList;
     }
 
     /*

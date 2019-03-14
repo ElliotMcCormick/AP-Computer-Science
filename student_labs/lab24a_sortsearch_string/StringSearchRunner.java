@@ -15,6 +15,16 @@ public class StringSearchRunner {
         System.out.println(StringSearch.countLetters("computerscience", "t"));
         System.out.println(StringSearch.countWords("computerscience", "to"));
 
+        System.out.println("");
+
+        System.out.println(StringSearch.countLetters("onetwoonetwofun", "n"));        
+        System.out.println(StringSearch.countWords("onefredonetwodog", "one"));
+        
+        System.out.println("");
+ 
+        System.out.println(StringSearch.countLetters("odogdogdogdogo", "o"));                
+        System.out.println(StringSearch.countWords("niininininininininini", "ni"));
+       
         //add more test cases
     }
 }
