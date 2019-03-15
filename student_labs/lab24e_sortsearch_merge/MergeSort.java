@@ -22,9 +22,50 @@ public class MergeSort {
 
     private static void mergeSort(Comparable[] list, int front, int back) //O( Log N )
     {
+        int mid = (front + back) / 2;
+        
+        if (mid == front) return; 
+        
+              
+        mergeSort(list, front, mid);
+        mergeSort(list, mid, back);   
+        merge(list, front, back);
+        
+        System.out.println(Arrays.toString(list));
+        
     }
 
     private static void merge(Comparable[] list, int front, int back) //O(N)
     {
+        Comparable[] temp = new Comparable[back - front];
+        int i = front;
+        int j = (front + back) / 2;
+        int k = 0;
+        int mid = j;
+        
+        while(i < mid && j < back){
+            if (list[i].compareTo(list[j]) < 0){
+                temp[k] = list[i];
+                k++;
+                i++;
+            } else {
+                temp[k] = list[j];
+                k++;
+                j++;
+            }        
+        }
+
+        while (i < mid){
+            temp[k++] = list[i++];
+        }
+
+        while (j < back){
+            temp[k++] = list[j++];
+        }
+        
+        for (int l = 0; l < back - front; ++l){
+            list[front + 1] = temp[l];
+        }
     }
+    
 }
