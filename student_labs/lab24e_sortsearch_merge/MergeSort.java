@@ -31,12 +31,15 @@ public class MergeSort {
         mergeSort(list, mid, back);   
         merge(list, front, back);
         
-        System.out.println(Arrays.toString(list));
+             
+        System.out.println("pass " + passCount++ + " " + Arrays.toString(list));
         
     }
 
     private static void merge(Comparable[] list, int front, int back) //O(N)
     {
+        
+        
         Comparable[] temp = new Comparable[back - front];
         int i = front;
         int j = (front + back) / 2;
@@ -45,13 +48,10 @@ public class MergeSort {
         
         while(i < mid && j < back){
             if (list[i].compareTo(list[j]) < 0){
-                temp[k] = list[i];
-                k++;
-                i++;
+                temp[k++] = list[i++];
+                
             } else {
-                temp[k] = list[j];
-                k++;
-                j++;
+                temp[k++] = list[j++];
             }        
         }
 
@@ -64,8 +64,10 @@ public class MergeSort {
         }
         
         for (int l = 0; l < back - front; ++l){
-            list[front + 1] = temp[l];
+            list[front + l] = temp[l];
         }
+        
+        
     }
     
 }

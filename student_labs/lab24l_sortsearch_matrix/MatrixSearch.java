@@ -14,6 +14,12 @@ public class MatrixSearch {
      *post - mat will contain integers that are <= upper and >= 1
      */
     public MatrixSearch(int rows, int cols, int upper) {
+        mat = new int[rows][cols];
+        for (int r = 0; r < mat.length; r++){
+            for (int c = 0; c < mat[r].length; c++){
+                mat[r][c] = (int)(Math.random() * upper) + 1;
+            }
+        }
     }
 
 
@@ -23,7 +29,15 @@ public class MatrixSearch {
      *post - no values in mat will have been changed
      */
     public int countOdds() {
-        return 0;
+        int count = 0;
+        for (int r = 0; r < mat.length; r++){
+            for (int c = 0; c < mat[r].length; c++){
+                if (mat[r][c] % 2 == 1){
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
 
@@ -33,7 +47,15 @@ public class MatrixSearch {
      *post - no values in mat will have been changed
      */
     public int countEvens() {
-        return 0;
+        int count = 0;
+        for (int r = 0; r < mat.length; r++){
+            for (int c = 0; c < mat[r].length; c++){
+                if (mat[r][c] % 2 == 0){
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
 
@@ -43,7 +65,15 @@ public class MatrixSearch {
      *post - no values in mat will have been changed
      */
     public int countPrimes() {
-        return 0;
+        int count = 0;
+        for (int r = 0; r < mat.length; r++){
+            for (int c = 0; c < mat[r].length; c++){
+                if (isPrime(mat[r][c])){
+                   count++;
+                }
+            }
+        }
+        return count;
     }
 
     /*
@@ -52,7 +82,12 @@ public class MatrixSearch {
      *post - true is returned if num is not divisble by any number between 2 and itself
      */
     private boolean isPrime(int num) {
-        return false;
+       for (int devisor = 2; devisor < num/2; devisor++){
+            if(num % devisor == 0){
+                return false;
+            }
+        }
+        return true;
     }
 
     /*
@@ -60,6 +95,21 @@ public class MatrixSearch {
      *post - all values from mat are concatenated to a string and returned
      */
     public String toString() {
-        return "";
+        String out = "";
+        for (int r = 0; r < mat.length; r++){
+            for (int c = 0; c < mat[r].length; c++){
+                if (mat[r][c] > 9){
+                    out += mat[r][c] + "  ";
+                } else {
+                    out += " " + mat[r][c] + "  ";
+                }
+            }
+            out += "\n";
+        }
+        out += "\n";
+        out += "Odd count = " + countOdds() + "\n";
+        out += "Even count = " + countEvens() + "\n";
+        out += "Prime count = " + countPrimes() + "\n";
+        return out;
     }
 }
