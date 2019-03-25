@@ -10,11 +10,20 @@ package missilecommand;
  * @author McCormick.Elliot19
  */
 public abstract class ExplodingElement extends GameElement{
-    private final double EXPLOSION_RADIUS = 0.0;
+    private double explosionRadius = 0.0;
     
     public double getExplosionRadius(){
-        return EXPLOSION_RADIUS;
+        return explosionRadius;
     }
     
     public abstract void dealWithExplosion(GameElement element);
+    
+    public boolean checkExplosion(GameElement element){
+        //if element x or y is within explodingE explosion radius
+        double[] centerOfElement = {((element.xPos + (element.xPos + element.width))/2.0), ((element.yPos + (element.yPos + element.height))/2.0)};
+        
+        double xValueOfExplosionCircle = 
+        
+        return false;
+    }
 }
