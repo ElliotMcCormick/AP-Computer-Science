@@ -55,6 +55,8 @@ public class Main extends Application {
             switch (KeyEvent.getCode()) {
                 case ENTER:
                     addNewShape();
+                    addNewShape();
+                    addNewShape();
                     break;
                 case SPACE:
                     toggleRotates();
