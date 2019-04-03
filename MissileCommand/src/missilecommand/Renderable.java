@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package breakout;
+package missilecommand;
 
 import javafx.scene.canvas.Canvas;
 
-
 /**
  *
- * @author mccormick.elliot19
+ * @author elliot
  */
 public interface Renderable {
-   public abstract void draw(javafx.scene.canvas.Canvas canvas);
+    public abstract void draw(Canvas canvas);
 }

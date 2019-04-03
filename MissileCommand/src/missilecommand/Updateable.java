@@ -5,12 +5,12 @@
  */
 package missilecommand;
 
+import javafx.scene.canvas.Canvas;
+
 /**
  *
- * @author mccormick.elliot19
- * 
- * draw the explosion circle
+ * @author elliot
  */
-public class ExplosionCircle extends GameElement{
-    
+public interface Updateable {
+    public abstract void update(Canvas canvas);
 }

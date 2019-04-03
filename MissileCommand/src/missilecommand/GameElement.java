@@ -5,6 +5,7 @@
  */
 package missilecommand;
 
+
 /**
  *
  * @author McCormick.Elliot19
@@ -48,4 +49,5 @@ public class GameElement {
     public double getHeight(){
         return height;
     }
+    
 }

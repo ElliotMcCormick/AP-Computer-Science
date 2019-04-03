@@ -19,14 +19,19 @@ public abstract class ExplodingElement extends GameElement{
     public abstract void explodeElement(GameElement element);
     
     public boolean elementInExplosion(ExplodingElement element){
-        //if element x or y is within explodingE explosion radius
-        double[] centerOfElement = {((element.xPos + (element.xPos + element.width))/2.0), ((element.yPos + (element.yPos + element.height))/2.0)};
         
-        double xValueOfExplosionCenter = this.xPos;
-        double yValueofExplosionCenter = this.yPos;
+        double centerOfElementX = element.xPos + (element.width/2.0);
+        double centerOfElementY = element.yPos + (element.height/2.0);
         
-        //make new class for drawing the actual exploding circle
-        ExplosionCircle explosion = new ExplosionCircle(xValueOfExplosionCenter, yValueOfExplosionCenter, explosionRadius);
+        
+        double ExplosionCenterX = this.xPos + (this.width/2.0);
+        double ExplosionCenterY = this.yPos + (this.height/2.0);
+        
+        //if the center of the element we are checking is within the circle of explosion, return true
+        if (centerOfElementX > ExplosionCenterX - explosionRadius || centerOfElementY < ExplosionCenterX + explosionRadius
+                || centerOfElementX > ExplosionCenterY - explosionRadius || centerOfElementY < ExplosionCenterY + explosionRadius){
+            return true;
+        }
         
         return false;
     }
