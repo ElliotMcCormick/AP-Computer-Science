@@ -47,7 +47,9 @@ public class MissileCommand extends Application {
         gc.fillRect(0, 0, WIDTH, HEIGHT);
 
         testMissile = new Missile(0,0,3,Color.RED);
+        
         testMissile.setTarget(WIDTH, HEIGHT);
+        testMissile.setStartPos(0,0);
         
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         primaryStage.setTitle("Missle Command");
@@ -69,6 +71,9 @@ public class MissileCommand extends Application {
             gc.setFill(Color.BLACK);
             gc.fillRect(0, 0, WIDTH, HEIGHT);
 
+            //todo : redo start Pos to reflect the x and y you
+            //build missile with
+            testMissile.update(canvas);
             testMissile.draw(canvas);
         }
     }

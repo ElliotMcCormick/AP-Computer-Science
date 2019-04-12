@@ -98,7 +98,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         GraphicsContext graphics = canvas.getGraphicsContext2D();
 
         graphics.setFill(Color.WHITE);
-        graphics.fillRect(getX(), getY(), 2, 2);
+        graphics.fillRect(getX(), getY(), 10, 10);
 
     }
 
