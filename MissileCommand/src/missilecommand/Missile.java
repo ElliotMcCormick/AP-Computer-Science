@@ -15,35 +15,20 @@ import javafx.scene.paint.Color;
  */
 public class Missile extends ExplodingElement implements Renderable, Updateable {
 
-    private double x;
-    private double y;
+    
     private double speed;
     private Color trailColor;
     private double[] startPos;
     private double[] targetPos;
 
     public Missile(double x, double y, double speed, Color trailColor) {
-        this.x = x;
-        this.y = y;
+        super(x, y, 10, 10);
+        setStartPos();
+        setTarget(x,y);
         this.speed = speed;
         this.trailColor = trailColor;
     }
 
-    public double getX() {
-        return x;
-    }
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
-    }
 
     public double getSpeed() {
         return speed;
@@ -67,7 +52,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         targetPos[1] = yPos;
     }
 
-    public void setStartPos(double xPos, double yPos) {
+    public void setStartPos() {
         startPos = new double[2];
         startPos[0] = xPos;
         startPos[1] = yPos;
@@ -83,8 +68,8 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     
     public double[] getVector(){
         double[] vector = new double[2];
-        vector[0] = speed * (targetPos[0] - startPos[0]);
-        vector[1] = speed * (targetPos[1] - startPos[1]);
+        vector[0] = speed / (targetPos[0] - startPos[0]);
+        vector[1] = speed / (targetPos[1] - startPos[1]);
         return vector;
     }
 
@@ -98,7 +83,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         GraphicsContext graphics = canvas.getGraphicsContext2D();
 
         graphics.setFill(Color.WHITE);
-        graphics.fillRect(getX(), getY(), 10, 10);
+        graphics.fillRect(super.getXpos(), super.getYpos(), super.getWidth(), super.getHeight());
 
     }
 
@@ -108,10 +93,11 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
         graphics.setFill(getTrailColor());
         
-        graphics.fillRect(getX(), getY(), 2, 2);
+        graphics.fillRect(super.getXpos(), super.getYpos(), 2, 2);
 
-        setX(getX() + getVector()[0]);
-        setY(getY() + getVector()[1]);
+        super.setXpos(super.getXpos() + getVector()[0]);
+        super.setYpos(super.getYpos() + getVector()[1]);
+        System.out.println("new x:" + super.getXpos());
     }
 
 }

@@ -48,8 +48,8 @@ public class MissileCommand extends Application {
 
         testMissile = new Missile(0,0,3,Color.RED);
         
-        testMissile.setTarget(WIDTH, HEIGHT);
-        testMissile.setStartPos(0,0);
+       testMissile.setTarget(WIDTH, HEIGHT);
+        
         
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         primaryStage.setTitle("Missle Command");
@@ -70,11 +70,13 @@ public class MissileCommand extends Application {
             gc.clearRect(0, 0, WIDTH, HEIGHT);
             gc.setFill(Color.BLACK);
             gc.fillRect(0, 0, WIDTH, HEIGHT);
-
-            //todo : redo start Pos to reflect the x and y you
-            //build missile with
-            testMissile.update(canvas);
-            testMissile.draw(canvas);
+            
+            //try a do while. and vector math is bad
+            while (Math.abs(testMissile.getXpos()) < Math.abs(testMissile.getTargetPos()[0]) &&
+                    Math.abs(testMissile.getYpos()) < Math.abs(testMissile.getTargetPos()[1])) {
+                testMissile.update(canvas);
+                testMissile.draw(canvas);
+            }
         }
     }
 }

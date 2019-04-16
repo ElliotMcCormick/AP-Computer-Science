@@ -11,6 +11,13 @@ package missilecommand;
  */
 public abstract class ExplodingElement extends GameElement{
     private double explosionRadius = 0.0;
+
+    public ExplodingElement() {
+    }
+
+    public ExplodingElement(double x, double y, double wid, double ht) {
+        super(x, y, wid, ht);
+    }
     
     public double getExplosionRadius(){
         return explosionRadius;
