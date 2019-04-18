@@ -74,7 +74,8 @@ public class MissileCommand extends Application {
             testMissile.update(canvas);
             testMissile.draw(canvas);
             
-            if (testMissile.
+           // if (testMissile. // at end point){
+                    //explode. in explode make sure erases line. 
             
         }
     }

@@ -21,11 +21,11 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     private double[] startPos;
     private double[] targetPos;
 
-    public Missile(double x, double y, double travelTime, Color trailColor) {
+    public Missile(double x, double y, double speed, Color trailColor) {
         super(x, y, 2, 2);
         setStartPos();
         setTarget(x,y);
-        this.speed = travelTime;
+        this.speed = speed;
         this.trailColor = trailColor;
     }
 
