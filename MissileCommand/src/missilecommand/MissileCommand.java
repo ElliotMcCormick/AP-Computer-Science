@@ -67,16 +67,15 @@ public class MissileCommand extends Application {
 
         public void handle(long now) {
             GraphicsContext gc = canvas.getGraphicsContext2D();
-            gc.clearRect(0, 0, WIDTH, HEIGHT);
-            gc.setFill(Color.BLACK);
-            gc.fillRect(0, 0, WIDTH, HEIGHT);
+           
             
-            //try a do while. and vector math is bad
-            while (Math.abs(testMissile.getXpos()) < Math.abs(testMissile.getTargetPos()[0]) &&
-                    Math.abs(testMissile.getYpos()) < Math.abs(testMissile.getTargetPos()[1])) {
-                testMissile.update(canvas);
-                testMissile.draw(canvas);
-            }
+            
+           
+            testMissile.update(canvas);
+            testMissile.draw(canvas);
+            
+            if (testMissile.
+            
         }
     }
 }

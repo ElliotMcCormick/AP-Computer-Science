@@ -21,20 +21,20 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     private double[] startPos;
     private double[] targetPos;
 
-    public Missile(double x, double y, double speed, Color trailColor) {
-        super(x, y, 10, 10);
+    public Missile(double x, double y, double travelTime, Color trailColor) {
+        super(x, y, 2, 2);
         setStartPos();
         setTarget(x,y);
-        this.speed = speed;
+        this.speed = travelTime;
         this.trailColor = trailColor;
     }
 
 
-    public double getSpeed() {
+    public double getTravelTime() {
         return speed;
     }
 
-    public void setSpeed(double speed) {
+    public void setTravelTime(double speed) {
         this.speed = speed;
     }
 
@@ -68,8 +68,9 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     
     public double[] getVector(){
         double[] vector = new double[2];
-        vector[0] = speed / (targetPos[0] - startPos[0]);
-        vector[1] = speed / (targetPos[1] - startPos[1]);
+        double magnitude = Math.sqrt(Math.pow(targetPos[0] - startPos[0], 2) + Math.pow(targetPos[1] - startPos[1], 2));
+        vector[0] = (targetPos[0] - startPos[0]) / (magnitude / speed);
+        vector[1] = (targetPos[1] - startPos[1]) / (magnitude / speed);
         return vector;
     }
 
@@ -98,6 +99,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         super.setXpos(super.getXpos() + getVector()[0]);
         super.setYpos(super.getYpos() + getVector()[1]);
         System.out.println("new x:" + super.getXpos());
+        System.out.println("new y:" + super.getYpos());
     }
 
 }
