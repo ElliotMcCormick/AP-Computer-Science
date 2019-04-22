@@ -5,6 +5,8 @@
  */
 package missilecommand;
 
+import javafx.scene.canvas.Canvas;
+
 /**
  *
  * @author McCormick.Elliot19
@@ -23,7 +25,7 @@ public abstract class ExplodingElement extends GameElement{
         return explosionRadius;
     }
     
-    public abstract void explodeElement(GameElement element);
+    public abstract void explodeElement(Canvas canvas);
     
     public boolean elementInExplosion(ExplodingElement element){
         
