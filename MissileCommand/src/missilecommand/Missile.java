@@ -15,22 +15,24 @@ import javafx.scene.paint.Color;
  */
 public class Missile extends ExplodingElement implements Renderable, Updateable {
 
-    
     private double speed;
     private Color trailColor;
     private double[] startPos;
     private double[] targetPos;
     private double[] vector;
     private boolean elementExploded;
-    
+
     public Missile(double x, double y, double speed, Color trailColor) {
         super(x, y, 2, 2);
         setStartPos();
-        setTarget(x,y);
+        setTarget(x, y);
         this.speed = speed;
         this.trailColor = trailColor;
     }
 
+    public boolean isElementExploded() {
+        return elementExploded;
+    }
 
     public double getTravelTime() {
         return speed;
@@ -67,38 +69,26 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     public double[] getTargetPos() {
         return targetPos;
     }
-    
-    public boolean atTarget(){
+
+    public boolean atTarget() {
         //if the difference between the pos and the target pos is within the amount the 
-        //missile move each time it is at the target
-        if (Math.abs(getXpos() - targetPos[0]) <= vector[0] && Math.abs(getYpos() - targetPos[1]) <= vector[1]){
-            return true;
-        }
-        return false;
+        //missile move each time it is at the target    
+        return Math.abs(getXpos() - targetPos[0]) <= vector[0] && Math.abs(getYpos() - targetPos[1]) <= vector[1];
     }
-    
-    public void setVector(){
+
+    public void setVector() {
         vector = new double[2];
         double magnitude = Math.sqrt(Math.pow(targetPos[0] - startPos[0], 2) + Math.pow(targetPos[1] - startPos[1], 2));
         vector[0] = (targetPos[0] - startPos[0]) / (magnitude / speed);
         vector[1] = (targetPos[1] - startPos[1]) / (magnitude / speed);
-        
+
     }
 
     @Override
     public void explodeElement(Canvas canvas) {
-       
-        Explosion explosion = new Explosion(super.getXpos() -(super.getExplosionRadius()/2), super.getYpos() - (super.getExplosionRadius()/2), 5, 5);
-        explosion.draw(canvas);
-        
-        for (int i = 0; i < 2; i++){
-            explosion.update(canvas);
-            explosion.draw(canvas);
-        }
-        
         vector[0] = 0;
         vector[1] = 0;
-        
+
         elementExploded = true;
     }
 
@@ -116,17 +106,17 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         GraphicsContext graphics = canvas.getGraphicsContext2D();
 
         graphics.setFill(getTrailColor());
-        
+
         graphics.fillRect(super.getXpos(), super.getYpos(), 2, 2);
 
-        if (!elementExploded){
+        if (!isElementExploded()) {
             setVector();
         }
-        
-        if (atTarget()){
-            explodeElement(canvas);    
+
+        if (atTarget()) {
+            explodeElement(canvas);
         }
-        
+
         super.setXpos(super.getXpos() + vector[0]);
         super.setYpos(super.getYpos() + vector[1]);
     }

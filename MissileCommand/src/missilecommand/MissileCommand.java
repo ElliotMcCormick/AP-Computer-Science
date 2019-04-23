@@ -33,8 +33,9 @@ public class MissileCommand extends Application {
 
     RedrawTimer timer = new RedrawTimer();
 
-    
     Missile testMissile;
+    Explosion explosion;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         StackPane root = new StackPane();
@@ -46,11 +47,10 @@ public class MissileCommand extends Application {
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, WIDTH, HEIGHT);
 
-        testMissile = new Missile(0,0,3,Color.RED);
-        
-       testMissile.setTarget(WIDTH/2, HEIGHT/2);
-        
-        
+        testMissile = new Missile(0, 0, 3, Color.RED);
+
+        testMissile.setTarget(WIDTH / 2, HEIGHT / 2);
+
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         primaryStage.setTitle("Missle Command");
         primaryStage.setScene(scene);
@@ -67,14 +67,16 @@ public class MissileCommand extends Application {
 
         public void handle(long now) {
             GraphicsContext gc = canvas.getGraphicsContext2D();
-           
-            
-            
-           
+
             testMissile.update(canvas);
             testMissile.draw(canvas);
+            if (testMissile.isElementExploded()) {
+                explosion = new Explosion(testMissile.getXpos() - (testMissile.getWidth() / 2), testMissile.getYpos() - (testMissile.getHeight() / 2), 5, 5);
+                explosion.update(canvas);
+                explosion.draw(canvas);
+            }
             
-            
+
         }
     }
 }

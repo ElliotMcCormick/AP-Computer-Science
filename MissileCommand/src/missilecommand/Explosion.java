@@ -29,18 +29,30 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
     
     @Override
     public void update(Canvas canvas) {
+        int changeInSize = 30;
         
-        if (width < super.getExplosionRadius() && growing){
-            super.setWidth(width + 30);
-            super.setHeight(height + 30);
+        if (super.getWidth() < super.getExplosionRadius() && growing){
+            super.setWidth(super.getWidth() + changeInSize);
+            super.setHeight(super.getHeight() + changeInSize);
+            super.setXpos(super.getXpos() - (super.getWidth() / 2));
+            super.setYpos(super.getYpos() - (super.getHeight() / 2));
             
-            if (width >= super.getExplosionRadius()){
-                growing = false;
-            }
+            System.out.println("growing");
+            System.out.println("radius: " + getWidth());
+            System.out.println("growing" + growing);
+            
+            
         }
-        else if (width > 0 && !growing){
-            super.setWidth(width - 30);
-            super.setHeight(height - 30);
+        else if (super.getWidth() >= super.getExplosionRadius()){
+                growing = false;
+                System.out.println("growing now false");
+        }
+        else if (super.getWidth() > 0 && !growing){
+            super.setWidth(super.getWidth() - changeInSize);
+            super.setHeight(super.getHeight() - changeInSize);
+            super.setXpos(super.getXpos() - (super.getWidth() / 2));
+            super.setYpos(super.getYpos() - (super.getHeight() / 2));
+            System.out.println("shrinking");
         }
     }
 
