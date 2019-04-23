@@ -48,7 +48,7 @@ public class MissileCommand extends Application {
 
         testMissile = new Missile(0,0,3,Color.RED);
         
-       testMissile.setTarget(WIDTH, HEIGHT);
+       testMissile.setTarget(WIDTH/2, HEIGHT/2);
         
         
         Scene scene = new Scene(root, WIDTH, HEIGHT);
@@ -74,10 +74,7 @@ public class MissileCommand extends Application {
             testMissile.update(canvas);
             testMissile.draw(canvas);
             
-            if (testMissile.atTarget()){
-                    //explode. in explode make sure erases line. 
-                testMissile.explodeElement(canvas);
-            }
+            
         }
     }
 }

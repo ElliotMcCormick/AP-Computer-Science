@@ -21,6 +21,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     private double[] startPos;
     private double[] targetPos;
     private double[] vector;
+    private boolean elementExploded;
     
     public Missile(double x, double y, double speed, Color trailColor) {
         super(x, y, 2, 2);
@@ -68,7 +69,9 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     }
     
     public boolean atTarget(){
-        if (getXpos() == targetPos[0] && getYpos() == targetPos[1]){
+        //if the difference between the pos and the target pos is within the amount the 
+        //missile move each time it is at the target
+        if (Math.abs(getXpos() - targetPos[0]) <= vector[0] && Math.abs(getYpos() - targetPos[1]) <= vector[1]){
             return true;
         }
         return false;
@@ -84,13 +87,19 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
     @Override
     public void explodeElement(Canvas canvas) {
-        GraphicsContext graphics = canvas.getGraphicsContext2D();
-
-        graphics.setFill(Color.WHITE);
-        graphics.fillOval(super.getXpos(), super.getYpos(), super.getWidth(), super.getHeight());
+       
+        Explosion explosion = new Explosion(super.getXpos() -(super.getExplosionRadius()/2), super.getYpos() - (super.getExplosionRadius()/2), 5, 5);
+        explosion.draw(canvas);
+        
+        for (int i = 0; i < 2; i++){
+            explosion.update(canvas);
+            explosion.draw(canvas);
+        }
         
         vector[0] = 0;
         vector[1] = 0;
+        
+        elementExploded = true;
     }
 
     @Override
@@ -110,12 +119,16 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         
         graphics.fillRect(super.getXpos(), super.getYpos(), 2, 2);
 
-        setVector();
+        if (!elementExploded){
+            setVector();
+        }
+        
+        if (atTarget()){
+            explodeElement(canvas);    
+        }
         
         super.setXpos(super.getXpos() + vector[0]);
         super.setYpos(super.getYpos() + vector[1]);
-        System.out.println("new x:" + super.getXpos());
-        System.out.println("new y:" + super.getYpos());
     }
 
 }
