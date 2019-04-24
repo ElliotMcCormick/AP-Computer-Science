@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -47,17 +48,27 @@ public class MissileCommand extends Application {
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, WIDTH, HEIGHT);
 
-        testMissile = new Missile(0, 0, 3, Color.RED);
-
-        testMissile.setTarget(WIDTH / 2, HEIGHT / 2);
-        explosion = new Explosion(testMissile.getTargetPos()[0], testMissile.getTargetPos()[1], 1, 1);
-
-        
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         primaryStage.setTitle("Missle Command");
         primaryStage.setScene(scene);
         primaryStage.show();
         timer.start();
+
+        testMissile = new Missile(0, 0, 3, Color.RED);
+        testMissile.setTarget(-1, -1);
+
+        scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent event) {
+                
+                    //add a missile to array that will eventually exist
+                    System.out.println("setting target pos!");
+                    testMissile.setTarget(event.getSceneX(), event.getSceneY());
+                    explosion = new Explosion(testMissile.getTargetPos()[0], testMissile.getTargetPos()[1], 1, 1);
+
+                
+            }
+
+        });
 
     }
 
@@ -70,15 +81,16 @@ public class MissileCommand extends Application {
         public void handle(long now) {
             GraphicsContext gc = canvas.getGraphicsContext2D();
 
-            testMissile.update(canvas);
-            testMissile.draw(canvas);
-            
+            if (testMissile.getTargetPos()[0] >= 0 && testMissile.getTargetPos()[1] >= 0) {
+                testMissile.update(canvas);
+                testMissile.draw(canvas);
 
-            if (testMissile.isElementExploded()) {
-                explosion.update(canvas);
-                explosion.draw(canvas);
+                if (testMissile.isElementExploded()) {
+                    explosion.update(canvas);
+                    explosion.draw(canvas);
+                }
             }
-
         }
+
     }
 }

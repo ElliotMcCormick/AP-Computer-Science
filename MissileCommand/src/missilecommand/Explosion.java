@@ -32,7 +32,7 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
 
     @Override
     public void update(Canvas canvas) {
-        int changeInSize = 5;
+        int changeInSize = 2;
 
         GraphicsContext graphics = canvas.getGraphicsContext2D();
 
@@ -48,9 +48,6 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
             super.setHeight(super.getHeight() + changeInSize);
             super.setXpos(initialX - (super.getWidth() / 2));
             super.setYpos(initialY - (super.getHeight() / 2));
-
-            System.out.println("x pos : " + getXpos());
-            System.out.println("y pos : " + getYpos());
         }
 
         if (super.getWidth() > 0 && !growing) {

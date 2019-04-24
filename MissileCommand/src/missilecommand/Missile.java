@@ -86,40 +86,50 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
     @Override
     public void explodeElement(Canvas canvas) {
-        vector[0] = 0;
-        vector[1] = 0;
+        GraphicsContext graphics = canvas.getGraphicsContext2D();
 
         elementExploded = true;
+
+        graphics.setFill(Color.BLACK);
+        graphics.fillRect(super.getXpos(), super.getYpos(), 2, 2);
+
     }
 
     @Override
     public void draw(Canvas canvas) {
         GraphicsContext graphics = canvas.getGraphicsContext2D();
 
-        graphics.setFill(Color.WHITE);
-        graphics.fillRect(super.getXpos(), super.getYpos(), super.getWidth(), super.getHeight());
-
+        if (!isElementExploded()) {
+            graphics.setFill(Color.WHITE);
+            graphics.fillRect(super.getXpos(), super.getYpos(), super.getWidth(), super.getHeight());
+        }
     }
 
     @Override
     public void update(Canvas canvas) {
+        int distanceBehind = 150;
         GraphicsContext graphics = canvas.getGraphicsContext2D();
 
-        graphics.setFill(getTrailColor());
-        graphics.fillRect(super.getXpos(), super.getYpos(), 2, 2);
-        
-        
+        setVector();
+
+       
         
         if (!isElementExploded()) {
-            setVector();
+            graphics.setFill(getTrailColor());
+            graphics.fillRect(super.getXpos(), super.getYpos(), 2, 2);
+
+            super.setXpos(super.getXpos() + vector[0]);
+            super.setYpos(super.getYpos() + vector[1]);
+        } else {
+            graphics.setFill(Color.BLACK);
+            graphics.fillRect(super.getXpos() - (distanceBehind * vector[0]), super.getYpos() - (distanceBehind * vector[1]), 5, 5);
+            super.setXpos(super.getXpos() + (3 * vector[0]));
+            super.setYpos(super.getYpos() + (3 * vector[1]));
         }
 
         if (atTarget()) {
             explodeElement(canvas);
         }
-
-        super.setXpos(super.getXpos() + vector[0]);
-        super.setYpos(super.getYpos() + vector[1]);
     }
 
 }
