@@ -106,9 +106,10 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         GraphicsContext graphics = canvas.getGraphicsContext2D();
 
         graphics.setFill(getTrailColor());
-
         graphics.fillRect(super.getXpos(), super.getYpos(), 2, 2);
-
+        
+        
+        
         if (!isElementExploded()) {
             setVector();
         }

@@ -50,7 +50,9 @@ public class MissileCommand extends Application {
         testMissile = new Missile(0, 0, 3, Color.RED);
 
         testMissile.setTarget(WIDTH / 2, HEIGHT / 2);
+        explosion = new Explosion(testMissile.getTargetPos()[0], testMissile.getTargetPos()[1], 1, 1);
 
+        
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         primaryStage.setTitle("Missle Command");
         primaryStage.setScene(scene);
@@ -70,12 +72,12 @@ public class MissileCommand extends Application {
 
             testMissile.update(canvas);
             testMissile.draw(canvas);
+            
+
             if (testMissile.isElementExploded()) {
-                explosion = new Explosion(testMissile.getXpos() - (testMissile.getWidth() / 2), testMissile.getYpos() - (testMissile.getHeight() / 2), 5, 5);
                 explosion.update(canvas);
                 explosion.draw(canvas);
             }
-            
 
         }
     }
