@@ -5,6 +5,7 @@
  */
 package missilecommand;
 
+import java.util.ArrayList;
 import javafx.scene.canvas.Canvas;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -32,10 +33,14 @@ public class MissileCommand extends Application {
     private static final int HEIGHT = 600;
     private static Canvas canvas;
 
-    RedrawTimer timer = new RedrawTimer();
+    private int missileNumber;
 
-    Missile testMissile;
-    Explosion explosion;
+    private RedrawTimer timer = new RedrawTimer();
+
+    private GameState state;
+    private Missile[] missileList;
+    private Missile testMissile;
+    private Explosion explosion;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -52,20 +57,33 @@ public class MissileCommand extends Application {
         primaryStage.setTitle("Missle Command");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        state = new GameState();
+        missileList = new Missile[30];
+        missileNumber = 0;
+
+        for (int i = 0; i < missileList.length; i++) {
+            missileList[i] = (new Missile(WIDTH, HEIGHT, 3, Color.RED));
+        }
+        for (Missile missile : missileList) {
+            missile.setTarget(-1, -1);
+            state.add(missile);
+        }
+
         timer.start();
 
-        testMissile = new Missile(0, 0, 3, Color.RED);
+        testMissile = new Missile(WIDTH, HEIGHT, 3, Color.RED);
         testMissile.setTarget(-1, -1);
 
         scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
-                
-                    //add a missile to array that will eventually exist
-                    System.out.println("setting target pos!");
-                    testMissile.setTarget(event.getSceneX(), event.getSceneY());
-                    explosion = new Explosion(testMissile.getTargetPos()[0], testMissile.getTargetPos()[1], 1, 1);
-
-                
+                if (missileNumber < missileList.length) {
+                    missileList[missileNumber].setTarget(event.getSceneX(), event.getSceneY());
+                    explosion = new Explosion(missileList[missileNumber].getTargetPos()[0], missileList[missileNumber].getTargetPos()[1], 1, 1);
+                    missileNumber++;
+                } else {
+                    System.out.println("out of missiles");
+                }
             }
 
         });
@@ -81,11 +99,13 @@ public class MissileCommand extends Application {
         public void handle(long now) {
             GraphicsContext gc = canvas.getGraphicsContext2D();
 
-            if (testMissile.getTargetPos()[0] >= 0 && testMissile.getTargetPos()[1] >= 0) {
-                testMissile.update(canvas);
-                testMissile.draw(canvas);
+            //add missile to list when clicked then check if missile is not null update it?
+            if (missileList[missileNumber].getTargetPos()[0] >= 0 && missileList[missileNumber].getTargetPos()[1] >= 0) {
+                missileList[missileNumber].update(canvas);
+                missileList[missileNumber].draw(canvas);
+                System.out.println("missle update?");
 
-                if (testMissile.isElementExploded()) {
+                if (missileList[missileNumber].isElementExploded()) {
                     explosion.update(canvas);
                     explosion.draw(canvas);
                 }

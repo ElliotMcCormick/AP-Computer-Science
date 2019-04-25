@@ -23,7 +23,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     private boolean elementExploded;
 
     public Missile(double x, double y, double speed, Color trailColor) {
-        super(x, y, 2, 2);
+        super(x, y, 1, 1);
         setStartPos();
         setTarget(x, y);
         this.speed = speed;
@@ -72,8 +72,10 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
     public boolean atTarget() {
         //if the difference between the pos and the target pos is within the amount the 
-        //missile move each time it is at the target    
-        return Math.abs(getXpos() - targetPos[0]) <= vector[0] && Math.abs(getYpos() - targetPos[1]) <= vector[1];
+        //missile move each time it is at the target 
+        
+
+        return Math.abs(getXpos() - targetPos[0]) <= Math.abs(vector[0]) && Math.abs(getYpos() - targetPos[1]) <= Math.abs(vector[1]);
     }
 
     public void setVector() {
@@ -107,24 +109,24 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
     @Override
     public void update(Canvas canvas) {
-        int distanceBehind = 150;
+        double distanceBehind = targetPos[0] - startPos[0];
         GraphicsContext graphics = canvas.getGraphicsContext2D();
 
         setVector();
 
-       
-        
         if (!isElementExploded()) {
-            graphics.setFill(getTrailColor());
-            graphics.fillRect(super.getXpos(), super.getYpos(), 2, 2);
+            graphics.setStroke(getTrailColor());
+            graphics.setLineWidth(1);
+            graphics.strokeLine(startPos[0], startPos[1], super.getXpos(), super.getYpos());
 
             super.setXpos(super.getXpos() + vector[0]);
             super.setYpos(super.getYpos() + vector[1]);
         } else {
-            graphics.setFill(Color.BLACK);
-            graphics.fillRect(super.getXpos() - (distanceBehind * vector[0]), super.getYpos() - (distanceBehind * vector[1]), 5, 5);
-            super.setXpos(super.getXpos() + (3 * vector[0]));
-            super.setYpos(super.getYpos() + (3 * vector[1]));
+            graphics.setStroke(Color.BLACK);
+            graphics.setLineWidth(4);
+            graphics.strokeLine(startPos[0], startPos[1], super.getXpos() - (distanceBehind * vector[0]/Math.abs(vector[0])), super.getYpos() - (distanceBehind * vector[1]/Math.abs(vector[1])));
+            super.setXpos(super.getXpos() + (300 * vector[0]));
+            super.setYpos(super.getYpos() + (300 * vector[1]));
         }
 
         if (atTarget()) {
