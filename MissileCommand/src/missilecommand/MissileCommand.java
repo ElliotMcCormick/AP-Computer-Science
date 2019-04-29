@@ -81,6 +81,7 @@ public class MissileCommand extends Application {
 
         timer.start();
 
+       
         scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
                 if (missileNumber < 30) {
@@ -107,7 +108,7 @@ public class MissileCommand extends Application {
             GraphicsContext gc = canvas.getGraphicsContext2D();
 
             for (MissilePicture pic : missilePicList) {
-                state.add(0, pic);
+                state.add(pic);
             }
 
             state.updateAll(canvas);
