@@ -17,13 +17,11 @@ public class GameState {
     private List<Renderable> renderables;
     private List<Updateable> updateables;
     private List<GameElement> collideables;
-    private List<Missile> missiles;
     
     public GameState(){
         renderables = new ArrayList();
         updateables = new ArrayList();
         collideables = new ArrayList();
-        missiles = new ArrayList();
     }
     
     
@@ -38,10 +36,6 @@ public class GameState {
         if (object instanceof GameElement){
             collideables.add((GameElement)object);
         }
-        if (object instanceof Missile){
-            missiles.add((Missile)object);
-        }
-        
     }
     
     public void add(int index, Object object){
@@ -55,10 +49,7 @@ public class GameState {
         if (object instanceof GameElement){
             collideables.add(index, (GameElement)object);
         }
-         if (object instanceof Missile){
-            missiles.add(index, (Missile)object);
-        }
-        
+    
     }
     
     public void remove(Object object){
@@ -71,9 +62,7 @@ public class GameState {
         if (object instanceof GameElement){
             collideables.remove((GameElement)object);
         }
-         if (object instanceof Missile){
-            missiles.remove((Missile)object);
-        }
+  
     }
   
     public void updateAll(Canvas canvas){

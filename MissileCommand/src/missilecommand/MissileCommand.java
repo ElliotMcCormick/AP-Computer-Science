@@ -6,6 +6,7 @@
 package missilecommand;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import javafx.scene.canvas.Canvas;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -31,6 +32,9 @@ public class MissileCommand extends Application {
      */
     private static final int WIDTH = 900;
     private static final int HEIGHT = 600;
+
+    private static final int LAUNCH_POINT_X = WIDTH / 2;
+    private static final int LAUNCH_POINT_Y = HEIGHT - 50;
     private static Canvas canvas;
 
     private int missileNumber;
@@ -39,8 +43,11 @@ public class MissileCommand extends Application {
 
     private GameState state;
     private ArrayList<Missile> missileList;
-    private Missile testMissile;
     private ArrayList<Explosion> explosionList;
+
+    //all the drawing stuff that isn't missles
+    private Background ground;
+    private ArrayList<MissilePicture> missilePicList;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -59,26 +66,30 @@ public class MissileCommand extends Application {
         primaryStage.show();
 
         state = new GameState();
-        
+
         explosionList = new ArrayList<Explosion>();
         missileList = new ArrayList<Missile>();
-        missileList.add(new Missile(WIDTH, HEIGHT, 3, Color.RED));
+        missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, 3, Color.RED));
         missileNumber = 0;
 
-        timer.start();
+        ground = new Background(Color.CORNFLOWERBLUE, 0, HEIGHT - 40, WIDTH);
+        state.add(ground);
+        missilePicList = new ArrayList<MissilePicture>();
+        for (int i = 0; i < 30 * 11; i += 11) {
+            missilePicList.add(new MissilePicture(Color.CORAL, 10 + i, HEIGHT - 20));
+        }
 
-//        testMissile = new Missile(WIDTH, HEIGHT, 3, Color.RED);
-//        testMissile.setTarget(-1, -1);
+        timer.start();
 
         scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
                 if (missileNumber < 30) {
-                    missileList.add(new Missile(WIDTH, HEIGHT, 3, Color.RED));
+                    missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, 3, Color.RED));
                     missileList.get(missileNumber).setTarget(event.getSceneX(), event.getSceneY());
                     explosionList.add(new Explosion(missileList.get(missileNumber).getTargetPos()[0], missileList.get(missileNumber).getTargetPos()[1], 1, 1));
                     missileNumber++;
                 } else {
-                    System.out.println("out of missiles");
+                    System.out.println("OUT OF MISSILES!");
                 }
             }
 
@@ -95,20 +106,27 @@ public class MissileCommand extends Application {
         public void handle(long now) {
             GraphicsContext gc = canvas.getGraphicsContext2D();
 
-            //do for all at once
-            for (int i = 0; i < missileList.size(); i++){
+            for (MissilePicture pic : missilePicList) {
+                state.add(0, pic);
+            }
+
+            state.updateAll(canvas);
+            state.drawAll(canvas);
+
+            for (int i = 0; i < missileList.size(); i++) {
                 if (missileList.get(i).getTargetPos()[0] >= 0 && missileList.get(i).getTargetPos()[1] >= 0) {
                     missileList.get(i).update(canvas);
                     missileList.get(i).draw(canvas);
-                    
-                    if(missileList.get(i).isExploded()){
+
+                    if (missileList.get(i).isExploded()) {
                         explosionList.get(i).update(canvas);
                         explosionList.get(i).draw(canvas);
+
+                        state.remove(missilePicList.get(i));
                     }
                 }
             }
 //           
-            
 
         }
     }
