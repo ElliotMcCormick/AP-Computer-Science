@@ -21,6 +21,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     private double[] targetPos;
     private double[] vector;
     private boolean elementExploded;
+    private boolean erased;
 
     public Missile(double x, double y, double speed, Color trailColor) {
         super(x, y, 1, 1);
@@ -28,10 +29,16 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         setTarget(-1, -1);
         this.speed = speed;
         this.trailColor = trailColor;
+        this.elementExploded = false;
+        this.erased = false;
     }
 
     public boolean isExploded() {
         return elementExploded;
+    }
+
+    public boolean isErased() {
+        return erased;
     }
 
     public double getTravelTime() {
@@ -73,7 +80,6 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     public boolean atTarget() {
         //if the difference between the pos and the target pos is within the amount the 
         //missile move each time it is at the target 
-        
 
         return Math.abs(getXpos() - targetPos[0]) <= Math.abs(vector[0]) && Math.abs(getYpos() - targetPos[1]) <= Math.abs(vector[1]);
     }
@@ -124,9 +130,12 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         } else {
             graphics.setStroke(Color.BLACK);
             graphics.setLineWidth(4);
-            graphics.strokeLine(startPos[0], startPos[1], super.getXpos() - (distanceBehind * vector[0]/Math.abs(vector[0])), super.getYpos() - (distanceBehind * vector[1]/Math.abs(vector[1])));
+            graphics.strokeLine(startPos[0], startPos[1], super.getXpos() - (distanceBehind * vector[0] / Math.abs(vector[0])), super.getYpos() - (distanceBehind * vector[1] / Math.abs(vector[1])));
             super.setXpos(super.getXpos() + (300 * vector[0]));
             super.setYpos(super.getYpos() + (300 * vector[1]));
+//            if ((startPos[0] - super.getXpos() - (distanceBehind * vector[0] / Math.abs(vector[0]))) >= distanceBehind) {
+//                erased = true;
+//            }
         }
 
         if (atTarget()) {
