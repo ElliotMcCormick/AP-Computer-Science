@@ -25,12 +25,12 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     public Missile(double x, double y, double speed, Color trailColor) {
         super(x, y, 1, 1);
         setStartPos();
-        setTarget(x, y);
+        setTarget(-1, -1);
         this.speed = speed;
         this.trailColor = trailColor;
     }
 
-    public boolean isElementExploded() {
+    public boolean isExploded() {
         return elementExploded;
     }
 
@@ -101,7 +101,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     public void draw(Canvas canvas) {
         GraphicsContext graphics = canvas.getGraphicsContext2D();
 
-        if (!isElementExploded()) {
+        if (!isExploded()) {
             graphics.setFill(Color.WHITE);
             graphics.fillRect(super.getXpos(), super.getYpos(), super.getWidth(), super.getHeight());
         }
@@ -114,7 +114,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
         setVector();
 
-        if (!isElementExploded()) {
+        if (!isExploded()) {
             graphics.setStroke(getTrailColor());
             graphics.setLineWidth(1);
             graphics.strokeLine(startPos[0], startPos[1], super.getXpos(), super.getYpos());

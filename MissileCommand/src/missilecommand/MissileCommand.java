@@ -64,10 +64,6 @@ public class MissileCommand extends Application {
         missileNumber = 0;
 
         
-        for (Missile missile : missileList) {
-            missile.setTarget(-1, -1);
-            state.add(missile);
-        }
 
         timer.start();
 
@@ -103,12 +99,16 @@ public class MissileCommand extends Application {
                 missileList.get(missileNumber).update(canvas);
                 missileList.get(missileNumber).draw(canvas);
 
-                if (missileList.get(missileNumber).isElementExploded()) {
+                if (missileList.get(missileNumber).isExploded()) {
                     explosion.update(canvas);
                     explosion.draw(canvas);
-                    missileList.add(new Missile(WIDTH, HEIGHT, 3, Color.RED));
-                    missileNumber++;
+                    missileList.add(new Missile(WIDTH, HEIGHT, 3, Color.RED));   
+                    if (explosion.isComplete()){
+                        missileNumber++;
+                    }
                 }
+                
+                
             }
         }
 

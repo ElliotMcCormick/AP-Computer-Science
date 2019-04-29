@@ -15,17 +15,20 @@ import javafx.scene.paint.Color;
  */
 public class Explosion extends ExplodingElement implements Updateable, Renderable {
 
-    public boolean growing;
+    private boolean growing;
     private double initialX;
     private double initialY;
+    private boolean complete;
 
     public Explosion() {
         this.growing = true;
+        this.complete = false;
     }
 
     public Explosion(double x, double y, double wid, double ht) {
         super(x, y, wid, ht);
         this.growing = true;
+        this.complete = false;
         this.initialX = x;
         this.initialY = y;
     }
@@ -57,6 +60,10 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
             super.setXpos(initialX - (super.getWidth() / 2));
             super.setYpos(initialY - (super.getHeight() / 2));
         }
+        
+        if (super.getWidth() <= 0){
+            complete = true;
+        }
     }
 
     @Override
@@ -70,6 +77,10 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
     @Override
     public void explodeElement(Canvas canvas) {
         throw new UnsupportedOperationException("Not yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean isComplete() {
+        return complete;
     }
 
 }
