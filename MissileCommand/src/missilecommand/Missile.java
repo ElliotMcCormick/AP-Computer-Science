@@ -22,6 +22,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     private double[] vector;
     private boolean elementExploded;
     private boolean erased;
+    private static final double TRAILING_LINE_SPEED = 3;
 
     public Missile(double x, double y, double speed, Color trailColor) {
         super(x, y, 1, 1);
@@ -80,8 +81,10 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     public boolean atTarget() {
         //if the difference between the pos and the target pos is within the amount the 
         //missile move each time it is at the target 
-
-        return Math.abs(getXpos() - targetPos[0]) <= Math.abs(vector[0]) && Math.abs(getYpos() - targetPos[1]) <= Math.abs(vector[1]);
+        if (!isExploded()) {
+            return Math.abs(getXpos() - targetPos[0]) <= Math.abs(vector[0]) && Math.abs(getYpos() - targetPos[1]) <= Math.abs(vector[1]);
+        } 
+        return Math.abs(getXpos() - targetPos[0]) <= Math.abs(TRAILING_LINE_SPEED * vector[0]) && Math.abs(getYpos() - targetPos[1]) <= Math.abs(TRAILING_LINE_SPEED * vector[1]);
     }
 
     public void setVector() {
@@ -130,24 +133,25 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         } else {
             graphics.setStroke(Color.BLACK);
             graphics.setLineWidth(4);
-            // - (distanceBehind * vector[0] / Math.abs(vector[0]))
-            // - (distanceBehind * vector[1] / Math.abs(vector[1]))
-            
-            
-            graphics.strokeLine(startPos[0], startPos[1], super.getXpos(), super.getYpos());
-            super.setXpos(super.getXpos() + (5 * vector[0]));
-            super.setYpos(super.getYpos() + (5 * vector[1]));
            
-            if (atTarget()){
+
+            if (atTarget()) {
                 vector[0] = 0;
                 vector[1] = 0;
+                System.out.println("vector to 0");
             }
+
+            graphics.strokeLine(startPos[0], startPos[1], super.getXpos(), super.getYpos());
+           
+            super.setXpos(super.getXpos() + (TRAILING_LINE_SPEED * vector[0]));
+            super.setYpos(super.getYpos() + (TRAILING_LINE_SPEED * vector[1]));
+
         }
 
         if (atTarget()) {
             super.setXpos(startPos[0]);
             super.setYpos(startPos[1]);
-            explodeElement(canvas);      
+            explodeElement(canvas);
         }
     }
 

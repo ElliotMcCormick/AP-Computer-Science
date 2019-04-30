@@ -62,9 +62,8 @@ public class MissileCommand extends Application {
         gc.clearRect(0, 0, WIDTH, HEIGHT);
         
         //set screen black
-        
-//        gc.setFill(Color.BLACK);
-//        gc.fillRect(0, 0, WIDTH, HEIGHT);
+        gc.setFill(Color.BLACK);
+        gc.fillRect(0, 0, WIDTH, HEIGHT);
 
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         primaryStage.setTitle("Missle Command");
