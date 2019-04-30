@@ -50,6 +50,7 @@ public class MissileCommand extends Application {
     //all the drawing stuff that isn't missles
     private Background ground;
     private ArrayList<MissilePicture> missilePicList;
+    private ArrayList<CityPicture> cityList;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -76,12 +77,20 @@ public class MissileCommand extends Application {
 
         ground = new Background(Color.CORNFLOWERBLUE, 0, HEIGHT - 40, WIDTH);
         state.add(ground);
+
         missilePicList = new ArrayList<MissilePicture>();
         for (int i = 0; i < 30 * 11; i += 11) {
             missilePicList.add(new MissilePicture(Color.CORAL, 10 + i, HEIGHT - 20));
         }
-
         for (MissilePicture pic : missilePicList) {
+            state.add(pic);
+        }
+
+        cityList = new ArrayList<CityPicture>();
+        for (int i = 0; i < 6 * WIDTH / 6; i += WIDTH / 6) {
+            cityList.add(new CityPicture(Color.RED, 50 + i, HEIGHT - 45, 100, 100));
+        }
+        for (CityPicture pic : cityList) {
             state.add(pic);
         }
 
@@ -90,13 +99,16 @@ public class MissileCommand extends Application {
         scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
                 if (missileNumber < 30) {
-                    missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, 3, Color.RED));
-                    missileList.get(missileNumber).setTarget(event.getSceneX(), event.getSceneY());
-                    explosionList.add(new Explosion(missileList.get(missileNumber).getTargetPos()[0], missileList.get(missileNumber).getTargetPos()[1], 1, 1));
+                    
+                    if (event.getSceneY() < HEIGHT - 60) {
+                        missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, 3, Color.RED));
+                        missileList.get(missileNumber).setTarget(event.getSceneX(), event.getSceneY());
+                        explosionList.add(new Explosion(missileList.get(missileNumber).getTargetPos()[0], missileList.get(missileNumber).getTargetPos()[1], 1, 1));
 
-                    state.remove(missilePicList.get(missileNumber));
+                        state.remove(missilePicList.get(missileNumber));
 
-                    missileNumber++;
+                        missileNumber++;
+                    }
                 } else {
                     System.out.println("OUT OF MISSILES!");
                 }
