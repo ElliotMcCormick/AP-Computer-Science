@@ -35,6 +35,8 @@ public class MissileCommand extends Application {
 
     private static final int LAUNCH_POINT_X = WIDTH / 2;
     private static final int LAUNCH_POINT_Y = HEIGHT - 50;
+
+    private int missilePicX = 10;
     private static Canvas canvas;
 
     private int missileNumber;
@@ -79,15 +81,21 @@ public class MissileCommand extends Application {
             missilePicList.add(new MissilePicture(Color.CORAL, 10 + i, HEIGHT - 20));
         }
 
+        for (MissilePicture pic : missilePicList) {
+            state.add(pic);
+        }
+
         timer.start();
 
-       
         scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
                 if (missileNumber < 30) {
                     missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, 3, Color.RED));
                     missileList.get(missileNumber).setTarget(event.getSceneX(), event.getSceneY());
                     explosionList.add(new Explosion(missileList.get(missileNumber).getTargetPos()[0], missileList.get(missileNumber).getTargetPos()[1], 1, 1));
+
+                    state.remove(missilePicList.get(missileNumber));
+
                     missileNumber++;
                 } else {
                     System.out.println("OUT OF MISSILES!");
@@ -107,10 +115,6 @@ public class MissileCommand extends Application {
         public void handle(long now) {
             GraphicsContext gc = canvas.getGraphicsContext2D();
 
-            for (MissilePicture pic : missilePicList) {
-                state.add(pic);
-            }
-
             state.updateAll(canvas);
             state.drawAll(canvas);
 
@@ -123,7 +127,6 @@ public class MissileCommand extends Application {
                         explosionList.get(i).update(canvas);
                         explosionList.get(i).draw(canvas);
 
-                        state.remove(missilePicList.get(i));
                     }
                 }
             }
