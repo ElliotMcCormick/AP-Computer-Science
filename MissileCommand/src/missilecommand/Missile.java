@@ -130,16 +130,24 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         } else {
             graphics.setStroke(Color.BLACK);
             graphics.setLineWidth(4);
-            graphics.strokeLine(startPos[0], startPos[1], super.getXpos() - (distanceBehind * vector[0] / Math.abs(vector[0])), super.getYpos() - (distanceBehind * vector[1] / Math.abs(vector[1])));
-            super.setXpos(super.getXpos() + (300 * vector[0]));
-            super.setYpos(super.getYpos() + (300 * vector[1]));
-//            if ((startPos[0] - super.getXpos() - (distanceBehind * vector[0] / Math.abs(vector[0]))) >= distanceBehind) {
-//                erased = true;
-//            }
+            // - (distanceBehind * vector[0] / Math.abs(vector[0]))
+            // - (distanceBehind * vector[1] / Math.abs(vector[1]))
+            
+            
+            graphics.strokeLine(startPos[0], startPos[1], super.getXpos(), super.getYpos());
+            super.setXpos(super.getXpos() + (5 * vector[0]));
+            super.setYpos(super.getYpos() + (5 * vector[1]));
+           
+            if (atTarget()){
+                vector[0] = 0;
+                vector[1] = 0;
+            }
         }
 
         if (atTarget()) {
-            explodeElement(canvas);
+            super.setXpos(startPos[0]);
+            super.setYpos(startPos[1]);
+            explodeElement(canvas);      
         }
     }
 
