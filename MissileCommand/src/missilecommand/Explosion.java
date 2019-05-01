@@ -35,12 +35,14 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
 
     @Override
     public void update(Canvas canvas) {
-        int changeInSize = 2;
+        double changeInSize = 0.5;
 
         GraphicsContext graphics = canvas.getGraphicsContext2D();
 
         graphics.setFill(Color.BLACK);
+        graphics.setLineWidth(2);
         graphics.setStroke(Color.BLACK);
+        
         graphics.strokeOval(initialX - (super.getWidth() / 2), initialY - (super.getHeight() / 2), super.getWidth(), super.getHeight());
         graphics.fillOval(initialX - (super.getWidth() / 2), initialY - (super.getHeight() / 2), super.getWidth(), super.getHeight());
 

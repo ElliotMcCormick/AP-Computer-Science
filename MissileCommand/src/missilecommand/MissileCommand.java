@@ -46,6 +46,8 @@ public class MissileCommand extends Application {
     private GameState state;
     private ArrayList<Missile> missileList;
     private ArrayList<Explosion> explosionList;
+    private ArrayList<Missile> enemyMissileList;
+    private ArrayList<Explosion> enemyExplosionList;
 
     //all the drawing stuff that isn't missles
     private Background ground;
@@ -60,13 +62,13 @@ public class MissileCommand extends Application {
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, WIDTH, HEIGHT);
-        
+
         //set screen black
-        gc.setFill(Color.BLACK);
-        gc.fillRect(0, 0, WIDTH, HEIGHT);
+       // gc.setFill(Color.BLACK);
+       // gc.fillRect(0, 0, WIDTH, HEIGHT);
 
         Scene scene = new Scene(root, WIDTH, HEIGHT);
-        primaryStage.setTitle("Missle Command");
+        primaryStage.setTitle("Missile Command");
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -76,6 +78,9 @@ public class MissileCommand extends Application {
         missileList = new ArrayList<Missile>();
         missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, 3, Color.RED));
         missileNumber = 0;
+
+        enemyExplosionList = new ArrayList<Explosion>();
+        enemyMissileList = new ArrayList<Missile>();
 
         ground = new Background(Color.CORNFLOWERBLUE, 0, HEIGHT - 40, WIDTH);
         state.add(ground);
@@ -101,7 +106,7 @@ public class MissileCommand extends Application {
         scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
                 if (missileNumber < 30) {
-                    
+
                     if (event.getSceneY() < HEIGHT - 60) {
                         missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, 3, Color.RED));
                         missileList.get(missileNumber).setTarget(event.getSceneX(), event.getSceneY());
@@ -131,6 +136,28 @@ public class MissileCommand extends Application {
 
             state.updateAll(canvas);
             state.drawAll(canvas);
+
+            if (enemyMissileList.size() < 20) {
+                if (Math.random() * 400 > 399) {
+                    int randomCity = (int) (Math.random() * 6);
+                    Missile enemy = new Missile(Math.random() * WIDTH, 0, 0.5, Color.GREEN);
+                    enemyMissileList.add(enemy);
+                    enemy.setTarget(80 + (randomCity * WIDTH / 6), HEIGHT - 45);
+                    enemyExplosionList.add(new Explosion(enemy.getTargetPos()[0], enemy.getTargetPos()[1], 1, 1));
+                }
+            }
+            for (int i = 0; i < enemyMissileList.size(); i++) {
+                if (enemyMissileList.get(i).getTargetPos()[0] >= 0 && enemyMissileList.get(i).getTargetPos()[1] >= 0) {
+                    enemyMissileList.get(i).update(canvas);
+                    enemyMissileList.get(i).draw(canvas);
+
+                    if (enemyMissileList.get(i).isExploded()) {
+                        enemyExplosionList.get(i).update(canvas);
+                        enemyExplosionList.get(i).draw(canvas);
+
+                    }
+                }
+            }
 
             for (int i = 0; i < missileList.size(); i++) {
                 if (missileList.get(i).getTargetPos()[0] >= 0 && missileList.get(i).getTargetPos()[1] >= 0) {
