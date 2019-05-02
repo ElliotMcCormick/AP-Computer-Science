@@ -64,8 +64,8 @@ public class MissileCommand extends Application {
         gc.clearRect(0, 0, WIDTH, HEIGHT);
 
         //set screen black
-       // gc.setFill(Color.BLACK);
-       // gc.fillRect(0, 0, WIDTH, HEIGHT);
+        gc.setFill(Color.BLACK);
+        gc.fillRect(0, 0, WIDTH, HEIGHT);
 
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         primaryStage.setTitle("Missile Command");
@@ -133,7 +133,11 @@ public class MissileCommand extends Application {
 
         public void handle(long now) {
             GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.clearRect(0, 0, WIDTH, HEIGHT);
 
+            //set screen black
+            gc.setFill(Color.BLACK);
+            gc.fillRect(0, 0, WIDTH, HEIGHT);
             state.updateAll(canvas);
             state.drawAll(canvas);
 
@@ -142,7 +146,7 @@ public class MissileCommand extends Application {
                     int randomCity = (int) (Math.random() * 6);
                     Missile enemy = new Missile(Math.random() * WIDTH, 0, 0.5, Color.GREEN);
                     enemyMissileList.add(enemy);
-                    enemy.setTarget(80 + (randomCity * WIDTH / 6), HEIGHT - 45);
+                    enemy.setTarget(75 + (randomCity * WIDTH / 6), HEIGHT - 45);
                     enemyExplosionList.add(new Explosion(enemy.getTargetPos()[0], enemy.getTargetPos()[1], 1, 1));
                 }
             }
@@ -154,7 +158,7 @@ public class MissileCommand extends Application {
                     if (enemyMissileList.get(i).isExploded()) {
                         enemyExplosionList.get(i).update(canvas);
                         enemyExplosionList.get(i).draw(canvas);
-
+                        
                     }
                 }
             }
@@ -167,7 +171,7 @@ public class MissileCommand extends Application {
                     if (missileList.get(i).isExploded()) {
                         explosionList.get(i).update(canvas);
                         explosionList.get(i).draw(canvas);
-
+                        
                     }
                 }
             }
