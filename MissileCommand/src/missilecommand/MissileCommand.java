@@ -163,7 +163,7 @@ public class MissileCommand extends Application {
                         for (int j = 0; j < cityList.size(); j++) {
                             if (enemyMissileList.get(i).blewItUp(cityList.get(j))) {
                                 blownUpCityNumber = j;
-                                System.out.println("bUCN " + blownUpCityNumber);
+                                
                             }
                         }
                     }
