@@ -16,6 +16,7 @@ import javafx.scene.paint.Color;
 public class CityPicture extends ExplodingElement implements Renderable {
 
     private Color color;
+    private boolean growing;
 
     public CityPicture(Color color) {
         this.color = color;
@@ -28,7 +29,27 @@ public class CityPicture extends ExplodingElement implements Renderable {
 
     @Override
     public void explodeElement(Canvas canvas) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        double changeInSize = 0.5;
+//        
+//        GraphicsContext graphics = canvas.getGraphicsContext2D();
+//
+//        graphics.setFill(Color.BLACK);
+//        graphics.setLineWidth(2);
+//        graphics.setStroke(Color.BLACK);
+//        
+//        graphics.strokeOval(getXpos() - (super.getWidth() / 2), getYpos() - (super.getHeight() / 2), super.getWidth(), super.getHeight());
+//        graphics.fillOval(getXpos() - (super.getWidth() / 2), getYpos() - (super.getHeight() / 2), super.getWidth(), super.getHeight());
+//
+//        if (super.getWidth() >= super.getExplosionRadius()) {
+//            growing = false;
+//        } else if (super.getWidth() < super.getExplosionRadius() && growing) {
+//            super.setWidth(super.getWidth() + changeInSize);
+//            super.setHeight(super.getHeight() + changeInSize);
+//            super.setXpos(getXpos() - (super.getWidth() / 2));
+//            super.setYpos(getYpos() - (super.getHeight() / 2));
+//        }
+        color = Color.BLACK;
+        draw(canvas);
     }
 
     @Override

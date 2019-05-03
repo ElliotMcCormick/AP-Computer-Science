@@ -27,18 +27,18 @@ public abstract class ExplodingElement extends GameElement{
     
     public abstract void explodeElement(Canvas canvas);
     
-    public boolean elementInExplosion(ExplodingElement element){
+    public boolean blewItUp(ExplodingElement element){
         
-        double centerOfElementX = element.xPos + (element.width/2.0);
-        double centerOfElementY = element.yPos + (element.height/2.0);
+        double centerOfElementX = element.getXpos() + (element.getWidth()/2.0);
+        double centerOfElementY = element.getYpos() + (element.getHeight()/2.0);
         
         
-        double ExplosionCenterX = this.xPos + (this.width/2.0);
-        double ExplosionCenterY = this.yPos + (this.height/2.0);
+        double ExplosionCenterX = this.getXpos() + (this.getWidth()/2.0);
+        double ExplosionCenterY = this.getYpos() + (this.getHeight()/2.0);
         
         //if the center of the element we are checking is within the circle of explosion, return true
-        if (centerOfElementX > ExplosionCenterX - explosionRadius || centerOfElementY < ExplosionCenterX + explosionRadius
-                || centerOfElementX > ExplosionCenterY - explosionRadius || centerOfElementY < ExplosionCenterY + explosionRadius){
+        if (centerOfElementX > ExplosionCenterX - this.getWidth() || centerOfElementY < ExplosionCenterX + this.getWidth()
+                || centerOfElementX > ExplosionCenterY - this.getWidth() || centerOfElementY < ExplosionCenterY + this.getWidth()){
             return true;
         }
         

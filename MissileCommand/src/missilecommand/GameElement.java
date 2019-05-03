@@ -11,7 +11,8 @@ package missilecommand;
  * @author McCormick.Elliot19
  */
 public class GameElement {
-    double xPos, yPos, width, height;
+    
+    private double xPos, yPos, width, height;
     
     public GameElement(){
         this(0,0,0,0);

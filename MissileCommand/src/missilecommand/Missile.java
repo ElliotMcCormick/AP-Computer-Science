@@ -66,8 +66,8 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
     public void setStartPos() {
         startPos = new double[2];
-        startPos[0] = xPos;
-        startPos[1] = yPos;
+        startPos[0] = getXpos();
+        startPos[1] = getYpos();
     }
 
     public double[] getStartPos() {

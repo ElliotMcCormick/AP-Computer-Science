@@ -151,6 +151,7 @@ public class MissileCommand extends Application {
                 }
             }
             for (int i = 0; i < enemyMissileList.size(); i++) {
+                int blownUpCityNumber = -1;
                 if (enemyMissileList.get(i).getTargetPos()[0] >= 0 && enemyMissileList.get(i).getTargetPos()[1] >= 0) {
                     enemyMissileList.get(i).update(canvas);
                     enemyMissileList.get(i).draw(canvas);
@@ -158,8 +159,17 @@ public class MissileCommand extends Application {
                     if (enemyMissileList.get(i).isExploded()) {
                         enemyExplosionList.get(i).update(canvas);
                         enemyExplosionList.get(i).draw(canvas);
-                        
+
+                        for (int j = 0; j < cityList.size(); j++) {
+                            if (enemyMissileList.get(i).blewItUp(cityList.get(j))) {
+                                blownUpCityNumber = j;
+                                System.out.println("bUCN " + blownUpCityNumber);
+                            }
+                        }
                     }
+                }
+                if (blownUpCityNumber >= 0) {
+                    cityList.get(blownUpCityNumber).explodeElement(canvas);
                 }
             }
 
@@ -171,7 +181,7 @@ public class MissileCommand extends Application {
                     if (missileList.get(i).isExploded()) {
                         explosionList.get(i).update(canvas);
                         explosionList.get(i).draw(canvas);
-                        
+
                     }
                 }
             }
