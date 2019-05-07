@@ -36,6 +36,10 @@ public class MissileCommand extends Application {
     private static final int LAUNCH_POINT_X = WIDTH / 2;
     private static final int LAUNCH_POINT_Y = HEIGHT - 50;
 
+    private boolean gameOver = false;
+
+    private int explodedCityCount = 0;
+
     private int missilePicX = 10;
     private static Canvas canvas;
 
@@ -108,7 +112,7 @@ public class MissileCommand extends Application {
                 if (missileNumber < 30) {
 
                     if (event.getSceneY() < HEIGHT - 60) {
-                        missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, 3, Color.RED));
+                        missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, 7, Color.RED));
                         missileList.get(missileNumber).setTarget(event.getSceneX(), event.getSceneY());
                         explosionList.add(new Explosion(missileList.get(missileNumber).getTargetPos()[0], missileList.get(missileNumber).getTargetPos()[1], 1, 1));
 
@@ -132,6 +136,7 @@ public class MissileCommand extends Application {
     public class RedrawTimer extends AnimationTimer {
 
         public void handle(long now) {
+
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.clearRect(0, 0, WIDTH, HEIGHT);
 
@@ -141,10 +146,11 @@ public class MissileCommand extends Application {
             state.updateAll(canvas);
             state.drawAll(canvas);
 
+            
             if (enemyMissileList.size() < 20) {
                 if (Math.random() * 400 > 399) {
                     int randomCity = (int) (Math.random() * 6);
-                    Missile enemy = new Missile(Math.random() * WIDTH, 0, 0.5, Color.GREEN);
+                    Missile enemy = new Missile(Math.random() * WIDTH, 0, 1, Color.GREEN);
                     enemyMissileList.add(enemy);
                     enemy.setTarget(75 + (randomCity * WIDTH / 6), HEIGHT - 45);
                     enemyExplosionList.add(new Explosion(enemy.getTargetPos()[0], enemy.getTargetPos()[1], 1, 1));
@@ -152,7 +158,6 @@ public class MissileCommand extends Application {
             }
 
             for (int i = 0; i < enemyMissileList.size(); i++) {
-                int blownUpCityNumber = -1;
                 if (enemyMissileList.get(i).getTargetPos()[0] >= 0 && enemyMissileList.get(i).getTargetPos()[1] >= 0) {
                     enemyMissileList.get(i).update(canvas);
                     enemyMissileList.get(i).draw(canvas);
@@ -195,10 +200,15 @@ public class MissileCommand extends Application {
                         explosionList.get(i).update(canvas);
                         explosionList.get(i).draw(canvas);
 
+                        for (int j = 0; j < enemyMissileList.size(); j++) {
+                            if (explosionList.get(i).blewItUp(enemyMissileList.get(j))) {
+                                enemyMissileList.remove(j);
+                                enemyExplosionList.remove(j);
+                            }
+                        }
                     }
                 }
             }
-//           
 
         }
     }

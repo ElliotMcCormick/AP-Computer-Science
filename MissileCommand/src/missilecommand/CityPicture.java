@@ -17,19 +17,28 @@ public class CityPicture extends ExplodingElement implements Renderable {
 
     private Color color;
     private boolean growing;
+    private boolean isExploded;
 
     public CityPicture(Color color) {
         this.color = color;
+        isExploded = false;
     }
 
     public CityPicture(Color color, double x, double y, double wid, double ht) {
         super(x, y, wid, ht);
         this.color = color;
+        isExploded = false;
+
+    }
+
+    public boolean isExploded() {
+        return isExploded;
     }
 
     @Override
-    public void explodeElement(Canvas canvas) {   
+    public void explodeElement(Canvas canvas) {
         color = Color.BLACK;
+        isExploded = true;
     }
 
     @Override

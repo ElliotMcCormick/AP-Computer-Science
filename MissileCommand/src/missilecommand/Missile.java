@@ -138,7 +138,6 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
             if (atTarget()) {
                 vector[0] = 0;
                 vector[1] = 0;
-                System.out.println("vector to 0");
             }
 
             graphics.strokeLine(startPos[0], startPos[1], super.getXpos(), super.getYpos());
