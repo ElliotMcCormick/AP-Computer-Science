@@ -36,6 +36,7 @@ public class MissileCommand extends Application {
     private static final int LAUNCH_POINT_X = WIDTH / 2;
     private static final int LAUNCH_POINT_Y = HEIGHT - 50;
 
+<<<<<<< HEAD
     //3 at home, 7 at school
     private static final double MISSILE_SPEED = 3;
     
@@ -43,6 +44,9 @@ public class MissileCommand extends Application {
     private static final double ENEMY_MISSILE_SPEED = 0.5;
             
     private boolean gameOver;
+=======
+    private boolean gameOver = false;
+>>>>>>> parent of 02f887a... game over checker working. need to implement
 
     private int explodedCityCount = 0;
 
@@ -70,8 +74,6 @@ public class MissileCommand extends Application {
         canvas = new Canvas(WIDTH, HEIGHT);
         root.getChildren().add(canvas);
 
-        gameOver = false; 
-        
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, WIDTH, HEIGHT);
 
@@ -144,6 +146,7 @@ public class MissileCommand extends Application {
     public class RedrawTimer extends AnimationTimer {
 
         public void handle(long now) {
+<<<<<<< HEAD
             if (!gameOver){
                 GraphicsContext gc = canvas.getGraphicsContext2D();
                 gc.clearRect(0, 0, WIDTH, HEIGHT);
@@ -162,65 +165,81 @@ public class MissileCommand extends Application {
                         enemy.setTarget(75 + (randomCity * WIDTH / 6), HEIGHT - 45);
                         enemyExplosionList.add(new Explosion(enemy.getTargetPos()[0], enemy.getTargetPos()[1], 1, 1));
                     }
+=======
+
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.clearRect(0, 0, WIDTH, HEIGHT);
+
+            //set screen black
+            gc.setFill(Color.BLACK);
+            gc.fillRect(0, 0, WIDTH, HEIGHT);
+            state.updateAll(canvas);
+            state.drawAll(canvas);
+
+            
+            if (enemyMissileList.size() < 20) {
+                if (Math.random() * 400 > 399) {
+                    int randomCity = (int) (Math.random() * 6);
+                    Missile enemy = new Missile(Math.random() * WIDTH, 0, 1, Color.GREEN);
+                    enemyMissileList.add(enemy);
+                    enemy.setTarget(75 + (randomCity * WIDTH / 6), HEIGHT - 45);
+                    enemyExplosionList.add(new Explosion(enemy.getTargetPos()[0], enemy.getTargetPos()[1], 1, 1));
+>>>>>>> parent of 02f887a... game over checker working. need to implement
                 }
+            }
 
-                for (int i = 0; i < enemyMissileList.size(); i++) {
-                    if (enemyMissileList.get(i).getTargetPos()[0] >= 0 && enemyMissileList.get(i).getTargetPos()[1] >= 0) {
-                        enemyMissileList.get(i).update(canvas);
-                        enemyMissileList.get(i).draw(canvas);
+            for (int i = 0; i < enemyMissileList.size(); i++) {
+                if (enemyMissileList.get(i).getTargetPos()[0] >= 0 && enemyMissileList.get(i).getTargetPos()[1] >= 0) {
+                    enemyMissileList.get(i).update(canvas);
+                    enemyMissileList.get(i).draw(canvas);
 
-                        if (enemyMissileList.get(i).isExploded()) {
-                            enemyExplosionList.get(i).update(canvas);
-                            enemyExplosionList.get(i).draw(canvas);
+                    if (enemyMissileList.get(i).isExploded()) {
+                        enemyExplosionList.get(i).update(canvas);
+                        enemyExplosionList.get(i).draw(canvas);
 
-                            if (enemyExplosionList.get(i).blewItUp(cityList.get(0))) {
-                                cityList.get(0).explodeElement(canvas);
+                        if (enemyExplosionList.get(i).blewItUp(cityList.get(0))) {
+                            cityList.get(0).explodeElement(canvas);
 
-                            } else if (enemyExplosionList.get(i).blewItUp(cityList.get(1))) {
-                                cityList.get(1).explodeElement(canvas);
+                        } else if (enemyExplosionList.get(i).blewItUp(cityList.get(1))) {
+                            cityList.get(1).explodeElement(canvas);
 
-                            } else if (enemyExplosionList.get(i).blewItUp(cityList.get(2))) {
-                                cityList.get(2).explodeElement(canvas);
+                        } else if (enemyExplosionList.get(i).blewItUp(cityList.get(2))) {
+                            cityList.get(2).explodeElement(canvas);
 
-                            } else if (enemyExplosionList.get(i).blewItUp(cityList.get(3))) {
-                                cityList.get(3).explodeElement(canvas);
+                        } else if (enemyExplosionList.get(i).blewItUp(cityList.get(3))) {
+                            cityList.get(3).explodeElement(canvas);
 
-                            } else if (enemyExplosionList.get(i).blewItUp(cityList.get(4))) {
-                                cityList.get(4).explodeElement(canvas);
+                        } else if (enemyExplosionList.get(i).blewItUp(cityList.get(4))) {
+                            cityList.get(4).explodeElement(canvas);
 
-                            } else if (enemyExplosionList.get(i).blewItUp(cityList.get(5))) {
-                                cityList.get(5).explodeElement(canvas);
-
-                            }
+                        } else if (enemyExplosionList.get(i).blewItUp(cityList.get(5))) {
+                            cityList.get(5).explodeElement(canvas);
 
                         }
 
                     }
+
                 }
+            }
 
-                for (int i = 0; i < missileList.size(); i++) {
-                    if (missileList.get(i).getTargetPos()[0] >= 0 && missileList.get(i).getTargetPos()[1] >= 0) {
-                        missileList.get(i).update(canvas);
-                        missileList.get(i).draw(canvas);
+            for (int i = 0; i < missileList.size(); i++) {
+                if (missileList.get(i).getTargetPos()[0] >= 0 && missileList.get(i).getTargetPos()[1] >= 0) {
+                    missileList.get(i).update(canvas);
+                    missileList.get(i).draw(canvas);
 
-                        if (missileList.get(i).isExploded()) {
-                            explosionList.get(i).update(canvas);
-                            explosionList.get(i).draw(canvas);
+                    if (missileList.get(i).isExploded()) {
+                        explosionList.get(i).update(canvas);
+                        explosionList.get(i).draw(canvas);
 
-                            for (int j = 0; j < enemyMissileList.size(); j++) {
-                                if (explosionList.get(i).blewItUp(enemyMissileList.get(j))) {
-                                    enemyMissileList.remove(j);
-                                    enemyExplosionList.remove(j);
-                                }
-                            }
-
-                            if (explosionList.get(i).isComplete()) {
-                                missileList.remove(i);
-                                explosionList.remove(i);
+                        for (int j = 0; j < enemyMissileList.size(); j++) {
+                            if (explosionList.get(i).blewItUp(enemyMissileList.get(j))) {
+                                enemyMissileList.remove(j);
+                                enemyExplosionList.remove(j);
                             }
                         }
                     }
                 }
+<<<<<<< HEAD
 
                 if (allCitiesExploded()) {
                     gc.clearRect(0, 0, WIDTH, HEIGHT);
@@ -238,8 +257,10 @@ public class MissileCommand extends Application {
         for (CityPicture city : cityList) {
             if (!city.isExploded()) {
                 return false;
+=======
+>>>>>>> parent of 02f887a... game over checker working. need to implement
             }
+
         }
-        return true;
     }
 }

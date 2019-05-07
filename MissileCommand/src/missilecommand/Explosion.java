@@ -40,7 +40,7 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
         GraphicsContext graphics = canvas.getGraphicsContext2D();
 
         graphics.setFill(Color.BLACK);
-        graphics.setLineWidth(0.5);
+        graphics.setLineWidth(2);
         graphics.setStroke(Color.BLACK);
         
         graphics.strokeOval(initialX - (super.getWidth() / 2), initialY - (super.getHeight() / 2), super.getWidth(), super.getHeight());
