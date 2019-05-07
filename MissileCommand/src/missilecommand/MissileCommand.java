@@ -36,6 +36,12 @@ public class MissileCommand extends Application {
     private static final int LAUNCH_POINT_X = WIDTH / 2;
     private static final int LAUNCH_POINT_Y = HEIGHT - 50;
 
+    //3 at home, 7 at school
+    private static final double MISSILE_SPEED = 3;
+    
+    //0.5 at home, 1 at school
+    private static final double ENEMY_MISSILE_SPEED = 0.5;
+            
     private boolean gameOver;
 
     private int explodedCityCount = 0;
@@ -82,7 +88,7 @@ public class MissileCommand extends Application {
 
         explosionList = new ArrayList<Explosion>();
         missileList = new ArrayList<Missile>();
-        missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, 3, Color.RED));
+        missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, MISSILE_SPEED, Color.RED));
         missileNumber = 0;
 
         enemyExplosionList = new ArrayList<Explosion>();
@@ -114,7 +120,7 @@ public class MissileCommand extends Application {
                 if (missileNumber < 30) {
 
                     if (event.getSceneY() < HEIGHT - 60) {
-                        missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, 7, Color.RED));
+                        missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, MISSILE_SPEED, Color.RED));
                         missileList.get(missileNumber).setTarget(event.getSceneX(), event.getSceneY());
                         explosionList.add(new Explosion(missileList.get(missileNumber).getTargetPos()[0], missileList.get(missileNumber).getTargetPos()[1], 1, 1));
 
@@ -138,7 +144,7 @@ public class MissileCommand extends Application {
     public class RedrawTimer extends AnimationTimer {
 
         public void handle(long now) {
-            
+            if (!gameOver){
                 GraphicsContext gc = canvas.getGraphicsContext2D();
                 gc.clearRect(0, 0, WIDTH, HEIGHT);
 
@@ -149,13 +155,13 @@ public class MissileCommand extends Application {
                 state.drawAll(canvas);
 
                 if (enemyMissileList.size() < 20) {
-                  //  if (Math.random() * 400 > 399) {
+                    if (Math.random() * 400 > 399) {
                         int randomCity = (int) (Math.random() * 6);
-                        Missile enemy = new Missile(Math.random() * WIDTH, 0, 1, Color.GREEN);
+                        Missile enemy = new Missile(Math.random() * WIDTH, 0, ENEMY_MISSILE_SPEED, Color.GREEN);
                         enemyMissileList.add(enemy);
                         enemy.setTarget(75 + (randomCity * WIDTH / 6), HEIGHT - 45);
                         enemyExplosionList.add(new Explosion(enemy.getTargetPos()[0], enemy.getTargetPos()[1], 1, 1));
-                   // }
+                    }
                 }
 
                 for (int i = 0; i < enemyMissileList.size(); i++) {
@@ -217,11 +223,14 @@ public class MissileCommand extends Application {
                 }
 
                 if (allCitiesExploded()) {
+                    gc.clearRect(0, 0, WIDTH, HEIGHT);
+                    gc.setFill(Color.RED);
+                    gc.setFont(new Font("Verdana", 100));
+                    gc.fillText("GAME OVER", 150, 300);
                     gameOver = true;
-                    System.out.println("game over");
                 }
 
-            
+            }
         }
     }
 
