@@ -145,7 +145,7 @@ public class MissileCommand extends Application {
 
             if (!gameOver) {
                 GraphicsContext gc = canvas.getGraphicsContext2D();
-               // gc.clearRect(0, 0, WIDTH, HEIGHT);
+                gc.clearRect(0, 0, WIDTH, HEIGHT);
 
                 //set screen black
                 gc.setFill(Color.BLACK);
