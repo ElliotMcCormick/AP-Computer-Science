@@ -28,28 +28,8 @@ public class CityPicture extends ExplodingElement implements Renderable {
     }
 
     @Override
-    public void explodeElement(Canvas canvas) {
-//        double changeInSize = 0.5;
-//        
-//        GraphicsContext graphics = canvas.getGraphicsContext2D();
-//
-//        graphics.setFill(Color.BLACK);
-//        graphics.setLineWidth(2);
-//        graphics.setStroke(Color.BLACK);
-//        
-//        graphics.strokeOval(getXpos() - (super.getWidth() / 2), getYpos() - (super.getHeight() / 2), super.getWidth(), super.getHeight());
-//        graphics.fillOval(getXpos() - (super.getWidth() / 2), getYpos() - (super.getHeight() / 2), super.getWidth(), super.getHeight());
-//
-//        if (super.getWidth() >= super.getExplosionRadius()) {
-//            growing = false;
-//        } else if (super.getWidth() < super.getExplosionRadius() && growing) {
-//            super.setWidth(super.getWidth() + changeInSize);
-//            super.setHeight(super.getHeight() + changeInSize);
-//            super.setXpos(getXpos() - (super.getWidth() / 2));
-//            super.setYpos(getYpos() - (super.getHeight() / 2));
-//        }
+    public void explodeElement(Canvas canvas) {   
         color = Color.BLACK;
-        draw(canvas);
     }
 
     @Override

@@ -141,9 +141,10 @@ public class MissileCommand extends Application {
             state.updateAll(canvas);
             state.drawAll(canvas);
 
-            if (enemyMissileList.size() < 20) {
+            if (enemyMissileList.size() < 200) {
                 if (Math.random() * 400 > 399) {
                     int randomCity = (int) (Math.random() * 6);
+               
                     Missile enemy = new Missile(Math.random() * WIDTH, 0, 0.5, Color.GREEN);
                     enemyMissileList.add(enemy);
                     enemy.setTarget(75 + (randomCity * WIDTH / 6), HEIGHT - 45);
@@ -160,17 +161,29 @@ public class MissileCommand extends Application {
                         enemyExplosionList.get(i).update(canvas);
                         enemyExplosionList.get(i).draw(canvas);
 
-                        for (int j = 0; j < cityList.size(); j++) {
-                            if (enemyMissileList.get(i).blewItUp(cityList.get(j))) {
-                                blownUpCityNumber = j;
-                                
-                            }
+                        
+                        if(enemyExplosionList.get(i).blewItUp(cityList.get(0))){
+                             cityList.get(0).explodeElement(canvas);
                         }
+                        else if(enemyExplosionList.get(i).blewItUp(cityList.get(1))){
+                             cityList.get(1).explodeElement(canvas);
+                        }
+                        else if(enemyExplosionList.get(i).blewItUp(cityList.get(2))){
+                             cityList.get(2).explodeElement(canvas);
+                        }
+                        else if(enemyExplosionList.get(i).blewItUp(cityList.get(3))){
+                             cityList.get(3).explodeElement(canvas);
+                        }
+                        else if(enemyExplosionList.get(i).blewItUp(cityList.get(4))){
+                             cityList.get(4).explodeElement(canvas);
+                        }
+                        else if(enemyExplosionList.get(i).blewItUp(cityList.get(5))){
+                             cityList.get(5).explodeElement(canvas);
+                        }
+                           
                     }
                 }
-                if (blownUpCityNumber >= 0) {
-                    cityList.get(blownUpCityNumber).explodeElement(canvas);
-                }
+                
             }
 
             for (int i = 0; i < missileList.size(); i++) {
@@ -186,6 +199,7 @@ public class MissileCommand extends Application {
                 }
             }
 //           
+
 
         }
     }
