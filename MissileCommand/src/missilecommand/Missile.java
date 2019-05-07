@@ -34,6 +34,9 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         this.erased = false;
     }
 
+    public Missile() {
+    }
+
     public boolean isExploded() {
         return elementExploded;
     }
