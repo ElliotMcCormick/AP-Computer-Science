@@ -36,13 +36,15 @@ public abstract class ExplodingElement extends GameElement{
        // System.out.println("\n\n");
         double ExplosionCenterX = this.getXpos() + (this.getWidth()/2.0);
         double ExplosionCenterY = this.getYpos() + (this.getHeight()/2.0);
-       // System.out.println("width of expl. " + this.getWidth());
-          //      System.out.println("\n");
-       // System.out.println("distance between centers " + (centerOfElementX - ExplosionCenterX));
-        
+//                      System.out.println("\n\n\nnew check");
+//
+//        System.out.println("width of expl. " + this.getWidth());
+//              System.out.println("\n");
+//        System.out.println("distance between centers " + Math.abs(centerOfElementX - ExplosionCenterX));
+//                      System.out.println("\n");
+
         //if the center of the element we are checking is within the circle of explosion, return true
-        if (Math.abs(centerOfElementX - ExplosionCenterX) < this.getWidth()
-                || Math.abs(centerOfElementY - ExplosionCenterY) < this.getHeight()){
+        if (Math.abs(centerOfElementX - ExplosionCenterX) < this.getWidth()){
             return true;
         }
         

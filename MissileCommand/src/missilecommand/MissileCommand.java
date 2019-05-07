@@ -141,16 +141,16 @@ public class MissileCommand extends Application {
             state.updateAll(canvas);
             state.drawAll(canvas);
 
-            if (enemyMissileList.size() < 200) {
+            if (enemyMissileList.size() < 20) {
                 if (Math.random() * 400 > 399) {
                     int randomCity = (int) (Math.random() * 6);
-               
                     Missile enemy = new Missile(Math.random() * WIDTH, 0, 0.5, Color.GREEN);
                     enemyMissileList.add(enemy);
                     enemy.setTarget(75 + (randomCity * WIDTH / 6), HEIGHT - 45);
                     enemyExplosionList.add(new Explosion(enemy.getTargetPos()[0], enemy.getTargetPos()[1], 1, 1));
                 }
             }
+
             for (int i = 0; i < enemyMissileList.size(); i++) {
                 int blownUpCityNumber = -1;
                 if (enemyMissileList.get(i).getTargetPos()[0] >= 0 && enemyMissileList.get(i).getTargetPos()[1] >= 0) {
@@ -161,29 +161,29 @@ public class MissileCommand extends Application {
                         enemyExplosionList.get(i).update(canvas);
                         enemyExplosionList.get(i).draw(canvas);
 
-                        
-                        if(enemyExplosionList.get(i).blewItUp(cityList.get(0))){
-                             cityList.get(0).explodeElement(canvas);
+                        if (enemyExplosionList.get(i).blewItUp(cityList.get(0))) {
+                            cityList.get(0).explodeElement(canvas);
+
+                        } else if (enemyExplosionList.get(i).blewItUp(cityList.get(1))) {
+                            cityList.get(1).explodeElement(canvas);
+
+                        } else if (enemyExplosionList.get(i).blewItUp(cityList.get(2))) {
+                            cityList.get(2).explodeElement(canvas);
+
+                        } else if (enemyExplosionList.get(i).blewItUp(cityList.get(3))) {
+                            cityList.get(3).explodeElement(canvas);
+
+                        } else if (enemyExplosionList.get(i).blewItUp(cityList.get(4))) {
+                            cityList.get(4).explodeElement(canvas);
+
+                        } else if (enemyExplosionList.get(i).blewItUp(cityList.get(5))) {
+                            cityList.get(5).explodeElement(canvas);
+
                         }
-                        else if(enemyExplosionList.get(i).blewItUp(cityList.get(1))){
-                             cityList.get(1).explodeElement(canvas);
-                        }
-                        else if(enemyExplosionList.get(i).blewItUp(cityList.get(2))){
-                             cityList.get(2).explodeElement(canvas);
-                        }
-                        else if(enemyExplosionList.get(i).blewItUp(cityList.get(3))){
-                             cityList.get(3).explodeElement(canvas);
-                        }
-                        else if(enemyExplosionList.get(i).blewItUp(cityList.get(4))){
-                             cityList.get(4).explodeElement(canvas);
-                        }
-                        else if(enemyExplosionList.get(i).blewItUp(cityList.get(5))){
-                             cityList.get(5).explodeElement(canvas);
-                        }
-                           
+
                     }
+
                 }
-                
             }
 
             for (int i = 0; i < missileList.size(); i++) {
@@ -199,7 +199,6 @@ public class MissileCommand extends Application {
                 }
             }
 //           
-
 
         }
     }
