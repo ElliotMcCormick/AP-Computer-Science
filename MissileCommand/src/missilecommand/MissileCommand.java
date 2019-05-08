@@ -44,6 +44,7 @@ public class MissileCommand extends Application {
 
     private boolean gameOver;
     private int score;
+    private boolean outOfMissiles;
 
     private int explodedCityCount = 0;
 
@@ -74,6 +75,8 @@ public class MissileCommand extends Application {
         gameOver = false;
         score = 0;
 
+        outOfMissiles = false;
+
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, WIDTH, HEIGHT);
 
@@ -91,14 +94,26 @@ public class MissileCommand extends Application {
 
         enemyExplosionList = new ArrayList<Explosion>();
         enemyMissileList = new ArrayList<Missile>();
+        int randomCity = (int) (Math.random() * 6);
+        Missile enemy = new Missile(Math.random() * WIDTH, 0, ENEMY_MISSILE_SPEED, Color.GREEN);
+        enemyMissileList.add(enemy);
+        enemy.setTarget(75 + (randomCity * WIDTH / 6), HEIGHT - 45);
+        enemyExplosionList.add(new Explosion(enemy.getTargetPos()[0], enemy.getTargetPos()[1], 1, 1));
 
         ground = new Background(Color.CORNFLOWERBLUE, 0, HEIGHT - 40, WIDTH);
         state.add(ground);
 
         missilePicList = new ArrayList<MissilePicture>();
-        for (int i = 0; i < 30 * 11; i += 11) {
-            missilePicList.add(new MissilePicture(Color.CORAL, 10 + i, HEIGHT - 20));
+
+        //would definitely rather have a for loop but I gotta fulfill requirements
+        //and I couldn't figure out anyother place to put one. 
+        int missilePicListCounter = 0;
+        while (missilePicListCounter < 30 * 11) {
+            missilePicList.add(new MissilePicture(Color.CORAL, 10 + missilePicListCounter, HEIGHT - 20));
+
+            missilePicListCounter += 11;
         }
+
         for (MissilePicture pic : missilePicList) {
             state.add(pic);
         }
@@ -123,11 +138,10 @@ public class MissileCommand extends Application {
                         explosionList.add(new Explosion(missileList.get(missileNumber).getTargetPos()[0], missileList.get(missileNumber).getTargetPos()[1], 1, 1));
 
                         state.remove(missilePicList.get(missileNumber));
-
                         missileNumber++;
                     }
                 } else {
-                    System.out.println("OUT OF MISSILES!");
+                    outOfMissiles = true;
                 }
             }
 
@@ -157,6 +171,12 @@ public class MissileCommand extends Application {
 
                 state.updateAll(canvas);
                 state.drawAll(canvas);
+
+                if (outOfMissiles) {
+                    gc.setFill(Color.ORANGE);
+                    gc.setFont(new Font("Verdana", 15));
+                    gc.fillText("OUT OF MISSILES", 50, 100);
+                }
 
                 if (enemyMissileList.size() < 20) {
                     if (Math.random() * 400 > 399) {
@@ -224,11 +244,13 @@ public class MissileCommand extends Application {
 
                     }
 
-                    if (allCitiesExploded()) {
+                    if (allCitiesExploded() || enemyMissileList.get(enemyMissileList.size() - 1).isExploded()) {
                         gc.clearRect(0, 0, WIDTH, HEIGHT);
                         gc.setFill(Color.RED);
                         gc.setFont(new Font("Verdana", 100));
                         gc.fillText("GAME OVER", 150, 300);
+                        gc.setFont(new Font("Verdana", 50));
+                        gc.fillText("SCORE :: " + score, 175, 400);
                         gameOver = true;
                     }
 
