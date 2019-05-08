@@ -43,6 +43,7 @@ public class MissileCommand extends Application {
     private static final double ENEMY_MISSILE_SPEED = 0.5;
 
     private boolean gameOver;
+    private int score;
 
     private int explodedCityCount = 0;
 
@@ -70,12 +71,11 @@ public class MissileCommand extends Application {
         canvas = new Canvas(WIDTH, HEIGHT);
         root.getChildren().add(canvas);
 
+        gameOver = false;
+        score = 0;
+
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, WIDTH, HEIGHT);
-
-        //set screen black
-       // gc.setFill(Color.BLACK);
-       // gc.fillRect(0, 0, WIDTH, HEIGHT);
 
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         primaryStage.setTitle("Missile Command");
@@ -150,6 +150,11 @@ public class MissileCommand extends Application {
                 //set screen black
                 gc.setFill(Color.BLACK);
                 gc.fillRect(0, 0, WIDTH, HEIGHT);
+
+                gc.setFill(Color.WHITE);
+                gc.setFont(new Font("Verdana", 15));
+                gc.fillText("SCORE :: " + score, 50, 50);
+
                 state.updateAll(canvas);
                 state.drawAll(canvas);
 
@@ -194,8 +199,6 @@ public class MissileCommand extends Application {
                             }
 
                         }
-                        
-                       
 
                     }
                 }
@@ -213,11 +216,12 @@ public class MissileCommand extends Application {
                                 if (explosionList.get(i).blewItUp(enemyMissileList.get(j))) {
                                     enemyMissileList.remove(j);
                                     enemyExplosionList.remove(j);
+                                    score += 10;
                                 }
                             }
-                          
+
                         }
-                        
+
                     }
 
                     if (allCitiesExploded()) {
