@@ -27,12 +27,11 @@ import javafx.stage.Stage;
  */
 public class MissileCommand extends Application {
 
-    /**
-     * @param args the command line arguments
-     */
+   //Screen width and height 
     private static final int WIDTH = 900;
     private static final int HEIGHT = 600;
 
+    //location on the screen where the missiles launch from
     private static final int LAUNCH_POINT_X = WIDTH / 2;
     private static final int LAUNCH_POINT_Y = HEIGHT - 50;
 
@@ -42,19 +41,20 @@ public class MissileCommand extends Application {
     //0.5 at home, 1 at school
     private static final double ENEMY_MISSILE_SPEED = 0.5;
 
+    //variables that are used to control text on the screen
     private boolean gameOver;
     private int score;
     private boolean outOfMissiles;
 
-    private int explodedCityCount = 0;
-
-    private int missilePicX = 10;
+    
     private static Canvas canvas;
 
+    //number of missiles
     private int missileNumber;
 
     private RedrawTimer timer = new RedrawTimer();
 
+    //lists of all the moving pieces 
     private GameState state;
     private ArrayList<Missile> missileList;
     private ArrayList<Explosion> explosionList;
@@ -72,41 +72,51 @@ public class MissileCommand extends Application {
         canvas = new Canvas(WIDTH, HEIGHT);
         root.getChildren().add(canvas);
 
+        //initialize variables
         gameOver = false;
         score = 0;
-
         outOfMissiles = false;
 
+        //clear the screen
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, WIDTH, HEIGHT);
 
+        //title the screen
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         primaryStage.setTitle("Missile Command");
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        //initialize lists of missiles and game elements
         state = new GameState();
 
+            //initialize explosions and missiles. add the first missile to the list
         explosionList = new ArrayList<Explosion>();
         missileList = new ArrayList<Missile>();
         missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, MISSILE_SPEED, Color.RED));
         missileNumber = 0;
-
+        
+             //initialize enemy explosions and missiles. 
+             //add the first missile to the list
+             
         enemyExplosionList = new ArrayList<Explosion>();
         enemyMissileList = new ArrayList<Missile>();
+            //this random stuff is explained below
         int randomCity = (int) (Math.random() * 6);
         Missile enemy = new Missile(Math.random() * WIDTH, 0, ENEMY_MISSILE_SPEED, Color.GREEN);
         enemyMissileList.add(enemy);
         enemy.setTarget(75 + (randomCity * WIDTH / 6), HEIGHT - 45);
         enemyExplosionList.add(new Explosion(enemy.getTargetPos()[0], enemy.getTargetPos()[1], 1, 1));
 
+        // draw the ground
         ground = new Background(Color.CORNFLOWERBLUE, 0, HEIGHT - 40, WIDTH);
         state.add(ground);
 
+        // draw the little missile pictures
         missilePicList = new ArrayList<MissilePicture>();
 
-        //would definitely rather have a for loop but I gotta fulfill requirements
-        //and I couldn't figure out anyother place to put one. 
+            //would definitely rather have a for loop but I gotta fulfill requirements
+            //and I couldn't figure out anyother place to put one. 
         int missilePicListCounter = 0;
         while (missilePicListCounter < 30 * 11) {
             missilePicList.add(new MissilePicture(Color.CORAL, 10 + missilePicListCounter, HEIGHT - 20));
@@ -149,6 +159,9 @@ public class MissileCommand extends Application {
 
     }
 
+     /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }
@@ -178,7 +191,15 @@ public class MissileCommand extends Application {
                     gc.fillText("OUT OF MISSILES", 50, 100);
                 }
 
-                if (enemyMissileList.size() < 20) {
+                if (enemyMissileList.size() < 1) {
+                    
+                        int randomCity = (int) (Math.random() * 6);
+                        Missile enemy = new Missile(Math.random() * WIDTH, 0, ENEMY_MISSILE_SPEED, Color.GREEN);
+                        enemyMissileList.add(enemy);
+                        enemy.setTarget(75 + (randomCity * WIDTH / 6), HEIGHT - 45);
+                        enemyExplosionList.add(new Explosion(enemy.getTargetPos()[0], enemy.getTargetPos()[1], 1, 1));
+
+                } else {
                     if (Math.random() * 400 > 399) {
                         int randomCity = (int) (Math.random() * 6);
                         Missile enemy = new Missile(Math.random() * WIDTH, 0, ENEMY_MISSILE_SPEED, Color.GREEN);
@@ -186,7 +207,6 @@ public class MissileCommand extends Application {
                         enemy.setTarget(75 + (randomCity * WIDTH / 6), HEIGHT - 45);
                         enemyExplosionList.add(new Explosion(enemy.getTargetPos()[0], enemy.getTargetPos()[1], 1, 1));
                     }
-
                 }
 
                 for (int i = 0; i < enemyMissileList.size(); i++) {
@@ -244,7 +264,7 @@ public class MissileCommand extends Application {
 
                     }
 
-                    if (allCitiesExploded() || enemyMissileList.get(enemyMissileList.size() - 1).isExploded()) {
+                    if (allCitiesExploded()) {
                         gc.clearRect(0, 0, WIDTH, HEIGHT);
                         gc.setFill(Color.RED);
                         gc.setFont(new Font("Verdana", 100));
