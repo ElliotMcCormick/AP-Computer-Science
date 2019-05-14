@@ -24,6 +24,13 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     private boolean erased;
     private static final double TRAILING_LINE_SPEED = 3;
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param speed
+     * @param trailColor
+     */
     public Missile(double x, double y, double speed, Color trailColor) {
         super(x, y, 1, 1);
         setStartPos();
@@ -34,53 +41,100 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         this.erased = false;
     }
 
+    /**
+     *
+     */
     public Missile() {
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isExploded() {
         return elementExploded;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isErased() {
         return erased;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getTravelTime() {
         return speed;
     }
 
+    /**
+     *
+     * @param speed
+     */
     public void setTravelTime(double speed) {
         this.speed = speed;
     }
 
+    /**
+     *
+     * @return
+     */
     public Color getTrailColor() {
         return trailColor;
     }
 
+    /**
+     *
+     * @param trailColor
+     */
     public void setTrailColor(Color trailColor) {
         this.trailColor = trailColor;
     }
 
+    /**
+     *
+     * @param xPos
+     * @param yPos
+     */
     public void setTarget(double xPos, double yPos) {
         targetPos = new double[2];
         targetPos[0] = xPos;
         targetPos[1] = yPos;
     }
 
+    /**
+     *
+     */
     public void setStartPos() {
         startPos = new double[2];
         startPos[0] = getXpos();
         startPos[1] = getYpos();
     }
 
+    /**
+     *
+     * @return
+     */
     public double[] getStartPos() {
         return startPos;
     }
 
+    /**
+     *
+     * @return
+     */
     public double[] getTargetPos() {
         return targetPos;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean atTarget() {
         //if the difference between the pos and the target pos is within the amount the 
         //missile move each time it is at the target 
@@ -90,6 +144,9 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         return Math.abs(getXpos() - targetPos[0]) <= Math.abs(TRAILING_LINE_SPEED * vector[0]) && Math.abs(getYpos() - targetPos[1]) <= Math.abs(TRAILING_LINE_SPEED * vector[1]);
     }
 
+    /**
+     *
+     */
     public void setVector() {
         vector = new double[2];
         double magnitude = Math.sqrt(Math.pow(targetPos[0] - startPos[0], 2) + Math.pow(targetPos[1] - startPos[1], 2));
@@ -98,6 +155,10 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
     }
 
+    /**
+     *
+     * @param canvas
+     */
     @Override
     public void explodeElement(Canvas canvas) {
         GraphicsContext graphics = canvas.getGraphicsContext2D();
@@ -109,6 +170,10 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
     }
 
+    /**
+     *
+     * @param canvas
+     */
     @Override
     public void draw(Canvas canvas) {
         GraphicsContext graphics = canvas.getGraphicsContext2D();
@@ -119,6 +184,10 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         }
     }
 
+    /**
+     *
+     * @param canvas
+     */
     @Override
     public void update(Canvas canvas) {
         double distanceBehind = targetPos[0] - startPos[0];

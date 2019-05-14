@@ -19,11 +19,20 @@ public class MissilePicture implements Renderable {
     private int x;
     private int y;
 
+    /**
+     *
+     * @param color
+     */
     public MissilePicture(Color color) {
         this.color = color;
     }
 
-
+    /**
+     *
+     * @param color
+     * @param x
+     * @param y
+     */
     public MissilePicture(Color color, int x, int y) {
         this.color = color;
         this.x = x;
@@ -31,6 +40,10 @@ public class MissilePicture implements Renderable {
 
     }
 
+    /**
+     *
+     * @param canvas
+     */
     @Override
     public void draw(Canvas canvas) {
         GraphicsContext graphics = canvas.getGraphicsContext2D();

@@ -21,6 +21,13 @@ public class Background implements Renderable {
     private int width;
     private static int HEIGHT = 40;
 
+    /**
+     *
+     * @param color
+     * @param x
+     * @param y
+     * @param width
+     */
     public Background(Color color, int x, int y, int width) {
         this.color = color;
         this.x = x;
@@ -28,6 +35,11 @@ public class Background implements Renderable {
         this.width = width;
     }
 
+    /**
+     * method to draw the background/floor of the game
+     * 
+     * @param canvas
+     */
     @Override
     public void draw(Canvas canvas) {
         GraphicsContext graphics = canvas.getGraphicsContext2D();

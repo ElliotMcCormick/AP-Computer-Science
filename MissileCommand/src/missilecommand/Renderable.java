@@ -12,5 +12,10 @@ import javafx.scene.canvas.Canvas;
  * @author elliot
  */
 public interface Renderable {
+
+    /**
+     *
+     * @param canvas
+     */
     public abstract void draw(Canvas canvas);
 }

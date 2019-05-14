@@ -20,11 +20,21 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
     private double initialY;
     private boolean complete;
 
+    /**
+     *
+     */
     public Explosion() {
         this.growing = true;
         this.complete = false;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param wid
+     * @param ht
+     */
     public Explosion(double x, double y, double wid, double ht) {
         super(x, y, wid, ht);
         this.growing = true;
@@ -33,6 +43,10 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
         this.initialY = y;
     }
 
+    /**
+     *
+     * @param canvas
+     */
     @Override
     public void update(Canvas canvas) {
         double changeInSize = 0.5;
@@ -68,6 +82,10 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
         }
     }
 
+    /**
+     *
+     * @param canvas
+     */
     @Override
     public void draw(Canvas canvas) {
         GraphicsContext graphics = canvas.getGraphicsContext2D();
@@ -76,11 +94,19 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
         graphics.fillOval(initialX - (super.getWidth() / 2), initialY - (super.getHeight() / 2), super.getWidth(), super.getHeight());
     }
 
+    /**
+     *
+     * @param canvas
+     */
     @Override
     public void explodeElement(Canvas canvas) {
         throw new UnsupportedOperationException("Not yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isComplete() {
         return complete;
     }

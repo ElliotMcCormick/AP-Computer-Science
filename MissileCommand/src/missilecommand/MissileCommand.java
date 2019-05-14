@@ -51,6 +51,7 @@ public class MissileCommand extends Application {
 
     //number of missiles
     private int missileNumber;
+    
 
     private RedrawTimer timer = new RedrawTimer();
 
@@ -90,18 +91,20 @@ public class MissileCommand extends Application {
         //initialize lists of missiles and game elements
         state = new GameState();
 
-            //initialize explosions and missiles. add the first missile to the list
+         //initialize explosions and missiles. add the first missile to the list
         explosionList = new ArrayList<Explosion>();
         missileList = new ArrayList<Missile>();
         missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, MISSILE_SPEED, Color.RED));
         missileNumber = 0;
         
-             //initialize enemy explosions and missiles. 
-             //add the first missile to the list
-             
+        /*
+        initialize enemy explosions and missiles. 
+        add the first missile to the list
+        */     
         enemyExplosionList = new ArrayList<Explosion>();
         enemyMissileList = new ArrayList<Missile>();
-            //this random stuff is explained below
+        
+            //this random stuff is used and explained on line 214
         int randomCity = (int) (Math.random() * 6);
         Missile enemy = new Missile(Math.random() * WIDTH, 0, ENEMY_MISSILE_SPEED, Color.GREEN);
         enemyMissileList.add(enemy);
@@ -112,7 +115,7 @@ public class MissileCommand extends Application {
         ground = new Background(Color.CORNFLOWERBLUE, 0, HEIGHT - 40, WIDTH);
         state.add(ground);
 
-        // draw the little missile pictures
+        // initiate the arraylist of all the little missile pictures
         missilePicList = new ArrayList<MissilePicture>();
 
             //would definitely rather have a for loop but I gotta fulfill requirements
@@ -124,10 +127,12 @@ public class MissileCommand extends Application {
             missilePicListCounter += 11;
         }
 
+        //add the pictures to the state so they will get drawn
         for (MissilePicture pic : missilePicList) {
             state.add(pic);
         }
 
+        //add little city pictures to the state and space them evenly across the screen
         cityList = new ArrayList<CityPicture>();
         for (int i = 0; i < 6 * WIDTH / 6; i += WIDTH / 6) {
             cityList.add(new CityPicture(Color.RED, 50 + i, HEIGHT - 45, 100, 100));
@@ -140,13 +145,22 @@ public class MissileCommand extends Application {
 
         scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
+                //if the mouse is clicked and you've shot less than or equal to 30 missiles . . .
                 if (missileNumber < 30) {
 
+                    //if you've clicked above the cities and the ground . . .
                     if (event.getSceneY() < HEIGHT - 60) {
+                        
+                        //add new missile to the list 
                         missileList.add(new Missile(LAUNCH_POINT_X, LAUNCH_POINT_Y, MISSILE_SPEED, Color.RED));
+                        
+                        //set target to mouse location
                         missileList.get(missileNumber).setTarget(event.getSceneX(), event.getSceneY());
+                        
+                        //add new explosion for the missile at the target location
                         explosionList.add(new Explosion(missileList.get(missileNumber).getTargetPos()[0], missileList.get(missileNumber).getTargetPos()[1], 1, 1));
 
+                        //remove an image of missile from missile state
                         state.remove(missilePicList.get(missileNumber));
                         missileNumber++;
                     }
@@ -166,6 +180,9 @@ public class MissileCommand extends Application {
         launch(args);
     }
 
+    /**
+     *
+     */
     public class RedrawTimer extends AnimationTimer {
 
         public void handle(long now) {
@@ -178,28 +195,37 @@ public class MissileCommand extends Application {
                 gc.setFill(Color.BLACK);
                 gc.fillRect(0, 0, WIDTH, HEIGHT);
 
+                //text for the score
                 gc.setFill(Color.WHITE);
                 gc.setFont(new Font("Verdana", 15));
                 gc.fillText("SCORE :: " + score, 50, 50);
 
+                //draw everything
                 state.updateAll(canvas);
                 state.drawAll(canvas);
 
+                //if out of missiles display "out of missiles" on screen 
                 if (outOfMissiles) {
                     gc.setFill(Color.ORANGE);
                     gc.setFont(new Font("Verdana", 15));
                     gc.fillText("OUT OF MISSILES", 50, 100);
                 }
 
+                //if the list of enemy missiles doesn't have any missiles. . .
+                //(avoids indexOutOfBounds errors.) 
                 if (enemyMissileList.size() < 1) {
-                    
+                        
+                        //target a random city and make a new missile & explosion targeting the random city
                         int randomCity = (int) (Math.random() * 6);
+                        //missile spawns randomly along the top of the screen
                         Missile enemy = new Missile(Math.random() * WIDTH, 0, ENEMY_MISSILE_SPEED, Color.GREEN);
                         enemyMissileList.add(enemy);
                         enemy.setTarget(75 + (randomCity * WIDTH / 6), HEIGHT - 45);
                         enemyExplosionList.add(new Explosion(enemy.getTargetPos()[0], enemy.getTargetPos()[1], 1, 1));
 
                 } else {
+                    //randomly generates missiles to appear. These numbers seemed to create the
+                    //proper frequency of missiles
                     if (Math.random() * 400 > 399) {
                         int randomCity = (int) (Math.random() * 6);
                         Missile enemy = new Missile(Math.random() * WIDTH, 0, ENEMY_MISSILE_SPEED, Color.GREEN);
@@ -209,15 +235,21 @@ public class MissileCommand extends Application {
                     }
                 }
 
+                //for all enemy missiles . . . 
                 for (int i = 0; i < enemyMissileList.size(); i++) {
+                    //draw and move
                     if (enemyMissileList.get(i).getTargetPos()[0] >= 0 && enemyMissileList.get(i).getTargetPos()[1] >= 0) {
                         enemyMissileList.get(i).update(canvas);
                         enemyMissileList.get(i).draw(canvas);
 
+                        //if they have reached target and explode. . .
                         if (enemyMissileList.get(i).isExploded()) {
+                            
+                            //draw and update the explosion
                             enemyExplosionList.get(i).update(canvas);
                             enemyExplosionList.get(i).draw(canvas);
 
+                            //if missile hit a city blow the city up
                             if (enemyExplosionList.get(i).blewItUp(cityList.get(0))) {
                                 cityList.get(0).explodeElement(canvas);
 
@@ -243,17 +275,27 @@ public class MissileCommand extends Application {
                     }
                 }
 
+                //for all defense missiles
                 for (int i = 0; i < missileList.size(); i++) {
+                    
+                    //draw and move
                     if (missileList.get(i).getTargetPos()[0] >= 0 && missileList.get(i).getTargetPos()[1] >= 0) {
                         missileList.get(i).update(canvas);
                         missileList.get(i).draw(canvas);
 
+                        //if they have reached target and explode. . . 
                         if (missileList.get(i).isExploded()) {
+                            
+                            //draw and update the explosion
                             explosionList.get(i).update(canvas);
                             explosionList.get(i).draw(canvas);
 
+                            //if you blew up an enemy missile
                             for (int j = 0; j < enemyMissileList.size(); j++) {
+                                
                                 if (explosionList.get(i).blewItUp(enemyMissileList.get(j))) {
+                                    
+                                    //remove enemy missile from the screen and explosion from the list
                                     enemyMissileList.remove(j);
                                     enemyExplosionList.remove(j);
                                     score += 10;
@@ -264,6 +306,7 @@ public class MissileCommand extends Application {
 
                     }
 
+                    // if all your cities are exploded, display game over.
                     if (allCitiesExploded()) {
                         gc.clearRect(0, 0, WIDTH, HEIGHT);
                         gc.setFill(Color.RED);
@@ -278,6 +321,7 @@ public class MissileCommand extends Application {
             }
         }
 
+        //checker to see if all cities are exploded.
         private boolean allCitiesExploded() {
             for (CityPicture city : cityList) {
                 if (!city.isExploded()) {

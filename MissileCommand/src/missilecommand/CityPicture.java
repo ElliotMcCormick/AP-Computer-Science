@@ -19,11 +19,23 @@ public class CityPicture extends ExplodingElement implements Renderable {
     private boolean growing;
     private boolean isExploded;
 
+    /**
+     *
+     * @param color
+     */
     public CityPicture(Color color) {
         this.color = color;
         isExploded = false;
     }
 
+    /**
+     *
+     * @param color
+     * @param x
+     * @param y
+     * @param wid
+     * @param ht
+     */
     public CityPicture(Color color, double x, double y, double wid, double ht) {
         super(x, y, wid, ht);
         this.color = color;
@@ -31,16 +43,31 @@ public class CityPicture extends ExplodingElement implements Renderable {
 
     }
 
+    /**
+     *
+     * @return boolean isExploded
+     */
     public boolean isExploded() {
         return isExploded;
     }
 
+    /**
+     * draws the city black when you explode it
+     * isExploded becomes true
+     * 
+     * @param canvas
+     */
     @Override
     public void explodeElement(Canvas canvas) {
         color = Color.BLACK;
         isExploded = true;
     }
 
+    /**
+     * draws the city, which is built in three layers of rectangles
+     * 
+     * @param canvas
+     */
     @Override
     public void draw(Canvas canvas) {
         GraphicsContext graphics = canvas.getGraphicsContext2D();

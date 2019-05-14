@@ -12,5 +12,10 @@ import javafx.scene.canvas.Canvas;
  * @author elliot
  */
 public interface Updateable {
+
+    /**
+     *
+     * @param canvas
+     */
     public abstract void update(Canvas canvas);
 }

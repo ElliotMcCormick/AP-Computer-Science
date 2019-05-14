@@ -18,13 +18,19 @@ public class GameState {
     private List<Updateable> updateables;
     private List<GameElement> collideables;
     
+    /**
+     *
+     */
     public GameState(){
         renderables = new ArrayList();
         updateables = new ArrayList();
         collideables = new ArrayList();
     }
     
-    
+    /**
+     *
+     * @param object
+     */
     public void add(Object object){
         
         if (object instanceof Renderable){
@@ -38,6 +44,11 @@ public class GameState {
         }
     }
     
+    /**
+     *
+     * @param index
+     * @param object
+     */
     public void add(int index, Object object){
         
         if (object instanceof Renderable){
@@ -52,6 +63,10 @@ public class GameState {
     
     }
     
+    /**
+     *
+     * @param object
+     */
     public void remove(Object object){
         if (object instanceof Renderable){
             renderables.remove((Renderable)object);
@@ -65,12 +80,20 @@ public class GameState {
   
     }
   
+    /**
+     *
+     * @param canvas
+     */
     public void updateAll(Canvas canvas){
         for (Updateable u : updateables){
             u.update(canvas);
         }
     }
     
+    /**
+     *
+     * @param canvas
+     */
     public void drawAll(Canvas canvas){
         for (Renderable r : renderables){
             r.draw(canvas);
@@ -78,6 +101,10 @@ public class GameState {
     }
     
     //IDK IF NECESSARY YET
+
+    /**
+     *
+     */
     public void collideAll(){
         
     }

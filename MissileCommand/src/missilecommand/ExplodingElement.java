@@ -14,34 +14,52 @@ import javafx.scene.canvas.Canvas;
 public abstract class ExplodingElement extends GameElement{
     private double explosionRadius = 60;
 
+    /**
+     *
+     */
     public ExplodingElement() {
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param wid
+     * @param ht
+     */
     public ExplodingElement(double x, double y, double wid, double ht) {
         super(x, y, wid, ht);
     }
     
+    /**
+     *
+     * @return double explosionRadius which is the current width of the explosion
+     */
     public double getExplosionRadius(){
         return explosionRadius;
     }
     
+    /**
+     * all ExplodingElements will have an explodeElement method to make them go boom
+     * 
+     * @param canvas
+     */
     public abstract void explodeElement(Canvas canvas);
     
+    /**
+     *
+     * @param element
+     * @return true if you managed to blow up something, false if otherwise
+     */
     public boolean blewItUp(ExplodingElement element){
         
-        
+        //center of the element you are trying to blow up
         double centerOfElementX = element.getXpos() + (element.getWidth()/2.0);
         double centerOfElementY = element.getYpos() + (element.getHeight()/2.0);
        
+        //center of your explosion
         double ExplosionCenterX = this.getXpos() + (this.getWidth()/2.0);
         double ExplosionCenterY = this.getYpos() + (this.getHeight()/2.0);
-        
-//                      System.out.println("\n\n\nnew check");
-//
-//        System.out.println("width of expl. " + this.getWidth());
-//              System.out.println("\n");
-//        System.out.println("distance between centers " + Math.abs(centerOfElementX - ExplosionCenterX));
-//                      System.out.println("\n");
 
         //if the center of the element we are checking is within the circle of explosion, return true
         if (Math.abs(centerOfElementX - ExplosionCenterX) < this.getWidth() && Math.abs(centerOfElementY - ExplosionCenterY) < this.getHeight()){
