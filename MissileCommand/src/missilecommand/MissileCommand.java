@@ -22,7 +22,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
- *
+ * runner class for Missile Command game
+ * 
  * @author McCormick.Elliot19
  */
 public class MissileCommand extends Application {
@@ -181,7 +182,7 @@ public class MissileCommand extends Application {
     }
 
     /**
-     *
+     * Loop to handle all actions
      */
     public class RedrawTimer extends AnimationTimer {
 

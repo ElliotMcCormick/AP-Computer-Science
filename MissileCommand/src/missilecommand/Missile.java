@@ -26,7 +26,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
     /**
      *
-     * @param x
+     * @param x 
      * @param y
      * @param speed
      * @param trailColor

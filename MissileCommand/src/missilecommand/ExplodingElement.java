@@ -12,7 +12,7 @@ import javafx.scene.canvas.Canvas;
  * @author McCormick.Elliot19
  */
 public abstract class ExplodingElement extends GameElement{
-    private double explosionRadius = 60;
+    private double maximumExplosionRadius = 60;
 
     /**
      *
@@ -33,10 +33,10 @@ public abstract class ExplodingElement extends GameElement{
     
     /**
      *
-     * @return double explosionRadius which is the current width of the explosion
+     * @return double maximumExplosionRadius which is the current width of the explosion
      */
-    public double getExplosionRadius(){
-        return explosionRadius;
+    public double getMaximumExplosionRadius(){
+        return maximumExplosionRadius;
     }
     
     /**

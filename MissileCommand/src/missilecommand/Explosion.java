@@ -57,18 +57,24 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
         graphics.setLineWidth(2);
         graphics.setStroke(Color.BLACK);
         
+        //draw a circle where the explosion is
         graphics.strokeOval(initialX - (super.getWidth() / 2), initialY - (super.getHeight() / 2), super.getWidth(), super.getHeight());
         graphics.fillOval(initialX - (super.getWidth() / 2), initialY - (super.getHeight() / 2), super.getWidth(), super.getHeight());
 
-        if (super.getWidth() >= super.getExplosionRadius()) {
+        //if the width is larger than the maximum explosion radius stop growing
+        if (super.getWidth() >= super.getMaximumExplosionRadius()) {
             growing = false;
-        } else if (super.getWidth() < super.getExplosionRadius() && growing) {
+        } 
+        
+        //else increase the width by the changeInSize and move the x and y so the center stays the same
+        else if (super.getWidth() < super.getMaximumExplosionRadius() && growing) {
             super.setWidth(super.getWidth() + changeInSize);
             super.setHeight(super.getHeight() + changeInSize);
             super.setXpos(initialX - (super.getWidth() / 2));
             super.setYpos(initialY - (super.getHeight() / 2));
         }
 
+        // if not growing and width is greater than 0 decrease width and move x and y
         if (super.getWidth() > 0 && !growing) {
 
             super.setWidth(super.getWidth() - changeInSize);
@@ -77,6 +83,7 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
             super.setYpos(initialY - (super.getHeight() / 2));
         }
         
+        //full explosion cycle complete
         if (super.getWidth() <= 0){
             complete = true;
         }
