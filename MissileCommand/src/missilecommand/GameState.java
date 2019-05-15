@@ -100,12 +100,5 @@ public class GameState {
         }
     }
     
-    //IDK IF NECESSARY YET
-
-    /**
-     *
-     */
-    public void collideAll(){
-        
-    }
+    
 }

@@ -46,8 +46,10 @@ public class MissilePicture implements Renderable {
      */
     @Override
     public void draw(Canvas canvas) {
+        //just the little image of the missile telling you how many shots you have left
         GraphicsContext graphics = canvas.getGraphicsContext2D();
 
+        //it's just three rectangles
         graphics.setFill(color);
         graphics.fillRect(x, y, 5, 5);
         graphics.fillRect(x - 2, y + 5, 3, 3);

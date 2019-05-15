@@ -136,6 +136,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
      * @return
      */
     public boolean atTarget() {
+        
         //if the difference between the pos and the target pos is within the amount the 
         //missile move each time it is at the target 
         if (!isExploded()) {
@@ -148,8 +149,13 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
      *
      */
     public void setVector() {
+        //new array used as a vector
         vector = new double[2];
         double magnitude = Math.sqrt(Math.pow(targetPos[0] - startPos[0], 2) + Math.pow(targetPos[1] - startPos[1], 2));
+        
+        /* 
+            technically this vector is just a fraaction of the total vector determined by the speed input
+        */
         vector[0] = (targetPos[0] - startPos[0]) / (magnitude / speed);
         vector[1] = (targetPos[1] - startPos[1]) / (magnitude / speed);
 
@@ -190,28 +196,36 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
      */
     @Override
     public void update(Canvas canvas) {
-        double distanceBehind = targetPos[0] - startPos[0];
+        //essentially i run the missile through twice. once with color and the 
+        //second black at a higher speed to create the trail effect
+        
         GraphicsContext graphics = canvas.getGraphicsContext2D();
 
         setVector();
 
         if (!isExploded()) {
+            //draw a line with first (x, y) equal to the start pos and
+            //the second (x, y) point egual to the missile's x and y
+          
             graphics.setStroke(getTrailColor());
             graphics.setLineWidth(1);
             graphics.strokeLine(startPos[0], startPos[1], super.getXpos(), super.getYpos());
 
+            //update the x and y based on the vector
             super.setXpos(super.getXpos() + vector[0]);
             super.setYpos(super.getYpos() + vector[1]);
         } else {
+            //set the trailing line to black
             graphics.setStroke(Color.BLACK);
             graphics.setLineWidth(4);
            
-
+            //set the vector equal to 0. 
             if (atTarget()) {
                 vector[0] = 0;
                 vector[1] = 0;
             }
 
+            // then have the trail disappear. (cover it in a black line
             graphics.strokeLine(startPos[0], startPos[1], super.getXpos(), super.getYpos());
            
             super.setXpos(super.getXpos() + (TRAILING_LINE_SPEED * vector[0]));
@@ -220,8 +234,11 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
         }
 
         if (atTarget()) {
+            // reset the x and y for the trailing line
             super.setXpos(startPos[0]);
             super.setYpos(startPos[1]);
+            
+            //explode the missile
             explodeElement(canvas);
         }
     }

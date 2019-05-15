@@ -21,7 +21,7 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
     private boolean complete;
 
     /**
-     *
+     * set growing to true and complete to false initially
      */
     public Explosion() {
         this.growing = true;
@@ -30,10 +30,10 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
 
     /**
      *
-     * @param x
-     * @param y
-     * @param wid
-     * @param ht
+     * @param x x position
+     * @param y y position
+     * @param wid width
+     * @param ht height
      */
     public Explosion(double x, double y, double wid, double ht) {
         super(x, y, wid, ht);
@@ -111,8 +111,8 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return true if explosion is complete
      */
     public boolean isComplete() {
         return complete;
