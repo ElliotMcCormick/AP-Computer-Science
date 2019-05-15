@@ -44,7 +44,8 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
     }
 
     /**
-     *
+     * update the explosion. it grows then shrinks
+     * 
      * @param canvas
      */
     @Override
@@ -102,7 +103,7 @@ public class Explosion extends ExplodingElement implements Updateable, Renderabl
     }
 
     /**
-     *
+     * doesn't actually do anything. i probably shouldn't have made it an exploding element
      * @param canvas
      */
     @Override

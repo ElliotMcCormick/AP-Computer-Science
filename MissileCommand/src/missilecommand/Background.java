@@ -23,10 +23,10 @@ public class Background implements Renderable {
 
     /**
      *
-     * @param color
-     * @param x
-     * @param y
-     * @param width
+     * @param color color of the background
+     * @param x x pos of the background
+     * @param y y pos of the background
+     * @param width width of background
      */
     public Background(Color color, int x, int y, int width) {
         this.color = color;

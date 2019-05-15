@@ -21,7 +21,7 @@ public class CityPicture extends ExplodingElement implements Renderable {
 
     /**
      *
-     * @param color
+     * @param color color of cities
      */
     public CityPicture(Color color) {
         this.color = color;
@@ -30,11 +30,11 @@ public class CityPicture extends ExplodingElement implements Renderable {
 
     /**
      *
-     * @param color
-     * @param x
-     * @param y
-     * @param wid
-     * @param ht
+     * @param color color of city
+     * @param x x pos of city
+     * @param y y pos of city
+     * @param wid width of city
+     * @param ht height of city
      */
     public CityPicture(Color color, double x, double y, double wid, double ht) {
         super(x, y, wid, ht);
@@ -45,7 +45,7 @@ public class CityPicture extends ExplodingElement implements Renderable {
 
     /**
      *
-     * @return boolean isExploded
+     * @return true if isExploded
      */
     public boolean isExploded() {
         return isExploded;

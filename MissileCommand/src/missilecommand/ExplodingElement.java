@@ -22,10 +22,10 @@ public abstract class ExplodingElement extends GameElement{
 
     /**
      *
-     * @param x
-     * @param y
-     * @param wid
-     * @param ht
+     * @param x x pos
+     * @param y y pos
+     * @param wid width
+     * @param ht height
      */
     public ExplodingElement(double x, double y, double wid, double ht) {
         super(x, y, wid, ht);
