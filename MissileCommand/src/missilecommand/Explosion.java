@@ -10,7 +10,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 /**
- *
+ * class in charge of drawing all of the explosions
+ * 
  * @author elliot
  */
 public class Explosion extends ExplodingElement implements Updateable, Renderable {

@@ -10,7 +10,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 /**
- *
+ * class to draw the missile pictures that tell you how many shots you have left
+ * 
  * @author elliot
  */
 public class MissilePicture implements Renderable {
@@ -21,7 +22,7 @@ public class MissilePicture implements Renderable {
 
     /**
      *
-     * @param color
+     * @param color color of the missile pictures in the bottom left
      */
     public MissilePicture(Color color) {
         this.color = color;
@@ -29,9 +30,9 @@ public class MissilePicture implements Renderable {
 
     /**
      *
-     * @param color
-     * @param x
-     * @param y
+     * @param color color of the missile pictures
+     * @param x x position
+     * @param y y position
      */
     public MissilePicture(Color color, int x, int y) {
         this.color = color;
@@ -41,7 +42,8 @@ public class MissilePicture implements Renderable {
     }
 
     /**
-     *
+     * draw the little missile pictures that show how many missiles you have left
+     * 
      * @param canvas
      */
     @Override

@@ -7,7 +7,8 @@ package missilecommand;
 
 
 /**
- *
+ * class to house all basic parts of the game
+ * 
  * @author McCormick.Elliot19
  */
 public class GameElement {
@@ -23,10 +24,10 @@ public class GameElement {
     
     /**
      *
-     * @param x
-     * @param y
-     * @param wid
-     * @param ht
+     * @param x x position
+     * @param y y position
+     * @param wid width
+     * @param ht height
      */
     public GameElement(double x, double y, double wid, double ht){
         setXpos(x);
@@ -36,32 +37,36 @@ public class GameElement {
     }
     
     /**
-     *
-     * @param x
+     * set x position to new x
+     * 
+     * @param x new x position
      */
     public void setXpos(double x){
         xPos = x;
     }
 
     /**
-     *
-     * @param y
+     * set y position to new y
+     * 
+     * @param y new y position
      */
     public void setYpos(double y){
         yPos = y;
     }
 
     /**
-     *
-     * @param wid
+     * set width to new width
+     * 
+     * @param wid new width
      */
     public void setWidth(double wid){
         width = wid;
     }
 
     /**
-     *
-     * @param ht
+     * set height to new height
+     * 
+     * @param ht new height
      */
     public void setHeight(double ht){
         height = ht;
@@ -69,7 +74,7 @@ public class GameElement {
     
     /**
      *
-     * @return
+     * @return x position
      */
     public double getXpos(){
         return xPos;
@@ -77,7 +82,7 @@ public class GameElement {
 
     /**
      *
-     * @return
+     * @return y position
      */
     public double getYpos(){
         return yPos;
@@ -85,7 +90,7 @@ public class GameElement {
 
     /**
      *
-     * @return
+     * @return width
      */
     public double getWidth(){
         return width;
@@ -93,7 +98,7 @@ public class GameElement {
 
     /**
      *
-     * @return
+     * @return height
      */
     public double getHeight(){
         return height;

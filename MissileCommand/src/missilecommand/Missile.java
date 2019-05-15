@@ -10,7 +10,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 /**
- *
+ * class to draw and move the missiles
+ * 
  * @author elliot
  */
 public class Missile extends ExplodingElement implements Renderable, Updateable {
@@ -26,10 +27,10 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
     /**
      *
-     * @param x 
-     * @param y
-     * @param speed
-     * @param trailColor
+     * @param x x position
+     * @param y y position
+     * @param speed speed of missile
+     * @param trailColor the color of the trail
      */
     public Missile(double x, double y, double speed, Color trailColor) {
         super(x, y, 1, 1);
@@ -49,31 +50,25 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
     /**
      *
-     * @return
+     * @return true if the missile has exploded
      */
     public boolean isExploded() {
         return elementExploded;
     }
 
-    /**
-     *
-     * @return
-     */
-    public boolean isErased() {
-        return erased;
-    }
+//    
 
     /**
      *
-     * @return
+     * @return the speed the missile is moving 
      */
     public double getTravelTime() {
         return speed;
     }
 
     /**
-     *
-     * @param speed
+     * set how fast the missile moves to new speed
+     * @param speed new speed
      */
     public void setTravelTime(double speed) {
         this.speed = speed;
@@ -81,24 +76,26 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
     /**
      *
-     * @return
+     * @return the color of the trail
      */
     public Color getTrailColor() {
         return trailColor;
     }
 
     /**
-     *
-     * @param trailColor
+     * set the color of the trail to new color
+     * 
+     * @param trailColor new color of the trail
      */
     public void setTrailColor(Color trailColor) {
         this.trailColor = trailColor;
     }
 
     /**
-     *
-     * @param xPos
-     * @param yPos
+     * set the point the missile targets
+     * 
+     * @param xPos x position of the target
+     * @param yPos y position of the target
      */
     public void setTarget(double xPos, double yPos) {
         targetPos = new double[2];
@@ -107,7 +104,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     }
 
     /**
-     *
+     * set the startPos to the current position
      */
     public void setStartPos() {
         startPos = new double[2];
@@ -125,7 +122,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
     /**
      *
-     * @return
+     * @return the target position 
      */
     public double[] getTargetPos() {
         return targetPos;
@@ -133,12 +130,14 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
 
     /**
      *
-     * @return
+     * @return true if the missile has reached its target
      */
     public boolean atTarget() {
         
-        //if the difference between the pos and the target pos is within the amount the 
-        //missile move each time it is at the target 
+        /*
+        if the difference between the pos and the target pos is within the amount the 
+        missile moves each time, it is at the target 
+        */
         if (!isExploded()) {
             return Math.abs(getXpos() - targetPos[0]) <= Math.abs(vector[0]) && Math.abs(getYpos() - targetPos[1]) <= Math.abs(vector[1]);
         } 
@@ -146,7 +145,7 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     }
 
     /**
-     *
+     * set the vector in charge of moving the missile
      */
     public void setVector() {
         //new array used as a vector
@@ -162,7 +161,8 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     }
 
     /**
-     *
+     * initiate the drawing of the explosion by setting elementExploded to true
+     * 
      * @param canvas
      */
     @Override
@@ -177,7 +177,8 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     }
 
     /**
-     *
+     * draw the missile
+     * 
      * @param canvas
      */
     @Override
@@ -191,12 +192,13 @@ public class Missile extends ExplodingElement implements Renderable, Updateable 
     }
 
     /**
-     *
+     * update the missile. If exploded make the trail disappear
+     * 
      * @param canvas
      */
     @Override
     public void update(Canvas canvas) {
-        //essentially i run the missile through twice. once with color and the 
+        //essentially I run the missile through twice. once with color and the 
         //second black at a higher speed to create the trail effect
         
         GraphicsContext graphics = canvas.getGraphicsContext2D();

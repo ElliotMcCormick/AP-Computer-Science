@@ -10,7 +10,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 /**
- *
+ * class to draw the pictures of the cities
+ * 
  * @author mccormick.elliot19
  */
 public class CityPicture extends ExplodingElement implements Renderable {
@@ -52,7 +53,7 @@ public class CityPicture extends ExplodingElement implements Renderable {
     }
 
     /**
-     * draws the city black when you explode it
+     * draws the city black when you explode it;
      * isExploded becomes true
      * 
      * @param canvas

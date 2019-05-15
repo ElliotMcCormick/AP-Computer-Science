@@ -10,7 +10,8 @@ import java.util.List;
 import javafx.scene.canvas.Canvas;
 
 /**
- *
+ * class to house lists of all of the things in the game
+ * 
  * @author mccormick.elliot19
  */
 public class GameState {
@@ -19,7 +20,7 @@ public class GameState {
     private List<GameElement> collideables;
     
     /**
-     *
+     * initialize all of the lists
      */
     public GameState(){
         renderables = new ArrayList();
@@ -28,7 +29,8 @@ public class GameState {
     }
     
     /**
-     *
+     * add an object to the list
+     * 
      * @param object
      */
     public void add(Object object){
@@ -45,8 +47,9 @@ public class GameState {
     }
     
     /**
-     *
-     * @param index
+     * add an object to the list at a specified index
+     * 
+     * @param index index to put object
      * @param object
      */
     public void add(int index, Object object){
@@ -64,7 +67,8 @@ public class GameState {
     }
     
     /**
-     *
+     * remove an object from the lists
+     * 
      * @param object
      */
     public void remove(Object object){
@@ -81,7 +85,8 @@ public class GameState {
     }
   
     /**
-     *
+     * update everything
+     * 
      * @param canvas
      */
     public void updateAll(Canvas canvas){
@@ -91,7 +96,8 @@ public class GameState {
     }
     
     /**
-     *
+     * draw everything
+     * 
      * @param canvas
      */
     public void drawAll(Canvas canvas){

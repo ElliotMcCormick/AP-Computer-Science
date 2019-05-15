@@ -8,7 +8,8 @@ package missilecommand;
 import javafx.scene.canvas.Canvas;
 
 /**
- *
+ * class to control anything that needs to blow up
+ * 
  * @author McCormick.Elliot19
  */
 public abstract class ExplodingElement extends GameElement{
@@ -22,8 +23,8 @@ public abstract class ExplodingElement extends GameElement{
 
     /**
      *
-     * @param x x pos
-     * @param y y pos
+     * @param x x position
+     * @param y y position
      * @param wid width
      * @param ht height
      */

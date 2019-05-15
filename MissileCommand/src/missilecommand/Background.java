@@ -10,7 +10,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 /**
- *
+ * class to draw the ground of the game
+ * 
  * @author elliot
  */
 public class Background implements Renderable {
